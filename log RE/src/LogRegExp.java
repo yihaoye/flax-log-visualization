@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ public class LogRegExp {
     		   String phrasedLine = "";
     		   String unique_id = null;
     		   String unique_date = null;
+    		   final String dir = System.getProperty("user.dir"); //get current working directory path
     		   
     		   
     		   /* get all unique uid and date */
@@ -33,7 +35,8 @@ public class LogRegExp {
     		   
     		   /* output txt file object initialize */
     		   PrintWriter writer = null;
-    		   
+    		   File file = new File(dir+"/phrasedFiles");
+    		   file.mkdir(); // create a new directory to store txts
     		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
@@ -50,28 +53,28 @@ public class LogRegExp {
     					   /* create a new txt file for writing */
     					   if(writer!=null) 
     						   writer.close();
-    		    		   writer = new PrintWriter(unique_date + " "+ unique_id + " " + "phrasedResult.txt", "UTF-8");
+    		    		   writer = new PrintWriter(file + "/" + unique_date + " "+ unique_id + " " + "phrasedResult.txt", "UTF-8");
     				   }
     			   }
     			   
     			   /* fetch important info from each line */
     			   Matcher matcher[] = new Matcher[pattern.length];
-    			   for(int i=0;i<pattern.length;i++){
-    				   matcher[i] = pattern[i].matcher(strLine);
-    			   }
     			   
-    			   
-    			   //if(matcher[0].find() && matcher[0].group().equals("2016-01-28") && matcher[2].find()){
-    				   //System.out.println (strLine);
-    				   for(int i=0;i<pattern.length;i++){
-    					   if(matcher[i].find()){
-    						   phrasedLine += matcher[i].group() + " ";
-    					   }
-    				   }
-    				   System.out.println (phrasedLine);
-    				   writer.println(phrasedLine);
-    				   phrasedLine = "";
-    			   //}
+				   for(int i=0;i<pattern.length;i++){
+					   matcher[i] = pattern[i].matcher(strLine);
+					   if(matcher[i].find()){
+						   phrasedLine += matcher[i].group() + " ";
+						   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
+					   }
+					   
+					   matcher[i] = pattern[i].matcher(strLine);
+					   if(matcher[i].find()){
+						   i--;
+					   }
+				   }
+				   System.out.println (phrasedLine);
+				   writer.println(phrasedLine);
+				   phrasedLine = "";
     			   
     			   /*if(matcher.find()){
     				   System.out.println (matcher.group());
@@ -83,6 +86,7 @@ public class LogRegExp {
     		} catch (Exception e) {
     		     System.err.println("Error: " + e.getMessage());
     		}
+
     }
 }
 
