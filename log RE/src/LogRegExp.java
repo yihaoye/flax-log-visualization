@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.*;
@@ -12,66 +13,77 @@ public class LogRegExp {
     		   BufferedReader in = new BufferedReader(new InputStreamReader(fstream));
     		   String strLine;
     		   String phrasedLine = "";
+    		   String unique_id = null;
+    		   String unique_date = null;
     		   
-    		   //Pattern pattern = Pattern.compile("(\\[\\d{4}-\\d{2}-\\d{2}\\])()()()");
+    		   
+    		   /* get all unique uid and date */
+    		   Pattern pattern_ip[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
+    				   Pattern.compile("uid=\\d+")};
+    		   
+    		   
+    		   /* Regular Expression */
     		   Pattern pattern[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
     				   Pattern.compile("\\d{2}:\\d{2}:\\d{2}"), 
-    				   Pattern.compile("uid=537"),
+    				   Pattern.compile("uid=\\d+"),
     				   Pattern.compile("s=\\w+"), 
     				   Pattern.compile("c=\\w+"), 
-    				   Pattern.compile("s1.query=\\w+"),
-    				   Pattern.compile("s1.dbName=\\w+")};
+    				   Pattern.compile("s1.\\w+=\\w+")};
+    		       		   
     		   
-    		   /*
-    		   Pattern pattern[] = new Pattern[6];
-    		   pattern[0] = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-    		   pattern[1] = Pattern.compile("uid=537");
-    		   pattern[2] = Pattern.compile("s=\\w+");
-    		   pattern[3] = Pattern.compile("c=\\w+");
-    		   pattern[4] = Pattern.compile("s1.query=\\w+");
-    		   pattern[5] = Pattern.compile("s1.dbName=\\w+");
-    		   */
+    		   /* output txt file object initialize */
+    		   PrintWriter writer = null;
     		   
     		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
-    		     /* parse strLine to obtain what you want */
     			   
+    			   /* check ip (by date and uid), if changed, create new file to write */
+    			   Matcher matcher_ip[] = new Matcher[pattern_ip.length];
+    			   for(int i=0;i<pattern_ip.length;i++){
+    				   matcher_ip[i] = pattern_ip[i].matcher(strLine);
+    			   }
+    			   if(matcher_ip[0].find() && matcher_ip[1].find()){
+    				   if(!matcher_ip[0].group().equals(unique_date) || !matcher_ip[1].group().equals(unique_id)){
+    					   unique_date = matcher_ip[0].group();
+    					   unique_id = matcher_ip[1].group();
+    					   /* create a new txt file for writing */
+    					   if(writer!=null) 
+    						   writer.close();
+    		    		   writer = new PrintWriter(unique_date + " "+ unique_id + " " + "phrasedResult.txt", "UTF-8");
+    				   }
+    			   }
+    			   
+    			   /* fetch important info from each line */
     			   Matcher matcher[] = new Matcher[pattern.length];
     			   for(int i=0;i<pattern.length;i++){
     				   matcher[i] = pattern[i].matcher(strLine);
     			   }
-    			   /*
-    			   Matcher matcher1 = pattern1.matcher(strLine);
-    			   Matcher matcher2 = pattern2.matcher(strLine);
-    			   Matcher matcher3 = pattern3.matcher(strLine);
-    			   Matcher matcher4 = pattern4.matcher(strLine);
-    			   Matcher matcher5 = pattern5.matcher(strLine);
-    			   Matcher matcher6 = pattern6.matcher(strLine);
-    			   */
-    			   if(matcher[0].find() && matcher[0].group().equals("2016-01-28") && matcher[2].find()){
+    			   
+    			   
+    			   //if(matcher[0].find() && matcher[0].group().equals("2016-01-28") && matcher[2].find()){
     				   //System.out.println (strLine);
     				   for(int i=0;i<pattern.length;i++){
-    					   if(i==0 || i==2 || matcher[i].find()){
+    					   if(matcher[i].find()){
     						   phrasedLine += matcher[i].group() + " ";
     					   }
     				   }
     				   System.out.println (phrasedLine);
+    				   writer.println(phrasedLine);
     				   phrasedLine = "";
-    			   }
+    			   //}
     			   
     			   /*if(matcher.find()){
     				   System.out.println (matcher.group());
     			   }*/
     			   
-    			   //System.out.println (strLine);
     		   }
     		   in.close();
+    		   //writer.close();
     		} catch (Exception e) {
     		     System.err.println("Error: " + e.getMessage());
     		}
     }
 }
 
-//Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs
 
