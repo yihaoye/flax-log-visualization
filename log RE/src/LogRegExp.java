@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.HashMap;
 import java.util.regex.*;
 
 public class LogRegExp {
@@ -32,11 +33,15 @@ public class LogRegExp {
     				   Pattern.compile("c=\\w+"), 
     				   Pattern.compile("s1.\\w+=\\w+")};
     		       		   
+    		   /* Hashmap for calculate each actions numbers */
+    		   HashMap<Character, Integer> c_action_map = new HashMap<Character, Integer>();
+    		   HashMap<Character, Integer> s_action_map = new HashMap<Character, Integer>();
     		   
     		   /* output txt file object initialize */
-    		   PrintWriter writer = null;
+    		   PrintWriter writer = null;	//print important info for each ip
     		   File file = new File(dir+"/phrasedFiles");
     		   file.mkdir(); // create a new directory to store txts
+    		   PrintWriter actions_account = new PrintWriter(file + "/" + "actionsAccount.txt", "UTF-8");	//print accounting for all actions
     		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
@@ -60,18 +65,25 @@ public class LogRegExp {
     			   /* fetch important info from each line */
     			   Matcher matcher[] = new Matcher[pattern.length];
     			   
-				   for(int i=0;i<pattern.length;i++){
+				   for(int i=0; i<pattern.length; i++){
 					   matcher[i] = pattern[i].matcher(strLine);
 					   if(matcher[i].find()){
-						   phrasedLine += matcher[i].group() + " ";
-						   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
-					   }
-					   
-					   matcher[i] = pattern[i].matcher(strLine);
-					   if(matcher[i].find()){
-						   i--;
+						   if(i<(pattern.length-1)){
+							   phrasedLine += matcher[i].group() + " ";
+							   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
+						   }
+						   
+						   if(i==(pattern.length-1)){ //last RegExp repeat executed
+							   phrasedLine += matcher[i].group() + " ";
+							   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
+							   matcher[i] = pattern[i].matcher(strLine);
+							   if(matcher[i].find()){
+								   i--;
+							   }
+						   }
 					   }
 				   }
+				   
 				   System.out.println (phrasedLine);
 				   writer.println(phrasedLine);
 				   phrasedLine = "";
