@@ -22,9 +22,10 @@ public class LogRegExp {
     		   PrintWriter writer = null;	//for print info into txt file (important info for each ip, actions account)
 
     		   
+    		   
     		   /* get all unique action_c and action_s */
-    		   Pattern pattern_actions[] = {Pattern.compile("c=\\w+"), 
-    				   Pattern.compile("s=\\w+")};
+    		   Pattern pattern_actions[] = {Pattern.compile("\\&c=\\w+"), 
+    				   Pattern.compile("\\&s=\\w+")};
     		   
     		   /* Hashmap for calculate each actions numbers, it is hashmap in hashmap data structure */
     		   HashMap<String, HashMap<String, Integer>> c_action_map = new HashMap<String, HashMap<String, Integer>>();
@@ -43,8 +44,8 @@ public class LogRegExp {
     		   Pattern pattern[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
     				   Pattern.compile("\\d{2}:\\d{2}:\\d{2}"), 
     				   Pattern.compile("uid=\\d+"),
-    				   Pattern.compile("c=\\w+"), 
-    				   Pattern.compile("s=\\w+"), 
+    				   Pattern.compile("\\&c=\\w+"), 
+    				   Pattern.compile("\\&s=\\w+"), 
     				   Pattern.compile("s1.\\w+=\\w+")};
     		       		   
     		   /* output txt file object initialize */
@@ -91,7 +92,7 @@ public class LogRegExp {
     				   }
     			   }
     			   
-    			   /* fetch important info from each line */
+    			   /* separate log info into files by ip, fetch important info from each line and write to txt file */
     			   Matcher matcher[] = new Matcher[pattern.length];
     			   
 				   for(int i=0; i<pattern.length; i++){
@@ -137,9 +138,9 @@ public class LogRegExp {
 				   ActionsAccountLine = "";
 			   }
     		   
-    		   
     		   in.close();
     		   writer.close();
+    		   
     		} catch (Exception e) {
     		     System.err.println("Error: " + e.getMessage());
     		}
