@@ -15,36 +15,91 @@ public class LogRegExp {
     		   BufferedReader in = new BufferedReader(new InputStreamReader(fstream));
     		   String strLine;
     		   String phrasedLine = "";
+    		   String ActionsAccountLine = "";
     		   String unique_id = null;
     		   String unique_date = null;
     		   final String dir = System.getProperty("user.dir"); //get current working directory path
+    		   
+    		   
+    		   /* get all unique action_c and action_s */
+    		   Pattern pattern_actions[] = {Pattern.compile("c=\\w+"), 
+    				   Pattern.compile("s=\\w+")};
+    		   
+    		   /* Hashmap for calculate each actions numbers */
+    		   HashMap<String, HashMap<String, Integer>> c_action_map = new HashMap<String, HashMap<String, Integer>>();
+    		   //HashMap<String, Integer> s_action_map = new HashMap<String, Integer>();
+
+    		   /* count actions */
+    		   PrintWriter actions_account = null;
+    		   //new PrintWriter(file + "/" + "actionsAccount.txt", "UTF-8");	//print accounting for all actions
+    		   File account = new File(dir+"/AccountFiles");
+    		   account.mkdir(); // create a new directory to store txts
+    		   
     		   
     		   
     		   /* get all unique uid and date */
     		   Pattern pattern_ip[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
     				   Pattern.compile("uid=\\d+")};
     		   
-    		   
     		   /* Regular Expression */
     		   Pattern pattern[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
     				   Pattern.compile("\\d{2}:\\d{2}:\\d{2}"), 
     				   Pattern.compile("uid=\\d+"),
-    				   Pattern.compile("s=\\w+"), 
     				   Pattern.compile("c=\\w+"), 
+    				   Pattern.compile("s=\\w+"), 
     				   Pattern.compile("s1.\\w+=\\w+")};
     		       		   
-    		   /* Hashmap for calculate each actions numbers */
-    		   HashMap<Character, Integer> c_action_map = new HashMap<Character, Integer>();
-    		   HashMap<Character, Integer> s_action_map = new HashMap<Character, Integer>();
-    		   
     		   /* output txt file object initialize */
     		   PrintWriter writer = null;	//print important info for each ip
     		   File file = new File(dir+"/phrasedFiles");
     		   file.mkdir(); // create a new directory to store txts
-    		   PrintWriter actions_account = new PrintWriter(file + "/" + "actionsAccount.txt", "UTF-8");	//print accounting for all actions
+    		   
+    		   
     		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
+    			   
+    			   /* check ip (by date and uid), if changed, create new file to write */
+    			   Matcher matcher_actions[] = new Matcher[pattern_actions.length];
+    			   for(int i=0;i<pattern_actions.length;i++){
+    				   matcher_actions[i] = pattern_actions[i].matcher(strLine);
+    			   }
+    			   if(matcher_actions[0].find() && matcher_actions[1].find()){ //find if new action_c
+    				   if(c_action_map.containsKey(matcher_actions[0].group())){
+    					   if(c_action_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){
+    						   Integer temp = c_action_map.get(matcher_actions[0].group()).get(matcher_actions[1].group());
+							   temp++;
+							   c_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), temp);
+    					   }else{
+    						   c_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), 1);
+    					   }
+    				   }else{
+    					   c_action_map.put(matcher_actions[0].group(), new HashMap<String, Integer>());
+    				   }
+    				   
+    				   /*
+    				   for(String c_key : c_action_map.keySet()){
+    					   if(c_key.equals(matcher_actions[0].group())){
+    						   for(String s_key : c_action_map.get(c_key).keySet()){
+    							   if(s_key.equals(matcher_actions[1].group())){
+    								   Integer temp = c_action_map.get(c_key).get(s_key);
+    								   temp++;
+    								   c_action_map.get(c_key).put(s_key, temp);
+    							   }
+    						   }
+    					   }
+    				   }
+    				   */
+    				   
+    				   /*
+    				   if(!matcher_actions[0].group().equals(unique_c)){
+    					   unique_c = matcher_actions[0].group();
+    					   if(writer!=null) 
+    						   writer.close();
+    		    		   writer = new PrintWriter(account + "/" + unique_c +  " " + "AccountResult.txt", "UTF-8");
+    				   }
+    			   		*/
+    			   }
     			   
     			   /* check ip (by date and uid), if changed, create new file to write */
     			   Matcher matcher_ip[] = new Matcher[pattern_ip.length];
@@ -73,7 +128,7 @@ public class LogRegExp {
 							   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
 						   }
 						   
-						   if(i==(pattern.length-1)){ //last RegExp repeat executed
+						   if(i==(pattern.length-1)){ //last RegExp repeat executed (s1. property)
 							   phrasedLine += matcher[i].group() + " ";
 							   strLine = strLine.replace(matcher[i].group(), ""); // remove match part
 							   matcher[i] = pattern[i].matcher(strLine);
@@ -85,7 +140,7 @@ public class LogRegExp {
 				   }
 				   
 				   System.out.println (phrasedLine);
-				   writer.println(phrasedLine);
+				   writer.println(phrasedLine);	// write info into txt
 				   phrasedLine = "";
     			   
     			   /*if(matcher.find()){
@@ -93,8 +148,24 @@ public class LogRegExp {
     			   }*/
     			   
     		   }
+    		   
+    		   
+    		   /* create actions account files */
+			   for(String c_key : c_action_map.keySet()){
+				   if(writer!=null) 
+					   writer.close();
+	    		   writer = new PrintWriter(account + "/" + c_key +  " " + "AccountResult.txt", "UTF-8");
+	    		   for(String s_key : c_action_map.get(c_key).keySet()){
+	    			   ActionsAccountLine += s_key + "    " +c_action_map.get(c_key).get(s_key) + " \n";
+	    		   }
+	    		   System.out.println (ActionsAccountLine);
+				   writer.println(ActionsAccountLine);	// write info into txt
+				   ActionsAccountLine = "";
+			   }
+    		   
+    		   
     		   in.close();
-    		   //writer.close();
+    		   writer.close();
     		} catch (Exception e) {
     		     System.err.println("Error: " + e.getMessage());
     		}
