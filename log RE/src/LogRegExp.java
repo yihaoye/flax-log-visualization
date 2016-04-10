@@ -19,19 +19,17 @@ public class LogRegExp {
     		   String unique_id = null;
     		   String unique_date = null;
     		   final String dir = System.getProperty("user.dir"); //get current working directory path
-    		   
+    		   PrintWriter writer = null;	//for print info into txt file (important info for each ip, actions account)
+
     		   
     		   /* get all unique action_c and action_s */
     		   Pattern pattern_actions[] = {Pattern.compile("c=\\w+"), 
     				   Pattern.compile("s=\\w+")};
     		   
-    		   /* Hashmap for calculate each actions numbers */
+    		   /* Hashmap for calculate each actions numbers, it is hashmap in hashmap data structure */
     		   HashMap<String, HashMap<String, Integer>> c_action_map = new HashMap<String, HashMap<String, Integer>>();
-    		   //HashMap<String, Integer> s_action_map = new HashMap<String, Integer>();
 
     		   /* count actions */
-    		   PrintWriter actions_account = null;
-    		   //new PrintWriter(file + "/" + "actionsAccount.txt", "UTF-8");	//print accounting for all actions
     		   File account = new File(dir+"/AccountFiles");
     		   account.mkdir(); // create a new directory to store txts
     		   
@@ -50,7 +48,6 @@ public class LogRegExp {
     				   Pattern.compile("s1.\\w+=\\w+")};
     		       		   
     		   /* output txt file object initialize */
-    		   PrintWriter writer = null;	//print important info for each ip
     		   File file = new File(dir+"/phrasedFiles");
     		   file.mkdir(); // create a new directory to store txts
     		   
@@ -59,7 +56,7 @@ public class LogRegExp {
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
     			   
-    			   /* check ip (by date and uid), if changed, create new file to write */
+    			   /* check actions */
     			   Matcher matcher_actions[] = new Matcher[pattern_actions.length];
     			   for(int i=0;i<pattern_actions.length;i++){
     				   matcher_actions[i] = pattern_actions[i].matcher(strLine);
@@ -76,29 +73,6 @@ public class LogRegExp {
     				   }else{
     					   c_action_map.put(matcher_actions[0].group(), new HashMap<String, Integer>());
     				   }
-    				   
-    				   /*
-    				   for(String c_key : c_action_map.keySet()){
-    					   if(c_key.equals(matcher_actions[0].group())){
-    						   for(String s_key : c_action_map.get(c_key).keySet()){
-    							   if(s_key.equals(matcher_actions[1].group())){
-    								   Integer temp = c_action_map.get(c_key).get(s_key);
-    								   temp++;
-    								   c_action_map.get(c_key).put(s_key, temp);
-    							   }
-    						   }
-    					   }
-    				   }
-    				   */
-    				   
-    				   /*
-    				   if(!matcher_actions[0].group().equals(unique_c)){
-    					   unique_c = matcher_actions[0].group();
-    					   if(writer!=null) 
-    						   writer.close();
-    		    		   writer = new PrintWriter(account + "/" + unique_c +  " " + "AccountResult.txt", "UTF-8");
-    				   }
-    			   		*/
     			   }
     			   
     			   /* check ip (by date and uid), if changed, create new file to write */
