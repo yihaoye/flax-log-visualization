@@ -3,10 +3,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+//import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.*;
+import java.util.*;
+
 
 public class LogRegExp {
     public static void main(String argv[]) {
@@ -28,8 +31,9 @@ public class LogRegExp {
     				   Pattern.compile("\\&s=\\w+")};
     		   
     		   /* Hashmap for calculate each actions numbers, it is hashmap in hashmap data structure */
-    		   HashMap<String, HashMap<String, Integer>> c_action_map = new HashMap<String, HashMap<String, Integer>>();
-
+    		   HashMap<String, HashMap<String, Integer>> c_s_action_map = new HashMap<String, HashMap<String, Integer>>();
+    		   HashMap<String, Integer> c_action_account_map = new HashMap<String, Integer>();
+    		   
     		   /* count actions */
     		   File account = new File(dir+"/AccountFiles");
     		   account.mkdir(); // create a new directory to store txts
@@ -63,16 +67,29 @@ public class LogRegExp {
     				   matcher_actions[i] = pattern_actions[i].matcher(strLine);
     			   }
     			   if(matcher_actions[0].find() && matcher_actions[1].find()){ //find if new action_c
-    				   if(c_action_map.containsKey(matcher_actions[0].group())){
-    					   if(c_action_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){
-    						   Integer temp = c_action_map.get(matcher_actions[0].group()).get(matcher_actions[1].group());
+    				   /*  */
+    				   if(c_action_account_map.containsKey(matcher_actions[0].group())){
+    					   /*  */
+    					   Integer temp = c_action_account_map.get(matcher_actions[0].group());
+    					   temp++;
+    					   c_action_account_map.put(matcher_actions[0].group(), temp);
+    				   }else{
+    					   /* add new accessed c_action account */
+    					   c_action_account_map.put(matcher_actions[0].group(), 1);
+    				   }
+    				   /*  */
+    				   if(c_s_action_map.containsKey(matcher_actions[0].group())){
+    					   /* counting s_actions */
+    					   if(c_s_action_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){
+    						   Integer temp = c_s_action_map.get(matcher_actions[0].group()).get(matcher_actions[1].group());
 							   temp++;
-							   c_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), temp);
+							   c_s_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), temp);
     					   }else{
-    						   c_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), 1);
+    						   c_s_action_map.get(matcher_actions[0].group()).put(matcher_actions[1].group(), 1);
     					   }
     				   }else{
-    					   c_action_map.put(matcher_actions[0].group(), new HashMap<String, Integer>());
+    					   /* add new c_actions(which contain a own hashmap) */
+    					   c_s_action_map.put(matcher_actions[0].group(), new HashMap<String, Integer>());
     				   }
     			   }
     			   
@@ -126,12 +143,16 @@ public class LogRegExp {
     		   
     		   
     		   /* create actions account files */
-			   for(String c_key : c_action_map.keySet()){
+			   for(String c_key : c_s_action_map.keySet()){
 				   if(writer!=null) 
 					   writer.close();
-	    		   writer = new PrintWriter(account + "/" + c_key +  " " + "AccountResult.txt", "UTF-8");
-	    		   for(String s_key : c_action_map.get(c_key).keySet()){
-	    			   ActionsAccountLine += s_key + "    " +c_action_map.get(c_key).get(s_key) + " \n";
+	    		   writer = new PrintWriter(account + "/" + c_key +  " " + "AccountResult.json", "UTF-8");
+	    		   
+	    		   Map<String, Integer> sorted_s_action_hashmap = new HashMap<String, Integer>();
+	    		   sorted_s_action_hashmap = sortByValue(c_s_action_map.get(c_key)); // sort the s_action hashmap, sortByValue
+	    		   
+	    		   for(String s_key : sorted_s_action_hashmap.keySet()){
+	    			   ActionsAccountLine += "\"" + s_key + "\"" + " : " + "\"" + sorted_s_action_hashmap.get(s_key) + "\"" + " \n";
 	    		   }
 	    		   System.out.println (ActionsAccountLine);
 				   writer.println(ActionsAccountLine);	// write info into txt
@@ -146,6 +167,24 @@ public class LogRegExp {
     		}
 
     }
+    
+    /* HashMap sort function */
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ){
+	    List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>( map.entrySet() );
+	    Collections.sort( list, new Comparator<Map.Entry<K, V>>(){
+	        public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 ){
+	            return (o1.getValue()).compareTo( o2.getValue() );
+	        }
+	    });
+	
+	    Map<K, V> result = new LinkedHashMap<K, V>();
+	    for (Map.Entry<K, V> entry : list){
+	        result.put( entry.getKey(), entry.getValue() );
+	    }
+	    return result;
+	}
 }
+
+
 
 
