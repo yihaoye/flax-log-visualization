@@ -67,9 +67,9 @@ public class LogRegExp {
     				   matcher_actions[i] = pattern_actions[i].matcher(strLine);
     			   }
     			   if(matcher_actions[0].find() && matcher_actions[1].find()){ //find if new action_c
-    				   /*  */
+    				   /* accounting c_actions accessed account */
     				   if(c_action_account_map.containsKey(matcher_actions[0].group())){
-    					   /*  */
+    					   /* if already add c_action, increase the account */
     					   Integer temp = c_action_account_map.get(matcher_actions[0].group());
     					   temp++;
     					   c_action_account_map.put(matcher_actions[0].group(), temp);
@@ -77,7 +77,7 @@ public class LogRegExp {
     					   /* add new accessed c_action account */
     					   c_action_account_map.put(matcher_actions[0].group(), 1);
     				   }
-    				   /*  */
+    				   /* accounting s_actions for each c_action */
     				   if(c_s_action_map.containsKey(matcher_actions[0].group())){
     					   /* counting s_actions */
     					   if(c_s_action_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){
@@ -141,23 +141,37 @@ public class LogRegExp {
     			   
     		   }
     		   
+    		   /* sort c_action_account_map */
+    		   Map<String, Integer> sorted_c_action_hashmap = new HashMap<String, Integer>();
+    		   sorted_c_action_hashmap = sortByValue(c_action_account_map);
+    		   //JSONObject maptojson = new JSONObject(map);
+    		   
+    		   if(writer!=null) 
+				   writer.close();
+    		   writer = new PrintWriter(account + "/" + "c_s_actions" +  " " + "AccountResult.json", "UTF-8");
+    		   ActionsAccountLine += "{\n";
     		   
     		   /* create actions account files */
-			   for(String c_key : c_s_action_map.keySet()){
-				   if(writer!=null) 
-					   writer.close();
-	    		   writer = new PrintWriter(account + "/" + c_key +  " " + "AccountResult.json", "UTF-8");
-	    		   
+			   for(String c_key : sorted_c_action_hashmap.keySet()){
+				   ActionsAccountLine += "	\"" + c_key + "\"" + " : " + "{\n";
+				   ActionsAccountLine += "		" + "\"accessed account\" : \"" + sorted_c_action_hashmap.get(c_key) + "\"\n";
+				   ActionsAccountLine += "		" + "\"s_actions account\" : {\n";
+				   
 	    		   Map<String, Integer> sorted_s_action_hashmap = new HashMap<String, Integer>();
 	    		   sorted_s_action_hashmap = sortByValue(c_s_action_map.get(c_key)); // sort the s_action hashmap, sortByValue
 	    		   
 	    		   for(String s_key : sorted_s_action_hashmap.keySet()){
-	    			   ActionsAccountLine += "\"" + s_key + "\"" + " : " + "\"" + sorted_s_action_hashmap.get(s_key) + "\"" + " \n";
+	    			   ActionsAccountLine += "			\"" + s_key + "\"" + " : " + "\"" + sorted_s_action_hashmap.get(s_key) + "\"" + " \n";
 	    		   }
-	    		   System.out.println (ActionsAccountLine);
-				   writer.println(ActionsAccountLine);	// write info into txt
-				   ActionsAccountLine = "";
+	    		   
+	    		   ActionsAccountLine += "		" + "}\n";
+	    		   ActionsAccountLine += "	" + "}\n";
 			   }
+			   
+			   ActionsAccountLine += "}\n";
+			   System.out.println (ActionsAccountLine);
+			   writer.println(ActionsAccountLine);	// write info into txt
+			   ActionsAccountLine = "";
     		   
     		   in.close();
     		   writer.close();
@@ -173,7 +187,7 @@ public class LogRegExp {
 	    List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>( map.entrySet() );
 	    Collections.sort( list, new Comparator<Map.Entry<K, V>>(){
 	        public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 ){
-	            return (o1.getValue()).compareTo( o2.getValue() );
+	            return (o2.getValue()).compareTo( o1.getValue() ); //why change o1,o2 can reverse?
 	        }
 	    });
 	
