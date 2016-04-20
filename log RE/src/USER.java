@@ -6,22 +6,22 @@ public class USER {
 	HashMap<String, C_ACTION> c_actions_map = new HashMap<String, C_ACTION>();
 	public long startTime;
 	public long endTime;
-	public int stayTime;
+	public long stayTime;
 	public String last_pre_c_action = null;
 	public String last_pre_s_action = null;
-	public int click_account;
+	public int actions_account;
 	
 	//constructor
 	public USER(){
 		startTime = 0;
 		endTime = 0;
 		stayTime = 0;
-		click_account = 1;
+		actions_account = 1;
 	}
 	
 	
 	
-	/**************              Refered functions (carry out by order)                ******************/
+	/**************              Refered functions 1 (carry out by order for dealing with c_s_actions)                ******************/
 	//set stayTime for last c_s_action
 	public void calculate_last_action_stayTime(String time){
 		if(last_pre_c_action != null && last_pre_s_action != null){
@@ -38,6 +38,15 @@ public class USER {
 			//clear the s_action startTime and endTime
 			c_actions_map.get(last_pre_c_action).s_actions_map.get(last_pre_s_action).set_startTime(null);
 			c_actions_map.get(last_pre_c_action).s_actions_map.get(last_pre_s_action).set_endTime(null);
+		}
+		
+		//calculate user stayTime
+		if(last_pre_c_action != null && last_pre_s_action != null){
+			if(endTime > startTime){
+				stayTime = endTime - startTime;
+			}else{
+				stayTime = endTime + 43200 - startTime; //43200seconds means 12 hours
+			}
 		}
 	}
 	
@@ -57,6 +66,33 @@ public class USER {
 	public void update_last_action(String current_c_action, String current_s_action){
 		last_pre_c_action = current_c_action;
 		last_pre_s_action = current_s_action;
+	}
+	
+	
+	
+	
+	/**************              Refered functions 2 (for dealing USER inner variables)                ******************/
+	//increase user's actions account
+	public void actions_account_increased(){
+		actions_account++;
+	}
+	
+	//set the time for the user first behavior
+	public void set_startTime(String time){
+		String[] tokens = time.split(":");
+		int hours = Integer.parseInt(tokens[0]);
+		int minutes = Integer.parseInt(tokens[1]);
+		int seconds = Integer.parseInt(tokens[2]);
+		startTime = 3600 * hours + 60 * minutes + seconds;
+	}
+	
+	//set the time for the user last behavior
+	public void set_endTime(String time){
+		String[] tokens = time.split(":");
+		int hours = Integer.parseInt(tokens[0]);
+		int minutes = Integer.parseInt(tokens[1]);
+		int seconds = Integer.parseInt(tokens[2]);
+		endTime = 3600 * hours + 60 * minutes + seconds;
 	}
 	
 	
