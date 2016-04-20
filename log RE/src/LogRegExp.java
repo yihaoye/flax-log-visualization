@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.*;
 import java.util.*;
+import com.google.gson.*;
 
 
 public class LogRegExp {
@@ -23,7 +24,7 @@ public class LogRegExp {
     		   String unique_date = null;
     		   final String dir = System.getProperty("user.dir"); //get current working directory path
     		   PrintWriter writer = null;	//for print info into txt file (important info for each ip, actions account)
-
+    		   Gson gson = new Gson(); // for convert object/hashmap to json format
     		   
     		   
     		   /* get all unique action_c and action_s */
@@ -33,6 +34,7 @@ public class LogRegExp {
     		   /* Hashmap for calculate each actions numbers, it is hashmap in hashmap data structure */
     		   HashMap<String, HashMap<String, Integer>> c_s_action_map = new HashMap<String, HashMap<String, Integer>>();
     		   HashMap<String, Integer> c_action_account_map = new HashMap<String, Integer>();
+    		   HashMap<String, USER> user_action_map = new HashMap<String, USER>();
     		   
     		   /* count actions */
     		   File account = new File(dir+"/AccountFiles");
@@ -93,7 +95,7 @@ public class LogRegExp {
     				   }
     			   }
     			   
-    			   /* check ip (by date and uid), if changed, create new file to write */
+    			   /* check ip (by date and uid), if changed, create new txt file to write */
     			   Matcher matcher_ip[] = new Matcher[pattern_ip.length];
     			   for(int i=0;i<pattern_ip.length;i++){
     				   matcher_ip[i] = pattern_ip[i].matcher(strLine);
@@ -109,7 +111,7 @@ public class LogRegExp {
     				   }
     			   }
     			   
-    			   /* separate log info into files by ip, fetch important info from each line and write to txt file */
+    			   /* separate log info into files by ip, fetch important info from each line and write to above created txt file */
     			   Matcher matcher[] = new Matcher[pattern.length];
     			   
 				   for(int i=0; i<pattern.length; i++){
@@ -135,40 +137,20 @@ public class LogRegExp {
 				   writer.println(phrasedLine);	// write info into txt
 				   phrasedLine = "";
     			   
-    			   /*if(matcher.find()){
-    				   System.out.println (matcher.group());
-    			   }*/
-    			   
     		   }
     		   
     		   /* sort c_action_account_map */
     		   Map<String, Integer> sorted_c_action_hashmap = new HashMap<String, Integer>();
     		   sorted_c_action_hashmap = sortByValue(c_action_account_map);
-    		   //JSONObject maptojson = new JSONObject(map);
-    		   
+
+    		   // create json file
     		   if(writer!=null) 
 				   writer.close();
     		   writer = new PrintWriter(account + "/" + "c_s_actions" +  " " + "AccountResult.json", "UTF-8");
-    		   ActionsAccountLine += "{\n";
     		   
-    		   /* create actions account files */
-			   for(String c_key : sorted_c_action_hashmap.keySet()){
-				   ActionsAccountLine += "	\"" + c_key + "\"" + " : " + "{\n";
-				   ActionsAccountLine += "		" + "\"accessed account\" : \"" + sorted_c_action_hashmap.get(c_key) + "\"\n";
-				   ActionsAccountLine += "		" + "\"s_actions account\" : {\n";
-				   
-	    		   Map<String, Integer> sorted_s_action_hashmap = new HashMap<String, Integer>();
-	    		   sorted_s_action_hashmap = sortByValue(c_s_action_map.get(c_key)); // sort the s_action hashmap, sortByValue
-	    		   
-	    		   for(String s_key : sorted_s_action_hashmap.keySet()){
-	    			   ActionsAccountLine += "			\"" + s_key + "\"" + " : " + "\"" + sorted_s_action_hashmap.get(s_key) + "\"" + " \n";
-	    		   }
-	    		   
-	    		   ActionsAccountLine += "		" + "}\n";
-	    		   ActionsAccountLine += "	" + "}\n";
-			   }
-			   
-			   ActionsAccountLine += "}\n";
+			   // write into json file
+    		   ActionsAccountLine = gson.toJson(c_s_action_map);
+			   //ActionsAccountLine = gson.toJson(sorted_c_action_hashmap);
 			   System.out.println (ActionsAccountLine);
 			   writer.println(ActionsAccountLine);	// write info into txt
 			   ActionsAccountLine = "";
@@ -180,6 +162,17 @@ public class LogRegExp {
     		     System.err.println("Error: " + e.getMessage());
     		}
 
+    }
+    
+    
+    
+    
+    
+    
+    
+    //sort user/c_action/s_action hashmap
+    public void sort_the_whole_data_structure(){
+    	
     }
     
     /* HashMap sort function */
