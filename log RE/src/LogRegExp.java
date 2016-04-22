@@ -28,8 +28,17 @@ public class LogRegExp {
     		   UserTree user_tree = new UserTree(); //for build up complete user tree (include their actions and relevant info)
     		   
     		   
+    		   //filter object for filtering auto created actions
+    		   FilteredActions filter = new FilteredActions();
+    		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
+    			   //
+    			   
+    			   if(filter.filter_action(strLine)){
+    				   continue; //skip this loop
+    			   }
+    			   
     			   //
     			   //log_div.process(strLine);
     			   
