@@ -4,12 +4,12 @@ import java.util.Map;
 public class USER {
 	
 	HashMap<String, C_ACTION> c_actions_map = new HashMap<String, C_ACTION>();
-	public long startTime;
-	public long endTime;
-	public long stayTime;
+	private long startTime;
+	private long endTime;
+	private long stayTime;
 	public String last_pre_c_action = null;
 	public String last_pre_s_action = null;
-	public int actions_account;
+	private int actions_account;
 	
 	//constructor
 	public USER(){

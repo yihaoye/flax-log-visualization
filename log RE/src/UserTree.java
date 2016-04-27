@@ -57,7 +57,7 @@ public class UserTree {
 			   writer.close();
 		 writer = new PrintWriter(file + "/" + "user_tree.json", "UTF-8");
 		 user_tree_json = gson.toJson(user_tree_map);
-		 System.out.println ("UserTree:"+user_tree_json);
+		 //System.out.println ("UserTree:"+user_tree_json);
 		 writer.println(user_tree_json);	// write info into json
 		 writer.close();
 		 user_tree_json = "";

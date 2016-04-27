@@ -31,11 +31,16 @@ public class LogRegExp {
     		   //filter object for filtering auto created actions
     		   FilteredActions filter = new FilteredActions();
     		   
+    		   int line = 0;
+    		   
     		   /* read log line by line */
     		   while ((strLine = in.readLine()) != null)   {
     			   //
-    			   
+    			   line++;
+    			   System.out.println(line);
     			   if(filter.filter_action(strLine)){
+        			   System.out.println("skip");
+
     				   continue; //skip this loop
     			   }
     			   
@@ -43,7 +48,9 @@ public class LogRegExp {
     			   //log_div.process(strLine);
     			   
     			   //
+    			   System.out.println("noskip");
     			   user_tree.process(strLine);
+    			   System.out.println("noskip");
     			   
     		   }
     		   

@@ -8,7 +8,8 @@ public class FilteredActions {
 	
 	/* get all unique action_c and action_s */
 	Pattern pattern_actions[] = {Pattern.compile("\\&c=\\w+"), 
-								Pattern.compile("\\&s=\\w+")};
+								Pattern.compile("\\&s=\\w+"),
+								Pattern.compile("uid=\\w+")};
 	
 	public FilteredActions(){
 		
@@ -34,13 +35,22 @@ public class FilteredActions {
 			matcher_actions[i] = pattern_actions[i].matcher(strLine);
 		}
 		
+		if(!matcher_actions[2].find()){
+			System.out.println("nouid");
+			return true;
+		}
+		
 		if(matcher_actions[0].find() && matcher_actions[1].find()){
-			if(c_s_filtered_actions_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){ //check if contain filtered s_action
+			System.out.println("check");
+			if(c_s_filtered_actions_map.containsKey(matcher_actions[0].group()) && c_s_filtered_actions_map.get(matcher_actions[0].group()).containsKey(matcher_actions[1].group())){ //check if contain filtered s_action
+				System.out.println(matcher_actions[0].group() + " " + c_s_filtered_actions_map.get(matcher_actions[0].group()).get(matcher_actions[1].group()));
 				return true;
 			}else{
+				System.out.println("not4");
 				return false;
 			}
 		}else{
+			System.out.println("notall");
 			return true;
 		}
 	}

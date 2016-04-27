@@ -7,12 +7,12 @@ import java.util.Map;
 public class S_ACTION {
 	
 	HashMap<String, Integer> s1_paras_map = new HashMap<String, Integer>();
-	public long startTime;
-	public long endTime;
-	public long stayTime;
+	private long startTime;
+	private long endTime;
+	private long stayTime;
 	HashMap<String, Integer> pre_c_s_actions_map = new HashMap<String, Integer>();
 	//public String last_pre_s_action = null;
-	public int accessed_account;
+	private int accessed_account;
 	
 	//constructor
 	public S_ACTION(){
