@@ -1,0 +1,4 @@
+2016-01-29 12:41:05 uid=626 &c=collocations &s=CollocationQuery s1.threshold=0 s1.startNum=0 s1.sampleNum=10 s1.perPage=20 s1.query=fluency s1.dbName=BAWE 
+2016-01-29 12:41:13 uid=626 &c=collocations &s=CollocationSampleRetrieve s1.dbName=BAWE s1.type=ant s1.startNum=0 s1.perPage=20 s1.sampleNum=10 s1.threshold=0 s1.dbName=Wikipedia s1.articleID=15864296 s1.query=fluency s1.maxItems=30 
+2016-01-29 12:41:29 uid=626 &c=collocations &s=CollocationQuery s1.threshold=0 s1.startNum=0 s1.perPage=20 s1.sampleNum=10 s1.query=fluency s1.dbName=BNC s1.type=ant s1.colloType=an s1.wordType=n s1.dbName=BAWE s1.articleID=15864296 s1.maxItems=30 
+2016-01-29 12:42:15 uid=626 &c=collocations &s=CollocationSampleRetrieve s1.dbName=BNC s1.type=syn s1.startNum=0 s1.perPage=20 s1.sampleNum=10 s1.threshold=0 s1.dbName=Wikipedia s1.articleID=15864296 s1.query=fluency s1.maxItems=30 

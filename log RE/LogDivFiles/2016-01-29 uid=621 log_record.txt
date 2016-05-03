@@ -1,0 +1,1 @@
+2016-01-29 12:01:41 uid=621 &c=collocations &s=CollocationQuery s1.threshold=0 s1.startNum=0 s1.sampleNum=10 s1.perPage=20 s1.query=largest s1.dbName=BNC 

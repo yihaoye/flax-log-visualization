@@ -38,11 +38,11 @@
                 
                 // 创建x轴的比例尺
                 var xScale = d3.scale.linear()
-                        .domain([140,  190])
+                        .domain([0,  800])
                         .range([0, width - padding.left - padding.right]);
                 // 创建y轴的比例尺
                 var yScale = d3.scale.linear()
-                        .domain([40, 120])
+                        .domain([0, 20])
                         .range([height - padding.top - padding.bottom, 0]);
                 // 创建x轴
                 var xAxis = d3.svg.axis()
@@ -77,9 +77,22 @@
                         .attr('r', 5);
                         */
 
-                d3.json("user_tree.json", function(data){
-                    console.log(data);
-                }
+                d3.json("JSONFiles/user_tree.json", function(error, data){
+                    for(i in data){
+                        var i_data = data[i];
+                        console.log(i_data);
+
+                        main.append('circle')
+                            .attr('class', 'point')
+                            .attr('cx', xScale(i_data.stayTime))
+                            .attr('cy', yScale(i_data.actions_account))
+                            .attr('r', 5);
+                    }
+
+                    /*data.forEach(function(d){
+                        console.log(d);
+                    });*/
+                })
             };
         </script>
     </body>

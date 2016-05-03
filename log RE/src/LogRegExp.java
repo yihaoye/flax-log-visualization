@@ -33,14 +33,14 @@ public class LogRegExp {
     		   
     		   
     		   /* read log line by line */
-    		   while ((strLine = in.readLine()) != null)   {
+    		   while ((strLine = in.readLine()) != null){
     			   //
     			   if(filter.filter_action(strLine)){
     				   continue; //skip this loop
     			   }
     			   
     			   //
-    			   log_div.process(strLine);
+    			   //log_div.process(strLine);
     			   
     			   //
     			   user_tree.process(strLine);

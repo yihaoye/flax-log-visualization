@@ -1,0 +1,1 @@
+2016-01-28 11:20:39 uid=601 &c=collocations &s=CollocationQuery s1.threshold=0 s1.startNum=0 s1.sampleNum=10 s1.perPage=20 s1.query=escalation s1.dbName=BAWE 

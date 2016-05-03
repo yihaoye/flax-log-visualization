@@ -1,0 +1,1872 @@
+{
+	"&c=collocations" : {
+		"accessed account" : "345828"
+		"s_actions account" : {
+			"&s=RetrieveWordNet" : "110258" 
+			"&s=CollocationQuery" : "55933" 
+			"&s=WikipediaArticleSearch" : "55262" 
+			"&s=RetrieveWordFamily" : "55215" 
+			"&s=CollocationRetrieveByAID" : "23747" 
+			"&s=CollocationMapRetrieve" : "18639" 
+			"&s=CollocationSampleRetrieve" : "6927" 
+			"&s=CollocationSampleSentenceRetrieve" : "6123" 
+			"&s=CollocationRetrieve" : "5786" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "3309" 
+			"&s=CollocationMatching" : "1971" 
+			"&s=CherryPicking" : "1398" 
+			"&s=CollocationDominoes" : "484" 
+			"&s=CollocationGuessing" : "423" 
+			"&s=RelatedWords" : "316" 
+			"&s=ClassifierBrowse" : "14" 
+			"&s=collocationquery" : "10" 
+			"&s=AdvancedFieldQuery" : "10" 
+			"&s=WordSuggestionsQuery" : "1" 
+			"&s=DesignRelatedWords" : "1" 
+		}
+	}
+	"&c=BAWESS" : {
+		"accessed account" : "29354"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "5649" 
+			"&s=FlaxWordListDocumentRetrieve" : "5639" 
+			"&s=WikifyArticle" : "5627" 
+			"&s=ClassifierBrowse" : "5350" 
+			"&s=FlaxWordQuery" : "1762" 
+			"&s=AdvancedFieldQuery" : "1077" 
+			"&s=RetrieveWordFamily" : "1020" 
+			"&s=FlaxCollocationBrowse" : "831" 
+			"&s=FlaxLexicalBundle" : "758" 
+			"&s=FlaxWordList" : "753" 
+			"&s=CherryPicking" : "675" 
+			"&s=FlaxCollocationRetrieve" : "86" 
+			"&s=FlaxSampleRetrieve" : "70" 
+			"&s=FlaxTextRetrieve" : "23" 
+			"&s=WikipediaRelatedArticle" : "15" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "15" 
+			"&s=FlaxCollocationContextRetrieve" : "3" 
+		}
+	}
+	"&c=imgdemo" : {
+		"accessed account" : "28894"
+		"s_actions account" : {
+			"&s=ImageGuessing" : "28395" 
+			"&s=ClassifierBrowse" : "397" 
+			"&s=AdvancedFieldQuery" : "69" 
+			"&s=classifierbrowse" : "32" 
+		}
+	}
+	"&c=BAWEPS" : {
+		"accessed account" : "25375"
+		"s_actions account" : {
+			"&s=WikifyArticle" : "6455" 
+			"&s=FlaxCollocationDocumentRetrieve" : "6447" 
+			"&s=FlaxWordListDocumentRetrieve" : "6444" 
+			"&s=ClassifierBrowse" : "2526" 
+			"&s=FlaxWordQuery" : "1071" 
+			"&s=AdvancedFieldQuery" : "540" 
+			"&s=FlaxWordList" : "373" 
+			"&s=FlaxCollocationBrowse" : "362" 
+			"&s=CherryPicking" : "354" 
+			"&s=FlaxLexicalBundle" : "346" 
+			"&s=FlaxCollocationRetrieve" : "277" 
+			"&s=RetrieveWordFamily" : "138" 
+			"&s=WikipediaRelatedArticle" : "12" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "12" 
+			"&s=FlaxTextRetrieve" : "11" 
+			"&s=FlaxSampleRetrieve" : "5" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+		}
+	}
+	"&c=phrases" : {
+		"accessed account" : "19459"
+		"s_actions account" : {
+			"&s=PhraseSearch" : "19458" 
+		}
+	}
+	"&c=BAWEAH" : {
+		"accessed account" : "17339"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "3452" 
+			"&s=FlaxWordListDocumentRetrieve" : "3448" 
+			"&s=WikifyArticle" : "3438" 
+			"&s=FlaxWordQuery" : "2365" 
+			"&s=ClassifierBrowse" : "2323" 
+			"&s=RetrieveWordFamily" : "870" 
+			"&s=AdvancedFieldQuery" : "405" 
+			"&s=FlaxWordList" : "233" 
+			"&s=FlaxCollocationBrowse" : "227" 
+			"&s=FlaxLexicalBundle" : "207" 
+			"&s=CherryPicking" : "164" 
+			"&s=FlaxCollocationRetrieve" : "103" 
+			"&s=FlaxSampleRetrieve" : "56" 
+			"&s=FlaxTextRetrieve" : "23" 
+			"&s=WikipediaRelatedArticle" : "11" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "11" 
+			"&s=Classif" : "1" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+		}
+	}
+	"&c=password" : {
+		"accessed account" : "10991"
+		"s_actions account" : {
+			"&s=RelatedWords" : "3064" 
+			"&s=ClassifierBrowse" : "1380" 
+			"&s=FlaxWordListDocumentRetrieve" : "837" 
+			"&s=FlaxCollocationDocumentRetrieve" : "837" 
+			"&s=Hangman" : "658" 
+			"&s=ContentWordGuessing" : "618" 
+			"&s=CollocationMatching" : "529" 
+			"&s=ScrambleSentence" : "516" 
+			"&s=CollocationFillinBlanks" : "379" 
+			"&s=MissingPunctuation" : "264" 
+			"&s=ScrambleParagraph" : "239" 
+			"&s=FlaxCollocationBrowse" : "238" 
+			"&s=AdvancedFieldQuery" : "198" 
+			"&s=CollocationGuessing" : "182" 
+			"&s=SplitSentences" : "175" 
+			"&s=PredictingWords" : "167" 
+			"&s=FlaxWordList" : "148" 
+			"&s=CherryPicking" : "135" 
+			"&s=FlaxWordQuery" : "134" 
+			"&s=CollocationDominoes" : "121" 
+			"&s=RetrieveWordFamily" : "66" 
+			"&s=FlaxCollocationRetrieve" : "40" 
+			"&s=classifierbrowse" : "32" 
+			"&s=FlaxDocumentRetrieve" : "17" 
+			"&s=FlaxTextRetrieve" : "13" 
+			"&s=contentwordguessing" : "1" 
+			"&s=scramblesentence" : "1" 
+			"&s=hangman" : "1" 
+		}
+	}
+	"&c=BAWELS" : {
+		"accessed account" : "10586"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "2430" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1591" 
+			"&s=FlaxWordListDocumentRetrieve" : "1589" 
+			"&s=WikifyArticle" : "1586" 
+			"&s=FlaxWordQuery" : "1040" 
+			"&s=AdvancedFieldQuery" : "624" 
+			"&s=RetrieveWordFamily" : "521" 
+			"&s=FlaxWordList" : "276" 
+			"&s=FlaxLexicalBundle" : "256" 
+			"&s=FlaxCollocationBrowse" : "256" 
+			"&s=CherryPicking" : "236" 
+			"&s=FlaxCollocationRetrieve" : "151" 
+			"&s=FlaxSampleRetrieve" : "14" 
+			"&s=FlaxTextRetrieve" : "11" 
+			"&s=WikipediaRelatedArticle" : "2" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "2" 
+		}
+	}
+	"&c=englishcommonlaw" : {
+		"accessed account" : "10443"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "2155" 
+			"&s=FlaxWordListDocumentRetrieve" : "2152" 
+			"&s=WikifyArticle" : "2152" 
+			"&s=ClassifierBrowse" : "1724" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "461" 
+			"&s=WikipediaRelatedArticle" : "460" 
+			"&s=ContentWordGuessing" : "205" 
+			"&s=AdvancedFieldQuery" : "174" 
+			"&s=CollocationGuessing" : "122" 
+			"&s=FlaxCollocationBrowse" : "114" 
+			"&s=FlaxWordQuery" : "106" 
+			"&s=RelatedWords" : "98" 
+			"&s=FlaxWordList" : "98" 
+			"&s=CollocationFillinBlanks" : "88" 
+			"&s=FlaxLexicalBundle" : "77" 
+			"&s=RetrieveWordFamily" : "75" 
+			"&s=CherryPicking" : "64" 
+			"&s=ScrambleSentence" : "52" 
+			"&s=FlaxSampleRetrieve" : "21" 
+			"&s=FlaxCollocationRetrieve" : "18" 
+			"&s=CollocationDominoes" : "17" 
+			"&s=FlaxTextRetrieve" : "4" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=FlaxCollocationContextRetrieve" : "2" 
+			"&s=SplitSentences" : "1" 
+		}
+	}
+	"&c=BlaRC" : {
+		"accessed account" : "7724"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "2130" 
+			"&s=FlaxWordListDocumentRetrieve" : "2115" 
+			"&s=FlaxWordQuery" : "1642" 
+			"&s=ClassifierBrowse" : "718" 
+			"&s=AdvancedFieldQuery" : "331" 
+			"&s=FlaxWordList" : "149" 
+			"&s=FlaxCollocationBrowse" : "149" 
+			"&s=FlaxLexicalBundle" : "133" 
+			"&s=RetrieveWordFamily" : "118" 
+			"&s=CherryPicking" : "107" 
+			"&s=FlaxCollocationRetrieve" : "82" 
+			"&s=FlaxSampleRetrieve" : "21" 
+			"&s=FlaxTextRetrieve" : "17" 
+			"&s=FlaxCollocationContextRetrieve" : "11" 
+		}
+	}
+	"&c=copyrightlaw" : {
+		"accessed account" : "4415"
+		"s_actions account" : {
+			"&s=WikifyArticle" : "947" 
+			"&s=FlaxCollocationDocumentRetrieve" : "947" 
+			"&s=FlaxWordListDocumentRetrieve" : "946" 
+			"&s=ClassifierBrowse" : "708" 
+			"&s=CollocationFillinBlanks" : "110" 
+			"&s=ScrambleSentence" : "94" 
+			"&s=SplitSentences" : "74" 
+			"&s=CollocationDominoes" : "71" 
+			"&s=AdvancedFieldQuery" : "70" 
+			"&s=FlaxWordList" : "49" 
+			"&s=FlaxCollocationBrowse" : "48" 
+			"&s=FlaxCollocationRetrieve" : "45" 
+			"&s=WikipediaRelatedArticle" : "44" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "44" 
+			"&s=FlaxLexicalBundle" : "41" 
+			"&s=FlaxWordQuery" : "38" 
+			"&s=CherryPicking" : "33" 
+			"&s=ContentWordGuessing" : "29" 
+			"&s=CollocationGuessing" : "25" 
+			"&s=RetrieveWordFamily" : "24" 
+			"&s=RelatedWords" : "16" 
+			"&s=FlaxTextRetrieve" : "8" 
+			"&s=FlaxSampleRetrieve" : "2" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc252" : {
+		"accessed account" : "3676"
+		"s_actions account" : {
+			"&s=Hangman" : "906" 
+			"&s=FlaxWordListDocumentRetrieve" : "577" 
+			"&s=FlaxCollocationDocumentRetrieve" : "576" 
+			"&s=ScrambleSentence" : "434" 
+			"&s=ContentWordGuessing" : "370" 
+			"&s=ClassifierBrowse" : "273" 
+			"&s=SplitSentences" : "160" 
+			"&s=AdvancedFieldQuery" : "101" 
+			"&s=CherryPicking" : "58" 
+			"&s=FlaxCollocationBrowse" : "50" 
+			"&s=MissingPunctuation" : "43" 
+			"&s=FlaxWordList" : "38" 
+			"&s=ScrambleParagraph" : "38" 
+			"&s=FlaxWordQuery" : "29" 
+			"&s=RetrieveWordFamily" : "14" 
+			"&s=FlaxCollocationRetrieve" : "7" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=virology1" : {
+		"accessed account" : "3356"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "966" 
+			"&s=FlaxWordListDocumentRetrieve" : "963" 
+			"&s=WikifyArticle" : "962" 
+			"&s=ClassifierBrowse" : "116" 
+			"&s=RetrieveWordFamily" : "70" 
+			"&s=AdvancedFieldQuery" : "66" 
+			"&s=FlaxWordQuery" : "59" 
+			"&s=FlaxCollocationRetrieve" : "47" 
+			"&s=FlaxTextRetrieve" : "21" 
+			"&s=FlaxWordList" : "20" 
+			"&s=FlaxLexicalBundle" : "11" 
+			"&s=WikipediaRelatedArticle" : "10" 
+			"&s=FlaxSampleRetrieve" : "10" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "10" 
+			"&s=FlaxCollocationBrowse" : "8" 
+			"&s=ContentWordGuessing" : "6" 
+			"&s=CollocationFillinBlanks" : "6" 
+			"&s=CherryPicking" : "4" 
+		}
+	}
+	"&c=flaxc156" : {
+		"accessed account" : "2716"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "649" 
+			"&s=CollocationGuessing" : "554" 
+			"&s=SplitSentences" : "361" 
+			"&s=FlaxCollocationDocumentRetrieve" : "350" 
+			"&s=FlaxWordListDocumentRetrieve" : "349" 
+			"&s=CollocationMatching" : "246" 
+			"&s=FlaxCollocationBrowse" : "49" 
+			"&s=ClassifierBrowse" : "40" 
+			"&s=FlaxWordList" : "28" 
+			"&s=AdvancedFieldQuery" : "24" 
+			"&s=CherryPicking" : "14" 
+			"&s=FlaxWordQuery" : "11" 
+			"&s=RetrieveWordFamily" : "10" 
+			"&s=Hangman" : "10" 
+			"&s=FlaxCollocationRetrieve" : "5" 
+			"&s=ScrambleSentence" : "5" 
+			"&s=FlaxTextRetrieve" : "3" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=splitsentences" : "2" 
+			"&s=collocationmatching" : "2" 
+			"&s=collocationguessing" : "1" 
+		}
+	}
+	"&c=lawlecture" : {
+		"accessed account" : "1826"
+		"s_actions account" : {
+			"&s=FlaxWordListDocumentRetrieve" : "385" 
+			"&s=FlaxCollocationDocumentRetrieve" : "384" 
+			"&s=WikifyArticle" : "382" 
+			"&s=ClassifierBrowse" : "173" 
+			"&s=AdvancedFieldQuery" : "83" 
+			"&s=FlaxCollocationRetrieve" : "75" 
+			"&s=CherryPicking" : "59" 
+			"&s=FlaxWordList" : "58" 
+			"&s=FlaxLexicalBundle" : "50" 
+			"&s=FlaxCollocationBrowse" : "43" 
+			"&s=WikipediaRelatedArticle" : "26" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "26" 
+			"&s=ContentWordGuessing" : "19" 
+			"&s=CollocationMatching" : "15" 
+			"&s=FlaxWordQuery" : "12" 
+			"&s=ScrambleSentence" : "12" 
+			"&s=RetrieveWordFamily" : "9" 
+			"&s=CollocationDominoes" : "4" 
+			"&s=SplitSentences" : "4" 
+			"&s=CollocationFillinBlanks" : "3" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=learningcollocations" : {
+		"accessed account" : "1684"
+		"s_actions account" : {
+			"&s=PhrasePatternSearch" : "1683" 
+		}
+	}
+	"&c=wordlists" : {
+		"accessed account" : "1503"
+		"s_actions account" : {
+			"&s=FlaxWordlist" : "1502" 
+		}
+	}
+	"&c=flaxc158" : {
+		"accessed account" : "1249"
+		"s_actions account" : {
+			"&s=SplitSentences" : "324" 
+			"&s=CollocationGuessing" : "227" 
+			"&s=ContentWordGuessing" : "205" 
+			"&s=CollocationMatching" : "180" 
+			"&s=FlaxCollocationDocumentRetrieve" : "127" 
+			"&s=FlaxWordListDocumentRetrieve" : "126" 
+			"&s=FlaxCollocationBrowse" : "18" 
+			"&s=AdvancedFieldQuery" : "11" 
+			"&s=ClassifierBrowse" : "9" 
+			"&s=FlaxWordList" : "6" 
+			"&s=CherryPicking" : "6" 
+			"&s=Hangman" : "4" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=RetrieveWordFamily" : "1" 
+			"&s=splitsentences" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+		}
+	}
+	"&c=contractlaw" : {
+		"accessed account" : "1239"
+		"s_actions account" : {
+			"&s=WikipediaArticleDefinitionRetrieve" : "224" 
+			"&s=WikipediaRelatedArticle" : "223" 
+			"&s=FlaxWordListDocumentRetrieve" : "120" 
+			"&s=WikifyArticle" : "120" 
+			"&s=FlaxCollocationDocumentRetrieve" : "120" 
+			"&s=RelatedWords" : "97" 
+			"&s=CollocationFillinBlanks" : "65" 
+			"&s=ClassifierBrowse" : "61" 
+			"&s=CollocationDominoes" : "31" 
+			"&s=AdvancedFieldQuery" : "27" 
+			"&s=FlaxWordQuery" : "21" 
+			"&s=CherryPicking" : "21" 
+			"&s=CollocationGuessing" : "20" 
+			"&s=RetrieveWordFamily" : "16" 
+			"&s=FlaxWordList" : "14" 
+			"&s=FlaxCollocationBrowse" : "14" 
+			"&s=FlaxSampleRetrieve" : "13" 
+			"&s=FlaxLexicalBundle" : "11" 
+			"&s=ScrambleSentence" : "10" 
+			"&s=ContentWordGuessing" : "6" 
+			"&s=FlaxCollocationContextRetrieve" : "3" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc383" : {
+		"accessed account" : "1142"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "356" 
+			"&s=FlaxCollocationRetrieve" : "199" 
+			"&s=AdvancedFieldQuery" : "98" 
+			"&s=FlaxWordList" : "83" 
+			"&s=CherryPicking" : "78" 
+			"&s=CollocationDominoes" : "37" 
+			"&s=FlaxWordListDocumentRetrieve" : "32" 
+			"&s=FlaxCollocationDocumentRetrieve" : "32" 
+			"&s=classifierbrowse" : "29" 
+			"&s=FlaxWordQuery" : "27" 
+			"&s=CollocationGuessing" : "27" 
+			"&s=CollocationMatching" : "23" 
+			"&s=SplitSentences" : "19" 
+			"&s=FlaxCollocationBrowse" : "17" 
+			"&s=CollocationFillinBlanks" : "15" 
+			"&s=MissingPunctuation" : "14" 
+			"&s=ScrambleSentence" : "14" 
+			"&s=RelatedWords" : "13" 
+			"&s=ContentWordGuessing" : "10" 
+			"&s=RetrieveWordFamily" : "9" 
+			"&s=collocationdominoes" : "7" 
+			"&s=FlaxTextRetrieve" : "2" 
+		}
+	}
+	"&c=earthscience" : {
+		"accessed account" : "1045"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "401" 
+			"&s=FlaxWordListDocumentRetrieve" : "155" 
+			"&s=FlaxCollocationDocumentRetrieve" : "155" 
+			"&s=AdvancedFieldQuery" : "63" 
+			"&s=FlaxWordList" : "48" 
+			"&s=FlaxCollocationBrowse" : "47" 
+			"&s=CherryPicking" : "41" 
+			"&s=FlaxWordQuery" : "34" 
+			"&s=classifierbrowse" : "32" 
+			"&s=FlaxCollocationRetrieve" : "21" 
+			"&s=ScrambleSentence" : "20" 
+			"&s=RetrieveWordFamily" : "8" 
+			"&s=ContentWordGuessing" : "6" 
+			"&s=ScrambleParagraph" : "6" 
+			"&s=CollocationFillinBlanks" : "4" 
+			"&s=SplitSentences" : "2" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc264" : {
+		"accessed account" : "933"
+		"s_actions account" : {
+			"&s=CollocationFillinBlanks" : "765" 
+			"&s=ClassifierBrowse" : "35" 
+			"&s=AdvancedFieldQuery" : "23" 
+			"&s=FlaxWordList" : "21" 
+			"&s=CherryPicking" : "21" 
+			"&s=FlaxCollocationBrowse" : "18" 
+			"&s=FlaxCollocationDocumentRetrieve" : "16" 
+			"&s=FlaxWordListDocumentRetrieve" : "15" 
+			"&s=FlaxWordQuery" : "6" 
+			"&s=CollocationMatching" : "2" 
+			"&s=RetrieveWordFamily" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=Hangman" : "2" 
+			"&s=collocationfillinblanks" : "2" 
+			"&s=FlaxCollocationRetrieve" : "2" 
+		}
+	}
+	"&c=flaxc365" : {
+		"accessed account" : "912"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "442" 
+			"&s=FlaxCollocationRetrieve" : "442" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=CollocationMatching" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=Hangman" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc212" : {
+		"accessed account" : "898"
+		"s_actions account" : {
+			"&s=CollocationFillinBlanks" : "258" 
+			"&s=FlaxCollocationRetrieve" : "177" 
+			"&s=FlaxWordQuery" : "172" 
+			"&s=CollocationGuessing" : "156" 
+			"&s=SplitSentences" : "102" 
+			"&s=CollocationMatching" : "4" 
+			"&s=CollocationDominoes" : "4" 
+			"&s=ClassifierBrowse" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=Hangman" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=FlaxCollocationBrowse" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=collocationfillinblanks" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc226" : {
+		"accessed account" : "731"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "201" 
+			"&s=FlaxCollocationDocumentRetrieve" : "137" 
+			"&s=FlaxWordListDocumentRetrieve" : "136" 
+			"&s=CollocationGuessing" : "99" 
+			"&s=SplitSentences" : "90" 
+			"&s=AdvancedFieldQuery" : "14" 
+			"&s=ClassifierBrowse" : "11" 
+			"&s=FlaxCollocationBrowse" : "11" 
+			"&s=Hangman" : "7" 
+			"&s=FlaxWordList" : "6" 
+			"&s=CherryPicking" : "5" 
+			"&s=MatchingText" : "3" 
+			"&s=ScrambleSentence" : "3" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=CollocationMatching" : "1" 
+			"&s=MissingPunctuation" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+		}
+	}
+	"&c=lawcorpus" : {
+		"accessed account" : "694"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "125" 
+			"&s=FlaxWordListDocumentRetrieve" : "103" 
+			"&s=WikifyArticle" : "103" 
+			"&s=FlaxCollocationDocumentRetrieve" : "103" 
+			"&s=AdvancedFieldQuery" : "59" 
+			"&s=FlaxWordList" : "30" 
+			"&s=FlaxWordQuery" : "25" 
+			"&s=FlaxLexicalBundle" : "18" 
+			"&s=WikipediaRelatedArticle" : "17" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "17" 
+			"&s=FlaxCollocationBrowse" : "16" 
+			"&s=FlaxCollocationRetrieve" : "14" 
+			"&s=CherryPicking" : "13" 
+			"&s=RetrieveWordFamily" : "12" 
+			"&s=CollocationMatching" : "11" 
+			"&s=ContentWordGuessing" : "8" 
+			"&s=CollocationDominoes" : "5" 
+			"&s=ScrambleSentence" : "5" 
+			"&s=CollocationGuessing" : "3" 
+			"&s=FlaxTextRetrieve" : "2" 
+			"&s=FlaxSampleRetrieve" : "2" 
+			"&s=SplitSentences" : "2" 
+		}
+	}
+	"&c=flaxc184" : {
+		"accessed account" : "681"
+		"s_actions account" : {
+			"&s=SplitSentences" : "193" 
+			"&s=CollocationGuessing" : "171" 
+			"&s=AdvancedFieldQuery" : "69" 
+			"&s=ClassifierBrowse" : "61" 
+			"&s=FlaxWordListDocumentRetrieve" : "31" 
+			"&s=FlaxCollocationDocumentRetrieve" : "31" 
+			"&s=ContentWordGuessing" : "25" 
+			"&s=FlaxCollocationBrowse" : "23" 
+			"&s=FlaxWordQuery" : "20" 
+			"&s=FlaxCollocationRetrieve" : "19" 
+			"&s=CherryPicking" : "17" 
+			"&s=FlaxWordList" : "14" 
+			"&s=RetrieveWordFamily" : "6" 
+		}
+	}
+	"&c=happyenglish" : {
+		"accessed account" : "672"
+		"s_actions account" : {
+			"&s=MatchingImages" : "406" 
+			"&s=ScrambleSentence" : "80" 
+			"&s=MatchingText" : "68" 
+			"&s=ContentWordGuessing" : "50" 
+			"&s=SplitSentences" : "49" 
+			"&s=ScrambleParagraph" : "18" 
+		}
+	}
+	"&c=expertdata" : {
+		"accessed account" : "611"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "131" 
+			"&s=RetrieveWordFamily" : "108" 
+			"&s=AdvancedFieldQuery" : "104" 
+			"&s=FlaxCollocationBrowse" : "65" 
+			"&s=FlaxWordList" : "52" 
+			"&s=FlaxLexicalBundle" : "50" 
+			"&s=FlaxSampleRetrieve" : "40" 
+			"&s=FlaxCollocationRetrieve" : "29" 
+			"&s=CherryPicking" : "26" 
+			"&s=FlaxTextRetrieve" : "4" 
+			"&s=RelatedWords" : "1" 
+		}
+	}
+	"&c=flaxc197" : {
+		"accessed account" : "582"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "85" 
+			"&s=FlaxCollocationRetrieve" : "69" 
+			"&s=AdvancedFieldQuery" : "68" 
+			"&s=FlaxWordListDocumentRetrieve" : "59" 
+			"&s=FlaxCollocationDocumentRetrieve" : "59" 
+			"&s=FlaxWordList" : "38" 
+			"&s=FlaxCollocationBrowse" : "35" 
+			"&s=Hangman" : "33" 
+			"&s=FlaxWordQuery" : "29" 
+			"&s=CherryPicking" : "27" 
+			"&s=RetrieveWordFamily" : "13" 
+			"&s=SplitSentences" : "11" 
+			"&s=CollocationDominoes" : "10" 
+			"&s=ScrambleSentence" : "10" 
+			"&s=CollocationGuessing" : "8" 
+			"&s=ContentWordGuessing" : "6" 
+			"&s=MatchingText" : "6" 
+			"&s=CollocationMatching" : "4" 
+			"&s=RelatedWords" : "4" 
+			"&s=ScrambleParagraph" : "4" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=MissingPunctuation" : "1" 
+		}
+	}
+	"&c=bookphrases" : {
+		"accessed account" : "549"
+		"s_actions account" : {
+			"&s=BookPhraseSearch" : "547" 
+			"&s=PhraseSearch" : "1" 
+		}
+	}
+	"&c=flaxc404" : {
+		"accessed account" : "466"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "60" 
+			"&s=FlaxWordListDocumentRetrieve" : "53" 
+			"&s=FlaxCollocationDocumentRetrieve" : "53" 
+			"&s=FlaxCollocationBrowse" : "48" 
+			"&s=FlaxWordQuery" : "36" 
+			"&s=CollocationMatching" : "35" 
+			"&s=CollocationDominoes" : "31" 
+			"&s=AdvancedFieldQuery" : "31" 
+			"&s=ScrambleSentence" : "28" 
+			"&s=FlaxWordList" : "18" 
+			"&s=FlaxCollocationRetrieve" : "15" 
+			"&s=RetrieveWordFamily" : "14" 
+			"&s=ContentWordGuessing" : "10" 
+			"&s=FlaxCollocationContextRetrieve" : "8" 
+			"&s=SplitSentences" : "8" 
+			"&s=CherryPicking" : "7" 
+			"&s=FlaxTextRetrieve" : "6" 
+			"&s=splitsentences" : "4" 
+		}
+	}
+	"&c=studentdata" : {
+		"accessed account" : "448"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "134" 
+			"&s=FlaxWordQuery" : "76" 
+			"&s=AdvancedFieldQuery" : "68" 
+			"&s=FlaxWordList" : "46" 
+			"&s=FlaxLexicalBundle" : "42" 
+			"&s=RetrieveWordFamily" : "30" 
+			"&s=FlaxCollocationBrowse" : "27" 
+			"&s=CherryPicking" : "14" 
+			"&s=FlaxSampleRetrieve" : "7" 
+			"&s=FlaxTextRetrieve" : "3" 
+		}
+	}
+	"&c=flaxc216" : {
+		"accessed account" : "443"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "371" 
+			"&s=AdvancedFieldQuery" : "10" 
+			"&s=FlaxWordList" : "9" 
+			"&s=ClassifierBrowse" : "8" 
+			"&s=CollocationGuessing" : "6" 
+			"&s=FlaxWordQuery" : "4" 
+			"&s=FlaxWordListDocumentRetrieve" : "4" 
+			"&s=FlaxCollocationDocumentRetrieve" : "4" 
+			"&s=CollocationDominoes" : "3" 
+			"&s=FlaxCollocationBrowse" : "3" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=SplitSentences" : "3" 
+			"&s=CollocationMatching" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=FlaxTextRetrieve" : "2" 
+			"&s=Hangman" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=RetrieveWordFamily" : "1" 
+			"&s=CherryPicking" : "1" 
+		}
+	}
+	"&c=590readings" : {
+		"accessed account" : "418"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "63" 
+			"&s=FlaxWordListDocumentRetrieve" : "50" 
+			"&s=FlaxCollocationDocumentRetrieve" : "50" 
+			"&s=AdvancedFieldQuery" : "45" 
+			"&s=FlaxWordQuery" : "39" 
+			"&s=FlaxCollocationRetrieve" : "32" 
+			"&s=FlaxLexicalBundle" : "30" 
+			"&s=FlaxCollocationBrowse" : "29" 
+			"&s=FlaxSampleRetrieve" : "28" 
+			"&s=FlaxWordList" : "27" 
+			"&s=CherryPicking" : "13" 
+			"&s=RetrieveWordFamily" : "10" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc117" : {
+		"accessed account" : "413"
+		"s_actions account" : {
+			"&s=Hangman" : "163" 
+			"&s=ClassifierBrowse" : "57" 
+			"&s=ContentWordGuessing" : "44" 
+			"&s=FlaxWordList" : "37" 
+			"&s=AdvancedFieldQuery" : "31" 
+			"&s=ScrambleSentence" : "29" 
+			"&s=ScrambleParagraph" : "22" 
+			"&s=FlaxWordQuery" : "13" 
+			"&s=FlaxCollocationRetrieve" : "10" 
+			"&s=RetrieveWordFamily" : "6" 
+		}
+	}
+	"&c=flaxc405" : {
+		"accessed account" : "411"
+		"s_actions account" : {
+			"&s=CollocationDominoes" : "91" 
+			"&s=FlaxWordListDocumentRetrieve" : "51" 
+			"&s=FlaxCollocationDocumentRetrieve" : "51" 
+			"&s=ClassifierBrowse" : "48" 
+			"&s=FlaxWordList" : "32" 
+			"&s=FlaxWordQuery" : "30" 
+			"&s=AdvancedFieldQuery" : "27" 
+			"&s=ScrambleSentence" : "25" 
+			"&s=FlaxCollocationRetrieve" : "14" 
+			"&s=SplitSentences" : "14" 
+			"&s=ContentWordGuessing" : "10" 
+			"&s=RelatedWords" : "6" 
+			"&s=FlaxCollocationBrowse" : "4" 
+			"&s=RetrieveWordFamily" : "3" 
+			"&s=CherryPicking" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+		}
+	}
+	"&c=flaxc36" : {
+		"accessed account" : "356"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "145" 
+			"&s=AdvancedFieldQuery" : "36" 
+			"&s=FlaxWordListDocumentRetrieve" : "30" 
+			"&s=FlaxCollocationDocumentRetrieve" : "29" 
+			"&s=FlaxWordList" : "20" 
+			"&s=FlaxCollocationBrowse" : "20" 
+			"&s=FlaxCollocationRetrieve" : "16" 
+			"&s=FlaxWordQuery" : "15" 
+			"&s=CherryPicking" : "14" 
+			"&s=ScrambleSentence" : "12" 
+			"&s=ScrambleParagraph" : "6" 
+			"&s=CollocationFillinBlanks" : "6" 
+			"&s=RetrieveWordFamily" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=FlaxTextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc80" : {
+		"accessed account" : "320"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "66" 
+			"&s=FlaxWordListDocumentRetrieve" : "41" 
+			"&s=FlaxCollocationDocumentRetrieve" : "40" 
+			"&s=FlaxCollocationRetrieve" : "35" 
+			"&s=FlaxWordQuery" : "31" 
+			"&s=AdvancedFieldQuery" : "26" 
+			"&s=FlaxWordList" : "22" 
+			"&s=CherryPicking" : "12" 
+			"&s=FlaxCollocationBrowse" : "12" 
+			"&s=Hangman" : "8" 
+			"&s=RetrieveWordFamily" : "7" 
+			"&s=ScrambleParagraph" : "4" 
+			"&s=SplitSentences" : "3" 
+			"&s=ImageGuessing" : "2" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=CollocationAlternatives" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=CollocationMatching" : "1" 
+			"&s=CollocationGuessing" : "1" 
+		}
+	}
+	"&c=flaxc224" : {
+		"accessed account" : "310"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "137" 
+			"&s=FlaxWordQuery" : "136" 
+			"&s=CollocationDominoes" : "4" 
+			"&s=Hangman" : "4" 
+			"&s=CollocationGuessing" : "4" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=CollocationMatching" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=FlaxWordList" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=ClassifierBrowse" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc408" : {
+		"accessed account" : "278"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "52" 
+			"&s=FlaxWordListDocumentRetrieve" : "38" 
+			"&s=FlaxCollocationDocumentRetrieve" : "38" 
+			"&s=FlaxWordList" : "33" 
+			"&s=ScrambleSentence" : "27" 
+			"&s=FlaxCollocationRetrieve" : "20" 
+			"&s=FlaxWordQuery" : "16" 
+			"&s=AdvancedFieldQuery" : "15" 
+			"&s=CollocationDominoes" : "13" 
+			"&s=FlaxCollocationBrowse" : "7" 
+			"&s=SplitSentences" : "6" 
+			"&s=ContentWordGuessing" : "5" 
+			"&s=RetrieveWordFamily" : "4" 
+			"&s=CherryPicking" : "3" 
+		}
+	}
+	"&c=lawtranscript" : {
+		"accessed account" : "261"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "51" 
+			"&s=AdvancedFieldQuery" : "38" 
+			"&s=FlaxCollocationBrowse" : "25" 
+			"&s=FlaxLexicalBundle" : "17" 
+			"&s=FlaxWordList" : "16" 
+			"&s=CherryPicking" : "16" 
+			"&s=FlaxWordListDocumentRetrieve" : "14" 
+			"&s=WikifyArticle" : "14" 
+			"&s=FlaxCollocationDocumentRetrieve" : "14" 
+			"&s=CollocationMatching" : "12" 
+			"&s=CollocationDominoes" : "10" 
+			"&s=WikipediaRelatedArticle" : "9" 
+			"&s=WikipediaArticleDefinitionRetrieve" : "9" 
+			"&s=FlaxWordQuery" : "4" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=CollocationFillinBlanks" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=CollocationGuessing" : "1" 
+		}
+	}
+	"&c=PAAH" : {
+		"accessed account" : "235"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "120" 
+			"&s=FlaxWordQuery" : "27" 
+			"&s=RetrieveWordFamily" : "19" 
+			"&s=AdvancedFieldQuery" : "15" 
+			"&s=FlaxWordListDocumentRetrieve" : "14" 
+			"&s=FlaxCollocationDocumentRetrieve" : "14" 
+			"&s=FlaxWordList" : "8" 
+			"&s=FlaxCollocationBrowse" : "5" 
+			"&s=FlaxLexicalBundle" : "4" 
+			"&s=CherryPicking" : "3" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=WikifyArticle" : "1" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc297" : {
+		"accessed account" : "221"
+		"s_actions account" : {
+			"&s=RelatedWords" : "97" 
+			"&s=ClassifierBrowse" : "30" 
+			"&s=FlaxCollocationBrowse" : "17" 
+			"&s=CherryPicking" : "10" 
+			"&s=FlaxCollocationRetrieve" : "10" 
+			"&s=FlaxWordList" : "8" 
+			"&s=AdvancedFieldQuery" : "8" 
+			"&s=CollocationFillinBlanks" : "7" 
+			"&s=CollocationGuessing" : "6" 
+			"&s=ContentWordGuessing" : "5" 
+			"&s=FlaxWordListDocumentRetrieve" : "5" 
+			"&s=FlaxCollocationDocumentRetrieve" : "5" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=MatchingText" : "3" 
+			"&s=CollocationMatching" : "2" 
+			"&s=RetrieveWordFamily" : "2" 
+			"&s=ScrambleSentence" : "2" 
+		}
+	}
+	"&c=flaxc221" : {
+		"accessed account" : "220"
+		"s_actions account" : {
+			"&s=Hangman" : "120" 
+			"&s=CollocationDominoes" : "28" 
+			"&s=FlaxCollocationDocumentRetrieve" : "22" 
+			"&s=FlaxWordListDocumentRetrieve" : "22" 
+			"&s=ClassifierBrowse" : "5" 
+			"&s=RelatedWords" : "4" 
+			"&s=FlaxCollocationBrowse" : "4" 
+			"&s=CherryPicking" : "3" 
+			"&s=FlaxWordList" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=AdvancedFieldQuery" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=FlaxWordQuery" : "1" 
+		}
+	}
+	"&c=flaxc407" : {
+		"accessed account" : "218"
+		"s_actions account" : {
+			"&s=AdvancedFieldQuery" : "53" 
+			"&s=ClassifierBrowse" : "30" 
+			"&s=FlaxWordListDocumentRetrieve" : "28" 
+			"&s=FlaxCollocationDocumentRetrieve" : "28" 
+			"&s=FlaxCollocationRetrieve" : "25" 
+			"&s=ScrambleSentence" : "19" 
+			"&s=FlaxWordQuery" : "12" 
+			"&s=FlaxCollocationBrowse" : "8" 
+			"&s=CollocationDominoes" : "5" 
+			"&s=CherryPicking" : "4" 
+			"&s=FlaxWordList" : "3" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+			"&s=SplitSentences" : "1" 
+		}
+	}
+	"&c=flaxc34" : {
+		"accessed account" : "215"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "40" 
+			"&s=AdvancedFieldQuery" : "28" 
+			"&s=FlaxCollocationBrowse" : "24" 
+			"&s=FlaxWordListDocumentRetrieve" : "21" 
+			"&s=FlaxCollocationDocumentRetrieve" : "21" 
+			"&s=FlaxWordList" : "17" 
+			"&s=ScrambleSentence" : "16" 
+			"&s=CherryPicking" : "9" 
+			"&s=FlaxWordQuery" : "8" 
+			"&s=FlaxCollocationRetrieve" : "8" 
+			"&s=MissingPunctuation" : "7" 
+			"&s=ScrambleParagraph" : "6" 
+			"&s=FlaxTextRetrieve" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=RetrieveWordFamily" : "2" 
+			"&s=SplitSentences" : "2" 
+		}
+	}
+	"&c=ejfield0c1" : {
+		"accessed account" : "171"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "39" 
+			"&s=ContentWordGuessing" : "28" 
+			"&s=FlaxWordListDocumentRetrieve" : "15" 
+			"&s=FlaxCollocationDocumentRetrieve" : "15" 
+			"&s=AdvancedFieldQuery" : "15" 
+			"&s=ScrambleSentence" : "15" 
+			"&s=FlaxCollocationBrowse" : "13" 
+			"&s=FlaxWordList" : "7" 
+			"&s=CherryPicking" : "7" 
+			"&s=CollocationFillinBlanks" : "5" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=RetrieveWordFamily" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc312" : {
+		"accessed account" : "163"
+		"s_actions account" : {
+			"&s=CollocationGuessing" : "30" 
+			"&s=ScrambleSentence" : "22" 
+			"&s=Hangman" : "17" 
+			"&s=CollocationFillinBlanks" : "17" 
+			"&s=SplitSentences" : "15" 
+			"&s=ScrambleParagraph" : "14" 
+			"&s=RelatedWords" : "12" 
+			"&s=ContentWordGuessing" : "11" 
+			"&s=FlaxCollocationBrowse" : "6" 
+			"&s=ClassifierBrowse" : "4" 
+			"&s=FlaxWordList" : "3" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "2" 
+			"&s=FlaxCollocationDocumentRetrieve" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationContextRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=PAPS" : {
+		"accessed account" : "158"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "57" 
+			"&s=FlaxWordQuery" : "29" 
+			"&s=RetrieveWordFamily" : "21" 
+			"&s=AdvancedFieldQuery" : "19" 
+			"&s=FlaxCollocationRetrieve" : "7" 
+			"&s=FlaxCollocationBrowse" : "5" 
+			"&s=FlaxWordListDocumentRetrieve" : "4" 
+			"&s=FlaxWordList" : "4" 
+			"&s=FlaxCollocationDocumentRetrieve" : "4" 
+			"&s=FlaxLexicalBundle" : "2" 
+			"&s=FlaxTextRetrieve" : "2" 
+			"&s=CherryPicking" : "2" 
+			"&s=WikifyArticle" : "1" 
+		}
+	}
+	"&c=chinesemasters" : {
+		"accessed account" : "156"
+		"s_actions account" : {
+			"&s=RetrieveWordFamily" : "41" 
+			"&s=FlaxWordQuery" : "41" 
+			"&s=ClassifierBrowse" : "37" 
+			"&s=FlaxLexicalBundle" : "17" 
+			"&s=FlaxTextRetrieve" : "9" 
+			"&s=AdvancedFieldQuery" : "7" 
+			"&s=WikifyArticle" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc211" : {
+		"accessed account" : "154"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "35" 
+			"&s=AdvancedFieldQuery" : "25" 
+			"&s=FlaxCollocationBrowse" : "10" 
+			"&s=FlaxWordListDocumentRetrieve" : "8" 
+			"&s=FlaxCollocationDocumentRetrieve" : "8" 
+			"&s=ScrambleSentence" : "8" 
+			"&s=RelatedWords" : "7" 
+			"&s=FlaxWordList" : "7" 
+			"&s=CherryPicking" : "7" 
+			"&s=CollocationDominoes" : "6" 
+			"&s=Hangman" : "6" 
+			"&s=FlaxWordQuery" : "5" 
+			"&s=ContentWordGuessing" : "4" 
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=CollocationFillinBlanks" : "4" 
+			"&s=CollocationMatching" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=SplitSentences" : "1" 
+		}
+	}
+	"&c=PASS" : {
+		"accessed account" : "147"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "59" 
+			"&s=FlaxWordQuery" : "21" 
+			"&s=RetrieveWordFamily" : "18" 
+			"&s=AdvancedFieldQuery" : "16" 
+			"&s=FlaxCollocationDocumentRetrieve" : "6" 
+			"&s=FlaxCollocationRetrieve" : "6" 
+			"&s=FlaxWordListDocumentRetrieve" : "6" 
+			"&s=FlaxWordList" : "4" 
+			"&s=FlaxTextRetrieve" : "4" 
+			"&s=CherryPicking" : "3" 
+			"&s=WikifyArticle" : "2" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc316" : {
+		"accessed account" : "102"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "18" 
+			"&s=FlaxWordListDocumentRetrieve" : "10" 
+			"&s=FlaxCollocationDocumentRetrieve" : "10" 
+			"&s=CollocationFillinBlanks" : "10" 
+			"&s=FlaxCollocationBrowse" : "8" 
+			"&s=FlaxWordList" : "5" 
+			"&s=CherryPicking" : "5" 
+			"&s=AdvancedFieldQuery" : "5" 
+			"&s=CollocationMatching" : "4" 
+			"&s=Hangman" : "4" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=FlaxWordQuery" : "1" 
+		}
+	}
+	"&c=lawwordlists" : {
+		"accessed account" : "99"
+		"s_actions account" : {
+			"&s=FlaxWordlist" : "98" 
+		}
+	}
+	"&c=flaxc190" : {
+		"accessed account" : "91"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "20" 
+			"&s=FlaxWordListDocumentRetrieve" : "13" 
+			"&s=FlaxCollocationDocumentRetrieve" : "12" 
+			"&s=AdvancedFieldQuery" : "11" 
+			"&s=FlaxWordList" : "8" 
+			"&s=FlaxCollocationBrowse" : "7" 
+			"&s=CherryPicking" : "5" 
+			"&s=FlaxCollocationRetrieve" : "5" 
+			"&s=Hangman" : "4" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=CollocationMatching" : "1" 
+		}
+	}
+	"&c=flaxc63" : {
+		"accessed account" : "86"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "29" 
+			"&s=FlaxCollocationDocumentRetrieve" : "12" 
+			"&s=AdvancedFieldQuery" : "12" 
+			"&s=FlaxWordListDocumentRetrieve" : "12" 
+			"&s=CherryPicking" : "4" 
+			"&s=ImageGuessing" : "3" 
+			"&s=FlaxWordList" : "3" 
+			"&s=FlaxCollocationBrowse" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=ScrambleParagraph" : "1" 
+		}
+	}
+	"&c=flaxc382" : {
+		"accessed account" : "83"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "17" 
+			"&s=FlaxWordList" : "15" 
+			"&s=AdvancedFieldQuery" : "14" 
+			"&s=CherryPicking" : "12" 
+			"&s=FlaxCollocationRetrieve" : "11" 
+			"&s=FlaxWordQuery" : "5" 
+			"&s=FlaxCollocationBrowse" : "4" 
+			"&s=ContentWordGuessing" : "1" 
+			"&s=CollocationMatching" : "1" 
+			"&s=RelatedWords" : "1" 
+			"&s=SplitSentences" : "1" 
+		}
+	}
+	"&c=flaxc372" : {
+		"accessed account" : "77"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "14" 
+			"&s=FlaxWordListDocumentRetrieve" : "9" 
+			"&s=FlaxCollocationDocumentRetrieve" : "9" 
+			"&s=Hangman" : "8" 
+			"&s=AdvancedFieldQuery" : "6" 
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=ScrambleSentence" : "4" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxWordList" : "3" 
+			"&s=FlaxCollocationBrowse" : "3" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=CherryPicking" : "1" 
+		}
+	}
+	"&c=flaxc26" : {
+		"accessed account" : "71"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "30" 
+			"&s=AdvancedFieldQuery" : "15" 
+			"&s=FlaxCollocationDocumentRetrieve" : "6" 
+			"&s=FlaxWordListDocumentRetrieve" : "6" 
+			"&s=FlaxCollocationBrowse" : "5" 
+			"&s=CherryPicking" : "4" 
+			"&s=FlaxWordList" : "3" 
+			"&s=CollocationFillinBlanks" : "1" 
+		}
+	}
+	"&c=PAWordlists" : {
+		"accessed account" : "68"
+		"s_actions account" : {
+			"&s=FlaxWordlist" : "56" 
+			"&s=ClassifierBrowse" : "11" 
+		}
+	}
+	"&c=chinesephd" : {
+		"accessed account" : "59"
+		"s_actions account" : {
+			"&s=FlaxLexicalBundle" : "14" 
+			"&s=RetrieveWordFamily" : "12" 
+			"&s=FlaxWordQuery" : "12" 
+			"&s=FlaxSampleRetrieve" : "6" 
+			"&s=AdvancedFieldQuery" : "6" 
+			"&s=ClassifierBrowse" : "2" 
+			"&s=FlaxTextRetrieve" : "2" 
+			"&s=WikifyArticle" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=nzphd" : {
+		"accessed account" : "57"
+		"s_actions account" : {
+			"&s=FlaxSampleRetrieve" : "25" 
+			"&s=FlaxLexicalBundle" : "14" 
+			"&s=RetrieveWordFamily" : "6" 
+			"&s=FlaxWordQuery" : "6" 
+			"&s=AdvancedFieldQuery" : "2" 
+			"&s=WikifyArticle" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc321" : {
+		"accessed account" : "51"
+		"s_actions account" : {
+			"&s=FlaxWordListDocumentRetrieve" : "20" 
+			"&s=FlaxCollocationDocumentRetrieve" : "19" 
+			"&s=ClassifierBrowse" : "3" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=SplitSentences" : "1" 
+		}
+	}
+	"&c=flaxc154" : {
+		"accessed account" : "44"
+		"s_actions account" : {
+			"&s=CherryPicking" : "13" 
+			"&s=FlaxWordQuery" : "7" 
+			"&s=ClassifierBrowse" : "5" 
+			"&s=FlaxCollocationRetrieve" : "5" 
+			"&s=Hangman" : "4" 
+			"&s=FlaxWordList" : "3" 
+			"&s=FlaxCollocationBrowse" : "2" 
+			"&s=ContentWordGuessing" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc279" : {
+		"accessed account" : "40"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "11" 
+			"&s=FlaxWordListDocumentRetrieve" : "11" 
+			"&s=ClassifierBrowse" : "10" 
+			"&s=ContentWordGuessing" : "2" 
+			"&s=CherryPicking" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=Hangman" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=nzmasters" : {
+		"accessed account" : "39"
+		"s_actions account" : {
+			"&s=FlaxSampleRetrieve" : "15" 
+			"&s=FlaxLexicalBundle" : "10" 
+			"&s=RetrieveWordFamily" : "6" 
+			"&s=FlaxWordQuery" : "6" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc389" : {
+		"accessed account" : "36"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "15" 
+			"&s=FlaxCollocationDocumentRetrieve" : "5" 
+			"&s=FlaxWordListDocumentRetrieve" : "5" 
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=AdvancedFieldQuery" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc322" : {
+		"accessed account" : "36"
+		"s_actions account" : {
+			"&s=FlaxWordListDocumentRetrieve" : "13" 
+			"&s=FlaxCollocationDocumentRetrieve" : "12" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc213" : {
+		"accessed account" : "34"
+		"s_actions account" : {
+			"&s=Hangman" : "5" 
+			"&s=ClassifierBrowse" : "5" 
+			"&s=AdvancedFieldQuery" : "5" 
+			"&s=FlaxWordList" : "4" 
+			"&s=CherryPicking" : "3" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=FlaxCollocationBrowse" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=FlaxWordQuery" : "1" 
+			"&s=ScrambleSentence" : "1" 
+		}
+	}
+	"&c=bawels" : {
+		"accessed account" : "34"
+		"s_actions account" : {
+			"&s=classifierbrowse" : "33" 
+		}
+	}
+	"&c=baweps" : {
+		"accessed account" : "34"
+		"s_actions account" : {
+			"&s=classifierbrowse" : "31" 
+			"&s=flaxcollocationretrieve" : "2" 
+		}
+	}
+	"&c=bawess" : {
+		"accessed account" : "32"
+		"s_actions account" : {
+			"&s=classifierbrowse" : "31" 
+		}
+	}
+	"&c=baweah" : {
+		"accessed account" : "32"
+		"s_actions account" : {
+			"&s=classifierbrowse" : "31" 
+		}
+	}
+	"&c=flaxc302" : {
+		"accessed account" : "29"
+		"s_actions account" : {
+			"&s=FlaxWordList" : "7" 
+			"&s=FlaxCollocationDocumentRetrieve" : "5" 
+			"&s=FlaxWordListDocumentRetrieve" : "5" 
+			"&s=ClassifierBrowse" : "4" 
+			"&s=FlaxCollocationBrowse" : "4" 
+			"&s=CherryPicking" : "1" 
+			"&s=RetrieveWordFamily" : "1" 
+			"&s=FlaxWordQuery" : "1" 
+		}
+	}
+	"&c=flaxc353" : {
+		"accessed account" : "28"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "2" 
+			"&s=RelatedWords" : "2" 
+			"&s=CollocationMatching" : "2" 
+			"&s=CollocationDominoes" : "2" 
+			"&s=MissingPunctuation" : "2" 
+			"&s=Hangman" : "2" 
+			"&s=CollocationGuessing" : "2" 
+			"&s=ScrambleParagraph" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=CollocationFillinBlanks" : "2" 
+			"&s=SplitSentences" : "2" 
+			"&s=FlaxWordQuery" : "1" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+		}
+	}
+	"&c=flaxc171" : {
+		"accessed account" : "26"
+		"s_actions account" : {
+			"&s=AdvancedFieldQuery" : "6" 
+			"&s=FlaxCollocationBrowse" : "5" 
+			"&s=ClassifierBrowse" : "3" 
+			"&s=Hangman" : "2" 
+			"&s=FlaxWordList" : "2" 
+			"&s=FlaxCollocationDocumentRetrieve" : "2" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "2" 
+			"&s=CherryPicking" : "1" 
+		}
+	}
+	"&c=mdlc116" : {
+		"accessed account" : "24"
+		"s_actions account" : {
+			"&s=Hangman" : "14" 
+			"&s=ContentWordGuessing" : "7" 
+			"&s=SplitSentences" : "2" 
+		}
+	}
+	"&c=germandemo" : {
+		"accessed account" : "24"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "14" 
+			"&s=AdvancedFieldQuery" : "7" 
+			"&s=ScrambleSentence" : "2" 
+		}
+	}
+	"&c=tki" : {
+		"accessed account" : "20"
+		"s_actions account" : {
+			"&s=AdvancedFieldQuery" : "10" 
+			"&s=ClassifierBrowse" : "8" 
+			"&s=ScrambleSentence" : "1" 
+		}
+	}
+	"&c=flaxc20" : {
+		"accessed account" : "17"
+		"s_actions account" : {
+			"&s=ScrambleSentence" : "4" 
+			"&s=ClassifierBrowse" : "3" 
+			"&s=FlaxCollocationDocumentRetrieve" : "2" 
+			"&s=AdvancedFieldQuery" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc337" : {
+		"accessed account" : "17"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "5" 
+			"&s=FlaxWordQuery" : "4" 
+			"&s=ClassifierBrowse" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=CollocationFillinBlanks" : "1" 
+		}
+	}
+	"&c=flaxc367" : {
+		"accessed account" : "16"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "5" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=ClassifierBrowse" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc344" : {
+		"accessed account" : "15"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "7" 
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=mdlc104" : {
+		"accessed account" : "15"
+		"s_actions account" : {
+			"&s=Hangman" : "12" 
+			"&s=ScrambleSentence" : "2" 
+		}
+	}
+	"&c=flaxc338" : {
+		"accessed account" : "15"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "5" 
+			"&s=FlaxCollocationRetrieve" : "5" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc291" : {
+		"accessed account" : "13"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "6" 
+			"&s=FlaxCollocationDocumentRetrieve" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "2" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc306" : {
+		"accessed account" : "13"
+		"s_actions account" : {
+			"&s=Hangman" : "12" 
+		}
+	}
+	"&c=flaxc259" : {
+		"accessed account" : "12"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "2" 
+			"&s=MatchingText" : "2" 
+			"&s=ScrambleSentence" : "2" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc319" : {
+		"accessed account" : "12"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "3" 
+			"&s=FlaxWordListDocumentRetrieve" : "3" 
+			"&s=AdvancedFieldQuery" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc315" : {
+		"accessed account" : "12"
+		"s_actions account" : {
+			"&s=ScrambleSentence" : "8" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc339" : {
+		"accessed account" : "12"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "5" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc345" : {
+		"accessed account" : "11"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=cil" : {
+		"accessed account" : "11"
+		"s_actions account" : {
+			"&s=AdvancedFieldQuery" : "6" 
+			"&s=ClassifierBrowse" : "4" 
+		}
+	}
+	"&c=flaxc314" : {
+		"accessed account" : "11"
+		"s_actions account" : {
+			"&s=ScrambleSentence" : "9" 
+			"&s=ListCollections" : "1" 
+		}
+	}
+	"&c=flaxc301" : {
+		"accessed account" : "11"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "4" 
+			"&s=FlaxWordList" : "2" 
+			"&s=FlaxCollocationBrowse" : "2" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc332" : {
+		"accessed account" : "11"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc296" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=CollocationMatching" : "5" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc343" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc342" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=FlaxWordQuery" : "3" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc341" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "4" 
+			"&s=Hangman" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordQuery" : "1" 
+		}
+	}
+	"&c=flaxc340" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxCollocationRetrieve" : "3" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=bnc" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "9" 
+		}
+	}
+	"&c=flaxc387" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "3" 
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc333" : {
+		"accessed account" : "10"
+		"s_actions account" : {
+			"&s=FlaxWordQuery" : "3" 
+			"&s=CollocationGuessing" : "1" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc366" : {
+		"accessed account" : "9"
+		"s_actions account" : {
+			"&s=FlaxWordList" : "1" 
+			"&s=ScrambleParagraph" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc391" : {
+		"accessed account" : "9"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "3" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc230" : {
+		"accessed account" : "8"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordQuery" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc325" : {
+		"accessed account" : "8"
+		"s_actions account" : {
+			"&s=FlaxCollocationRetrieve" : "2" 
+			"&s=FlaxWordQuery" : "2" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc308" : {
+		"accessed account" : "7"
+		"s_actions account" : {
+			"&s=RelatedWords" : "2" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc248" : {
+		"accessed account" : "6"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "2" 
+			"&s=FlaxWordListDocumentRetrieve" : "2" 
+			"&s=ClassifierBrowse" : "1" 
+		}
+	}
+	"&c=flaxc326" : {
+		"accessed account" : "6"
+		"s_actions account" : {
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=FlaxCollocationRetrieve" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc401" : {
+		"accessed account" : "5"
+		"s_actions account" : {
+			"&s=FlaxWordList" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=chineseundergraduate" : {
+		"accessed account" : "5"
+		"s_actions account" : {
+			"&s=FlaxSampleRetrieve" : "4" 
+		}
+	}
+	"&c=flaxc271" : {
+		"accessed account" : "5"
+		"s_actions account" : {
+			"&s=FlaxWordList" : "1" 
+			"&s=CherryPicking" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+			"&s=AdvancedFieldQuery" : "1" 
+		}
+	}
+	"&c=flaxc423" : {
+		"accessed account" : "5"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "2" 
+			"&s=FlaxWordList" : "1" 
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc215" : {
+		"accessed account" : "3"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=flaxc287" : {
+		"accessed account" : "3"
+		"s_actions account" : {
+			"&s=Hangman" : "1" 
+			"&s=ClassifierBrowse" : "1" 
+		}
+	}
+	"&c=collodb" : {
+		"accessed account" : "3"
+		"s_actions account" : {
+			"&s=CollocationTypes" : "2" 
+		}
+	}
+	"&c=flaxc424" : {
+		"accessed account" : "3"
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : "1" 
+			"&s=FlaxWordListDocumentRetrieve" : "1" 
+		}
+	}
+	"&c=mdlc118" : {
+		"accessed account" : "2"
+		"s_actions account" : {
+			"&s=ContentWordGuessing" : "1" 
+		}
+	}
+	"&c=flaxc309" : {
+		"accessed account" : "2"
+		"s_actions account" : {
+			"&s=Hangman" : "1" 
+		}
+	}
+	"&c=flaxc307" : {
+		"accessed account" : "2"
+		"s_actions account" : {
+			"&s=FlaxCollocationBrowse" : "1" 
+		}
+	}
+	"&c=flaxc418" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=paah" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=paps" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=mdlc422" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=pass" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=flaxc318" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+	"&c=pawordlists" : {
+		"accessed account" : "1"
+		"s_actions account" : {
+		}
+	}
+}
+
