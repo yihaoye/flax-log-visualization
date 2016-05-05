@@ -1,0 +1,115 @@
+<html>
+ <head>
+        <meta charset="utf-8">  
+        <title>Force</title>  
+  </head> 
+
+<style>
+
+			
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+
+
+.point {
+    fill: #2ec7c9;
+    fill-opacity: 0.5;
+}
+
+</style>
+    <body>  
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>  
+        <script>		   
+		
+		var width = 600;
+		var height = 600;
+		//var cir_r = 25;
+		
+		var svg = d3.select("body").append("svg")
+								.attr("width",width)
+								.attr("height",height);
+		
+		
+		
+		d3.json("JSONFiles/action_relation.json",function(error,root){
+			
+			if( error ){
+				return console.log(error);
+			}
+			console.log(root);
+			
+			var force = d3.layout.force()
+							.nodes(root.nodes)
+							.links(root.links)
+							.size([width,height])
+							.linkDistance(95)
+							.charge(-150)
+							.start();
+							
+			var links_line = svg.selectAll("line")
+								.data(root.links)
+								.enter()
+								.append("line")
+								.style("stroke","#ccc")
+								.style("stroke-width",function(d){
+									return d.relation;
+								}); //need to modify
+								
+			var node = svg.selectAll(".node")
+							.data(root.nodes)
+							.enter()
+							.append("g")
+							.attr("class", "node")
+							.call(force.drag);
+
+
+
+			node.append("circle")
+				.attr('class', 'point')
+				.attr("r",function(d) { return d.account });
+			
+			node.append("text")
+				.attr("dx", 12)
+				.attr("dy", ".35em")
+				.text(function(d) { return d.name });
+			
+
+								
+			force.on("tick", function(){
+			
+				//更新连接线的位置
+				 links_line.attr("x1",function(d){ return d.source.x; });
+				 links_line.attr("y1",function(d){ return d.source.y; });
+				 links_line.attr("x2",function(d){ return d.target.x; });
+				 links_line.attr("y2",function(d){ return d.target.y; });
+				 
+				 
+				 //更新结点圆点和文字
+				 node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+			});
+		});
+		  
+
+
+
+/* JSON
+{
+"pre_actions":[
+{ "target": "CollocationQuery" , "relation": 2 },
+{ "target": "CollocationSampleRetrieve" , "relation": 2 },
+{ "target": "CollocationMapRetrieve" , "relation": 2 }
+],
+"forward_actions":[
+{ "source": "CollocationQuery" , "relation": 3 },
+{ "source": "CollocationSampleRetrieve" , "relation": 2 },
+{ "source": "CollocationMapRetrieve" , "relation": 1 }
+]
+}
+*/
+
+        </script>  
+		
+    </body>  
+</html>  
