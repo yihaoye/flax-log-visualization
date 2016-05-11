@@ -1,0 +1,17 @@
+﻿{
+"nodes":[
+{ "name": "CollocationQuery"   , "account" : 25 },
+{ "name": "CollocationSampleRetrieve"   , "account" : 10 },
+{ "name": "CollocationMapRetrieve"   , "account" : 20 },
+{ "name": "WikipediaArticleDefinitionRetrieve"   , "account" : 17 },
+{ "name": "CherryPicking"   , "account" : 8 },
+{ "name": "CollocationSampleSentenceRetrieve"   , "account" : 18 }
+],
+"links":[
+{ "source": 0 , "target": 1 , "relation": 2 },
+{ "source": 0 , "target": 2 , "relation": 4 },
+{ "source": 0 , "target": 3 , "relation": 1 },
+{ "source": 0 , "target": 4 , "relation": 2 },
+{ "source": 0 , "target": 5 , "relation": 3 }
+]
+}
