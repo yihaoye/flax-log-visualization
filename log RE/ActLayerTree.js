@@ -135,14 +135,31 @@ treeJSON = d3.json("JSONFiles/act_layer_tree.json", function(error, treeData) {
         }
     }
 
+
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    // Define the div for the tooltip
+    var div = d3.select("body").append("div")   
+        .attr("class", "tooltip")               
+        .style("visibility", "hidden")
+        .text("s1.paras");
+
     var overCircle = function(d) {
         //selectedNode = d;
         //updateTempConnector();
+        div.transition()    
+                .style("visibility", "visible");
+
+        div.html("si.paras")
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY) + "px");        
     };
     var outCircle = function(d) {
-        
+        div.transition()     
+                .style("visibility", "hidden");   
     };
+
 
     
 
