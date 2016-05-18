@@ -6,7 +6,7 @@ the code is modified from work of Rob Schmuecker's drag tree js file
 
 
 // Get JSON data
-treeJSON = d3.json("JSONFiles/act_layer_tree.json", function(error, treeData) {
+treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
