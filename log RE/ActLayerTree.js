@@ -11,9 +11,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
-    // panning variables
-    var panSpeed = 200;
-    var panBoundary = 20; // Within 20px from edges will pan when dragging.
     // Misc. variables
     var i = 0;
     var duration = 750;
@@ -66,34 +63,9 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         });
     }
     // Sort the tree initially incase the JSON isn't in a sorted order.
-    sortTree();
+    //sortTree();
 
-    // TODO: Pan function, can be better implemented.
-
-    function pan(domNode, direction) {
-        var speed = panSpeed;
-        if (panTimer) {
-            clearTimeout(panTimer);
-            translateCoords = d3.transform(svgGroup.attr("transform"));
-            if (direction == 'left' || direction == 'right') {
-                translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
-                translateY = translateCoords.translate[1];
-            } else if (direction == 'up' || direction == 'down') {
-                translateX = translateCoords.translate[0];
-                translateY = direction == 'up' ? translateCoords.translate[1] + speed : translateCoords.translate[1] - speed;
-            }
-            scaleX = translateCoords.scale[0];
-            scaleY = translateCoords.scale[1];
-            scale = zoomListener.scale();
-            svgGroup.transition().attr("transform", "translate(" + translateX + "," + translateY + ")scale(" + scale + ")");
-            d3.select(domNode).select('g.node').attr("transform", "translate(" + translateX + "," + translateY + ")");
-            zoomListener.scale(zoomListener.scale());
-            zoomListener.translate([translateX, translateY]);
-            panTimer = setTimeout(function() {
-                pan(domNode, speed, direction);
-            }, 50);
-        }
-    }
+    
 
     // Define the zoom function for the zoomable tree
 
@@ -115,43 +87,27 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         .call(zoomListener);
 
 
-    
-
-    // Helper functions for collapsing and expanding nodes.
-
-    function collapse(d) {
-        if (d.children) {
-            d._children = d.children;
-            d._children.forEach(collapse);
-            d.children = null;
-        }
-    }
-
-    function expand(d) {
-        if (d._children) {
-            d.children = d._children;
-            d.children.forEach(expand);
-            d._children = null;
-        }
-    }
-
-
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Define the div for the tooltip
     var div = d3.select("body").append("div")   
         .attr("class", "tooltip")               
-        .style("visibility", "hidden")
-        .text("s1.paras");
+        .style("visibility", "hidden");
 
     var overCircle = function(d) {
         //selectedNode = d;
         //updateTempConnector();
+        var querys = ""; //var querys = "s1_querys:\n";
+        for(var key in d.s1_querys){
+            if(d.s1_querys.hasOwnProperty(key)){
+                querys += (key + "  :  " + d.s1_querys[key] + "\n");
+            }
+        }
+        //var json = JSON.stringify(d);
+        //querys += json.s1_querys;
         div.transition()    
                 .style("visibility", "visible");
 
-        div.html("si.paras")
+        div.text(querys)
                 .style("left", (d3.event.pageX) + "px")     
                 .style("top", (d3.event.pageY) + "px");        
     };
@@ -251,6 +207,13 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             .attr("r", 0)
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
+            })
+            .attr('pointer-events', 'mouseover')
+            .on("mouseover", function(d) {
+                overCircle(d);
+            })
+            .on("mouseout", function(d) {
+                outCircle(d);
             });
 
         nodeEnter.append("text")
@@ -267,19 +230,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             })
             .style("fill-opacity", 0);
 
-        // phantom node to give us mouseover in a radius around it
-        nodeEnter.append("circle")
-            .attr('class', 'ghostCircle')
-            .attr("r", 30)
-            .attr("opacity", 0.2) // change this to zero to hide the target area
-        .style("fill", "red")
-            .attr('pointer-events', 'mouseover')
-            .on("mouseover", function(node) {
-                overCircle(node);
-            })
-            .on("mouseout", function(node) {
-                outCircle(node);
-            });
+        
 
         // Update the text to reflect whether node has children or not.
         node.select('text')
