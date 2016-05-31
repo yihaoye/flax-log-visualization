@@ -12,6 +12,7 @@ import java.util.*;
 import com.google.gson.*;
 
 import ActionLayerAnalysis.TreeProcessor;
+import ActionRelation.ActionRelationProcessor;
 
 
 public class LogRegExp {
@@ -29,7 +30,7 @@ public class LogRegExp {
     		   LogDiv log_div = new LogDiv(); //for div log by user id
     		   UserTree user_tree = new UserTree(); //for build up complete user tree (include their actions and relevant info)
     		   TreeProcessor action_layer_tree = new TreeProcessor();
-    		   
+    		   ActionRelationProcessor arp = new ActionRelationProcessor();
     		   
     		   //filter object for filtering auto created actions
     		   FilteredActions filter = new FilteredActions();
@@ -46,14 +47,18 @@ public class LogRegExp {
     			   //log_div.process(strLine);
     			   
     			   //
-    			   action_layer_tree.process(strLine);
+    			   //action_layer_tree.process(strLine);
+    			   
+    			   //
+    			   arp.process(strLine);
     			   
     			   //
     			   //user_tree.process(strLine);
     			   
     		   }
     		   
-    		   action_layer_tree.write_json();
+    		   //action_layer_tree.write_json();
+    		   arp.write_json();
     		   //user_tree.write_json();
     		   
     		   

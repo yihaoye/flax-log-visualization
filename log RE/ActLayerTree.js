@@ -8,6 +8,8 @@ the code is modified from work of Rob Schmuecker's drag tree js file
 // Get JSON data
 treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
 
+    //console.log(treeData);
+
     // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
@@ -17,8 +19,8 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     var root;
 
     // size of the diagram
-    var viewerWidth = $(document).width();
-    var viewerHeight = $(document).height();
+    var viewerWidth = 1000;
+    var viewerHeight = 450;
 
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
@@ -54,25 +56,12 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         return d.children && d.children.length > 0 ? d.children : null;
     });
 
-
-    // sort the tree according to the node names
-
-    function sortTree() {
-        tree.sort(function(a, b) {
-            return b.name.toLowerCase() < a.name.toLowerCase() ? 1 : -1;
-        });
-    }
-    // Sort the tree initially incase the JSON isn't in a sorted order.
-    //sortTree();
-
     
 
     // Define the zoom function for the zoomable tree
-
     function zoom() {
         svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
     }
-
 
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
     var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
@@ -96,7 +85,8 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     var overCircle = function(d) {
         //selectedNode = d;
         //updateTempConnector();
-        var querys = ""; //var querys = "s1_querys:\n";
+        var querys = "Access_Percentage: " + 100*d.access_percentage + "%\n"; //var querys = "s1_querys:\n";
+        querys += "Access_Account: " + d.access_account + "\n";
         for(var key in d.s1_querys){
             if(d.s1_querys.hasOwnProperty(key)){
                 querys += (key + "  :  " + d.s1_querys[key] + "\n");
@@ -108,11 +98,17 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
                 .style("visibility", "visible");
 
         div.text(querys)
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY) + "px");        
+                .style("left", 10 + "px")     
+                .style("top", 10 + "px"); 
+
+        /*
+        div.on("click", function(d){
+            outCircle(d);
+        });
+        */
     };
     var outCircle = function(d) {
-        div.transition()     
+        div.transition()
                 .style("visibility", "hidden");   
     };
 
@@ -135,7 +131,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     }
 
     // Toggle children function
-
+    //把node收起来和展开，使用d.children、d._children来表示收起、展开状态
     function toggleChildren(d) {
         if (d.children) {
             d._children = d.children;
@@ -150,7 +146,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     // Toggle children on click.
 
     function click(d) {
-        if (d3.event.defaultPrevented) return; // click suppressed
+        //if (d3.event.defaultPrevented) return; // click suppressed, check if is drag
         d = toggleChildren(d);
         update(d);
         centerNode(d);
@@ -162,7 +158,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         // This makes the layout more consistent.
         var levelWidth = [1];
         var childCount = function(level, n) {
-
             if (n.children && n.children.length > 0) {
                 if (levelWidth.length <= level + 1) levelWidth.push(0);
 
@@ -177,12 +172,15 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         tree = tree.size([newHeight, viewerWidth]);
 
         // Compute the new tree layout.
-        var nodes = tree.nodes(root).reverse(),
+        var nodes = tree.nodes(root).reverse(), //get a reverse odered array of "tree.nodes(root);"
             links = tree.links(nodes);
+
+        console.log(nodes);
+        console.log(links);
 
         // Set widths between levels based on maxLabelLength.
         nodes.forEach(function(d) {
-            d.y = (d.depth * (maxLabelLength * 10)); //maxLabelLength * 10px
+            d.y = (d.depth * (maxLabelLength * 7)); //maxLabelLength * 10px, "d.depth" automatically added to tree.nodes(root) by tree method
             // alternatively to keep a fixed scale one can set a fixed depth per level
             // Normalize for fixed-depth by commenting out below line
             // d.y = (d.depth * 500); //500px per level.
@@ -208,12 +206,11 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
             })
-            .attr('pointer-events', 'mouseover')
             .on("mouseover", function(d) {
                 overCircle(d);
             })
             .on("mouseout", function(d) {
-                outCircle(d);
+                //outCircle(d);
             });
 
         nodeEnter.append("text")
@@ -233,6 +230,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         
 
         // Update the text to reflect whether node has children or not.
+        /*
         node.select('text')
             .attr("x", function(d) {
                 return d.children || d._children ? -10 : 10;
@@ -243,6 +241,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             .text(function(d) {
                 return d.name;
             });
+        */
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select("circle.nodeCircle")
@@ -330,6 +329,16 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     root = treeData;
     root.x0 = viewerHeight / 2;
     root.y0 = 0;
+
+    function collapse(d) {
+        if (d.children) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+    }
+
+    root.children.forEach(collapse);
 
     // Layout the tree initially and center on the root node.
     update(root);
