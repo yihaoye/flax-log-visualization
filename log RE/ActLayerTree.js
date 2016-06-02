@@ -330,6 +330,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     root.x0 = viewerHeight / 2;
     root.y0 = 0;
 
+    //一开始不展现完整树，让用户自己展开
     function collapse(d) {
         if (d.children) {
           d._children = d.children;
@@ -337,7 +338,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
           d.children = null;
         }
     }
-
     root.children.forEach(collapse);
 
     // Layout the tree initially and center on the root node.

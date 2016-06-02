@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
+    console.log(treeData);
+});
+
+$.getJSON("JSONFiles/action_layer_tree.json", function(json) {
+    console.log(json); // this will show the info it in firebug console
+});
+
+</script>
+
+<body>
+    <div id="tree-container"></div>
+</body>
+</html>
