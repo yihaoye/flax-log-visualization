@@ -4,11 +4,62 @@ All rights reserved.
 the code is modified from work of Rob Schmuecker's drag tree js file
 */
 
+//basically a way to get the path to an object
+  function searchTree(obj,search,path){ //"obj" is the search path root, the result of the function is arrat of nodes (obj in array[0], search in array[last]), nodes obtain several parameters
+    if(obj.name === search){ //if search is found return, add the object to the path and return it
+      path.push(obj);
+      return path;
+    }
+    else if(obj.children || obj._children){ //if children are collapsed d3 object will have them instantiated as _children
+      var children = (obj.children) ? obj.children : obj._children;
+      for(var i=0;i<children.length;i++){
+        path.push(obj);// we assume this path is the right one
+        var found = searchTree(children[i],search,path);
+        if(found){// we were right, this should return the bubbled-up path from the first if statement
+          return found;
+        }
+        else{//we were wrong, remove this parent from the path and continue iterating
+          path.pop();
+        }
+      }
+    }
+    else{//not the right object, return false so it will continue to iterate in the loop
+      return false;
+    }
+  }
+
+  //get all the leaves and give them index
+  function extract_select2_data(node,leaves,index){
+          if (node.children){
+              for(var i = 0;i<node.children.length;i++){
+                  index = extract_select2_data(node.children[i],leaves,index)[0]; //[0]表示只把index传过去，不传leaves（leaves自己会继承）
+              }
+          }
+          else {
+              leaves.push({id:++index,text:node.name});
+          }
+          return [index,leaves];
+  }
+
+  function openPaths(paths){
+    for(var i =0;i<paths.length;i++){
+      if(paths[i].id !== "1"){//i.e. not root
+        paths[i].class = 'found';
+        if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
+          paths[i].children = paths[i]._children;
+            paths[i]._children = null;
+        }
+        update(paths[i]);
+      }
+    }
+  }
 
 // Get JSON data
 treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
 
     //console.log(treeData);
+
+    select2_data = extract_select2_data(treeData,[],0)[1];
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -31,8 +82,27 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             return [d.y, d.x];
         });
 
-    // A recursive helper function for performing some setup by walking through all nodes
+    var div = d3.select("body")
+        .append("div") // declare the tooltip div
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
+    //init search box
+    $("#search").select2({
+      data: select2_data
+    });
+    //attach search box listener
+    $("#search").on("select2-selecting", function(e) {
+        var paths = searchTree(treeData,e.object.text,[]);
+        if(typeof(paths) !== "undefined"){
+          openPaths(paths);
+        }
+        else{
+          alert(e.object.text+" not found!");
+        }
+    });
+
+    // A recursive helper function for performing some setup by walking through all nodes
     function visit(parent, visitFn, childrenFn) {
         if (!parent) return;
 
@@ -76,15 +146,8 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         .call(zoomListener);
 
 
-
-    // Define the div for the tooltip
-    var div = d3.select("body").append("div")   
-        .attr("class", "tooltip")               
-        .style("visibility", "hidden");
-
     var overCircle = function(d) {
-        //selectedNode = d;
-        //updateTempConnector();
+        /*
         var querys = "Access_Percentage: " + 100*d.access_percentage + "%\n"; //var querys = "s1_querys:\n";
         querys += "Access_Account: " + d.access_account + "\n";
         for(var key in d.s1_querys){
@@ -100,12 +163,13 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         div.text(querys)
                 .style("left", 10 + "px")     
                 .style("top", 10 + "px"); 
-
+        */
         /*
         div.on("click", function(d){
             outCircle(d);
         });
         */
+        
     };
     var outCircle = function(d) {
         div.transition()
@@ -298,7 +362,12 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         // Transition links to their new position.
         link.transition()
             .duration(duration)
-            .attr("d", diagonal);
+            .attr("d", diagonal)
+            .style("stroke",function(d){
+                if(d.target.class==="found"){
+                  return "#ff4136";
+                }
+              });
 
         // Transition exiting nodes to the parent's new position.
         link.exit().transition()
