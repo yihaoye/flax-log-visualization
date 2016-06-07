@@ -41,7 +41,27 @@ the code is modified from work of Rob Schmuecker's drag tree js file
           return [index,leaves];
   }
 
-  
+  /*
+  function bfs_clean(treeRoot){
+        if (!treeRoot || !treeRoot.length) return;
+
+        var stack = [];
+        stack.push(treeRoot);
+        
+        var item;
+        while (stack.length) {
+            item = stack.shift(); //推出栈底
+            //如果该节点有子节点，继续添加进入栈底
+            if (item.children && item.children.length) {
+                stack = stack.concat(item.children);
+            }
+            item.class=''; //remove this one if remove clean function
+        }
+    }
+    */
+
+
+
 
   /*********************************************************************************/
 
@@ -63,6 +83,8 @@ the code is modified from work of Rob Schmuecker's drag tree js file
     var viewerHeight = 450;
 
     var selectNode;
+    var selectValue;
+    var paths = [];
 
 
     var tree = d3.layout.tree()
@@ -94,6 +116,7 @@ the code is modified from work of Rob Schmuecker's drag tree js file
         }
     }
 
+    
     
 
 
@@ -156,9 +179,13 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     };
 
     function onchange() {
-      var selectValue = d3.select('select').property('value');
+      selectValue = d3.select('select').property('value');
 
-      var paths = searchTree(selectNode,"&s=CherryPicking",[]); //middle:  selectNode.s1_querys[selectValue]
+      //bfs_clean(treeData);
+      clean_paths(paths);
+
+      paths = [];
+      paths = searchTree(selectNode,"&s=CherryPicking",[]); //middle:  selectNode.s1_querys[selectValue]
         if(typeof(paths) !== "undefined"){
             openPaths(paths);
         }
@@ -168,16 +195,29 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     };
     
     function openPaths(paths){
-    for(var i =0;i<paths.length;i++){
-      if(paths[i].id !== "1"){//i.e. not root
-        paths[i].class = 'found';
-        if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
-          paths[i].children = paths[i]._children;
-            paths[i]._children = null;
+        for(var i =0;i<paths.length;i++){
+          if(paths[i].id !== "1"){//i.e. not root
+            paths[i].class = 'found';
+            if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
+              paths[i].children = paths[i]._children;
+                paths[i]._children = null;
+            }
+            update(paths[i]);
+          }
         }
-        update(paths[i]);
-      }
     }
+
+    function clean_paths(paths){
+        for(var i =0;i<paths.length;i++){
+          if(paths[i].id !== "1"){//i.e. not root
+            paths[i].class = '';
+            if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
+              paths[i].children = paths[i]._children;
+                paths[i]._children = null;
+            }
+            update(paths[i]);
+          }
+        }
     }
 
     // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
@@ -240,7 +280,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         var nodes = tree.nodes(root).reverse(), //get a reverse odered array of "tree.nodes(root);"
             links = tree.links(nodes);
 
-        //console.log(nodes);
+        console.log(nodes);
         //console.log(links);
 
         // Set widths between levels based on maxLabelLength.
@@ -360,8 +400,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             .duration(duration)
             .attr("d", diagonal)
             .style("stroke",function(d){
-                console.log(d);
-                if(d.target.class==="found"){
+                if(d.source.class==="found" && d.target.class==="found"){
                   return "#ff4136";
                 }
               });
