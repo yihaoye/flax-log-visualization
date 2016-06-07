@@ -41,37 +41,29 @@ the code is modified from work of Rob Schmuecker's drag tree js file
           return [index,leaves];
   }
 
-  function openPaths(paths){
-    for(var i =0;i<paths.length;i++){
-      if(paths[i].id !== "1"){//i.e. not root
-        paths[i].class = 'found';
-        if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
-          paths[i].children = paths[i]._children;
-            paths[i]._children = null;
-        }
-        update(paths[i]);
-      }
-    }
-  }
+  
 
-// Get JSON data
-treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
+  /*********************************************************************************/
 
-    //console.log(treeData);
+  
 
-    select2_data = extract_select2_data(treeData,[],0)[1];
-
-    // Calculate total nodes, max label length
+  // Calculate total nodes, max label length
     var totalNodes = 0;
     var maxLabelLength = 0;
     // Misc. variables
     var i = 0;
     var duration = 750;
     var root;
+    var querys = [];
+
+    var margin = {top: 20, right: 120, bottom: 20, left: 120};
 
     // size of the diagram
     var viewerWidth = 1000;
     var viewerHeight = 450;
+
+    var selectNode;
+
 
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
@@ -86,21 +78,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         .append("div") // declare the tooltip div
         .attr("class", "tooltip")
         .style("opacity", 0);
-
-    //init search box
-    $("#search").select2({
-      data: select2_data
-    });
-    //attach search box listener
-    $("#search").on("select2-selecting", function(e) {
-        var paths = searchTree(treeData,e.object.text,[]);
-        if(typeof(paths) !== "undefined"){
-          openPaths(paths);
-        }
-        else{
-          alert(e.object.text+" not found!");
-        }
-    });
 
     // A recursive helper function for performing some setup by walking through all nodes
     function visit(parent, visitFn, childrenFn) {
@@ -117,15 +94,25 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         }
     }
 
+    
+
+
+
+// Get JSON data
+treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
+
+    //console.log(treeData);
+
+    select2_data = extract_select2_data(treeData,[],0)[1];
+
+
     // Call visit function to establish maxLabelLength
     visit(treeData, function(d) {
         totalNodes++;
         maxLabelLength = Math.max(d.name.length, maxLabelLength);
-
     }, function(d) {
         return d.children && d.children.length > 0 ? d.children : null;
     });
-
     
 
     // Define the zoom function for the zoomable tree
@@ -136,8 +123,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
     var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
-    
-
     // define the baseSvg, attaching a class for styling and the zoomListener
     var baseSvg = d3.select("#tree-container").append("svg")
         .attr("width", viewerWidth)
@@ -145,39 +130,55 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         .attr("class", "overlay")
         .call(zoomListener);
 
+    // Append a group which holds all nodes and which the zoom Listener can act upon.
+    var svgGroup = baseSvg.append("g");
+
 
     var overCircle = function(d) {
-        /*
-        var querys = "Access_Percentage: " + 100*d.access_percentage + "%\n"; //var querys = "s1_querys:\n";
-        querys += "Access_Account: " + d.access_account + "\n";
+        selectNode = d;
+
+        querys = [];
         for(var key in d.s1_querys){
             if(d.s1_querys.hasOwnProperty(key)){
-                querys += (key + "  :  " + d.s1_querys[key] + "\n");
+                querys.push(key + "  :  " + d.s1_querys[key]);
             }
         }
-        //var json = JSON.stringify(d);
-        //querys += json.s1_querys;
-        div.transition()    
-                .style("visibility", "visible");
 
-        div.text(querys)
-                .style("left", 10 + "px")     
-                .style("top", 10 + "px"); 
-        */
-        /*
-        div.on("click", function(d){
-            outCircle(d);
-        });
-        */
-        
+        $(".select").empty();
+        var options = d3.select(".select")
+          .selectAll('option')
+          .data(querys).enter()
+          .append('option')
+            .text(function (d) { return d; });
     };
     var outCircle = function(d) {
-        div.transition()
-                .style("visibility", "hidden");   
+          
     };
 
+    function onchange() {
+      var selectValue = d3.select('select').property('value');
 
+      var paths = searchTree(selectNode,"&s=CherryPicking",[]); //middle:  selectNode.s1_querys[selectValue]
+        if(typeof(paths) !== "undefined"){
+            openPaths(paths);
+        }
+        else{
+            alert(" not found!");
+        }
+    };
     
+    function openPaths(paths){
+    for(var i =0;i<paths.length;i++){
+      if(paths[i].id !== "1"){//i.e. not root
+        paths[i].class = 'found';
+        if(paths[i]._children){ //if children are hidden: open them, otherwise: don't do anything
+          paths[i].children = paths[i]._children;
+            paths[i]._children = null;
+        }
+        update(paths[i]);
+      }
+    }
+    }
 
     // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
 
@@ -239,15 +240,12 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         var nodes = tree.nodes(root).reverse(), //get a reverse odered array of "tree.nodes(root);"
             links = tree.links(nodes);
 
-        console.log(nodes);
-        console.log(links);
+        //console.log(nodes);
+        //console.log(links);
 
         // Set widths between levels based on maxLabelLength.
         nodes.forEach(function(d) {
             d.y = (d.depth * (maxLabelLength * 7)); //maxLabelLength * 10px, "d.depth" automatically added to tree.nodes(root) by tree method
-            // alternatively to keep a fixed scale one can set a fixed depth per level
-            // Normalize for fixed-depth by commenting out below line
-            // d.y = (d.depth * 500); //500px per level.
         });
 
         // Update the nodes…
@@ -291,27 +289,25 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             })
             .style("fill-opacity", 0);
 
-        
-
-        // Update the text to reflect whether node has children or not.
-        /*
-        node.select('text')
-            .attr("x", function(d) {
-                return d.children || d._children ? -10 : 10;
-            })
-            .attr("text-anchor", function(d) {
-                return d.children || d._children ? "end" : "start";
-            })
-            .text(function(d) {
-                return d.name;
-            });
-        */
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select("circle.nodeCircle")
             .attr("r", 4.5)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                if(d.class === "found"){
+                  return "#ff4136"; //red
+                }
+                else if(d._children){
+                  return "lightsteelblue";
+                }
+                else{
+                  return "#fff";
+                }
+              })
+              .style("stroke", function(d) {
+                if(d.class === "found"){
+                  return "#ff4136"; //red
+                }
             });
 
         // Transition nodes to their new position.
@@ -364,6 +360,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             .duration(duration)
             .attr("d", diagonal)
             .style("stroke",function(d){
+                console.log(d);
                 if(d.target.class==="found"){
                   return "#ff4136";
                 }
@@ -389,10 +386,9 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
             d.x0 = d.x;
             d.y0 = d.y;
         });
-    }
+    }//update()
 
-    // Append a group which holds all nodes and which the zoom Listener can act upon.
-    var svgGroup = baseSvg.append("g");
+    
 
     // Define the root
     root = treeData;
@@ -412,4 +408,12 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+
+    var select = d3.select('body')
+      .append('select')
+        .attr('class','select')
+        .on('change',onchange);
+
+    //d3.select(self.frameElement).style("height", "800px");
+
 });
