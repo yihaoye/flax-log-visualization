@@ -28,38 +28,6 @@ the code is modified from work of Rob Schmuecker's drag tree js file
     }
   }
 
-  //get all the leaves and give them index
-  function extract_select2_data(node,leaves,index){
-          if (node.children){
-              for(var i = 0;i<node.children.length;i++){
-                  index = extract_select2_data(node.children[i],leaves,index)[0]; //[0]表示只把index传过去，不传leaves（leaves自己会继承）
-              }
-          }
-          else {
-              leaves.push({id:++index,text:node.name});
-          }
-          return [index,leaves];
-  }
-
-  /*
-  function bfs_clean(treeRoot){
-        if (!treeRoot || !treeRoot.length) return;
-
-        var stack = [];
-        stack.push(treeRoot);
-        
-        var item;
-        while (stack.length) {
-            item = stack.shift(); //推出栈底
-            //如果该节点有子节点，继续添加进入栈底
-            if (item.children && item.children.length) {
-                stack = stack.concat(item.children);
-            }
-            item.class=''; //remove this one if remove clean function
-        }
-    }
-    */
-
 
 
 
@@ -126,8 +94,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
 
     //console.log(treeData);
 
-    select2_data = extract_select2_data(treeData,[],0)[1];
-
 
     // Call visit function to establish maxLabelLength
     visit(treeData, function(d) {
@@ -181,7 +147,6 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
     function onchange() {
       selectValue = d3.select('select').property('value');
 
-      //bfs_clean(treeData);
       clean_paths(paths);
 
       paths = [];
@@ -280,7 +245,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         var nodes = tree.nodes(root).reverse(), //get a reverse odered array of "tree.nodes(root);"
             links = tree.links(nodes);
 
-        console.log(nodes);
+        //console.log(nodes);
         //console.log(links);
 
         // Set widths between levels based on maxLabelLength.
