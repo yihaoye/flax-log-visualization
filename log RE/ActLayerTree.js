@@ -129,7 +129,7 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
         querys = [];
         for(var key in d.s1_querys){
             if(d.s1_querys.hasOwnProperty(key)){
-                querys.push(key + "  :  " + d.s1_querys[key]);
+                querys.push(key + "  :  " + d.s1_querys[key].account);
             }
         }
 
@@ -139,6 +139,8 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
           .data(querys).enter()
           .append('option')
             .text(function (d) { return d; });
+
+        $(".select").val("");
     };
     var outCircle = function(d) {
           
@@ -146,17 +148,20 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
 
     function onchange() {
       selectValue = d3.select('select').property('value');
+      selectValue = selectValue.substring(0, selectValue.indexOf(' '));//"lvl2 &s=XXX : 1", remove " : 1"
 
       clean_paths(paths);
 
-      paths = [];
-      paths = searchTree(selectNode,"&s=CherryPicking",[]); //middle:  selectNode.s1_querys[selectValue]
-        if(typeof(paths) !== "undefined"){
-            openPaths(paths);
-        }
-        else{
-            alert(" not found!");
-        }
+      for(var next_action in selectNode.s1_querys[selectValue].next_ActionsQuerys){
+          paths = [];
+          paths = searchTree(selectNode, next_action,[]); //middle:  selectNode.s1_querys[selectValue]
+            if(typeof(paths) !== "undefined"){
+                openPaths(paths);
+            }
+            else{
+                alert(" not found!");
+            }
+      }
     };
     
     function openPaths(paths){

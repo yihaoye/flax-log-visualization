@@ -29,6 +29,7 @@ public class TreeProcessor {
 	 String node_current_s_action;
 	 String node_s1_query;
 	 //String[] node_s1_paras;
+	 HashMap<String, String> last_query = new HashMap<String, String>();/////////
 	
 	 
 	 /* Regular Expression */
@@ -63,7 +64,7 @@ public class TreeProcessor {
 		 if(writer!=null) 
 			   writer.close();
 		 writer = new PrintWriter(file + "/" + "action_layer_tree.json", "UTF-8");
-		 action_layer_tree_json = gson.toJson(action_layer_tree);
+		 action_layer_tree_json = gson.toJson(action_layer_tree.root);
 		 System.out.println ("UserTree:" + action_layer_tree_json);
 		 writer.println(action_layer_tree_json);	// write info into json
 		 writer.close();
@@ -80,7 +81,6 @@ public class TreeProcessor {
 					info[i] = matcher[i].group();
 					strLine = strLine.replace(matcher[i].group(), ""); // remove match part
 				}
-
 			}
 		}
 	}
@@ -89,19 +89,40 @@ public class TreeProcessor {
 	public void set_tree(String userID, String time, String current_c_action, String current_s_action, String s1_query){
 
 		//
-		Node new_node = new Node();
-		new_node.set_node_name(current_s_action);
-		new_node.set_s1_querys(s1_query);
 		Node temp_node = null;
+		int level_index = 0;//////
 		if(user_action_path.containsKey(userID)){
 			for(String node_name : user_action_path.get(userID)){//
 				System.out.println (node_name);
 				temp_node = action_layer_tree.bfs_traverse(temp_node, node_name);
+				level_index = user_action_path.get(userID).indexOf(node_name) + 2;//////
 			}
 		}else{
 			temp_node = action_layer_tree.bfs_traverse(temp_node, null);
+			level_index++;////////
 		}
+		
+		///////有空再检查！！！！！
+		if(!temp_node.name.equals("lvl"+(level_index-1)+" "+current_s_action)){
+			current_s_action = "lvl"+level_index+" "+current_s_action;
+		}else{
+			current_s_action = "lvl"+(level_index-1)+" "+current_s_action;
+		}
+		////////
+		
+		Node new_node = new Node();///////
+		new_node.set_node_name(current_s_action);/////////
+		new_node.set_s1_querys(s1_query);//////////
 		action_layer_tree.add_action_node(temp_node, new_node);
+		
+		//////////过后要改!!!!!!!!严重BUG/////////////
+		if(last_query.containsKey(userID)){
+			//System.out.println(last_query.get(userID));
+			//System.out.println(temp_node.s1_querys);
+			//if(temp_node.s1_querys.containsKey(last_query.get(userID))){
+				temp_node.s1_querys.get(last_query.get(userID)).set_s1_query_node(current_s_action, s1_query);
+			//}
+		}
 		
 		//built user action path
 		if(user_action_path.containsKey(userID)){
@@ -115,6 +136,8 @@ public class TreeProcessor {
 				user_action_path.get(userID).add(current_s_action);
 			}
 		}
+		
+		last_query.put(userID, s1_query);/////////
 		
 	}
 		

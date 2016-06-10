@@ -25,11 +25,13 @@ public class Tree {
     		//add s1_paras account
         	for(String key : added_node.s1_querys.keySet()){
         		if(added_root.s1_querys.containsKey(key)){
-        			int access_value = added_root.s1_querys.get(key);
-        			access_value += added_node.s1_querys.get(key);
-        			added_root.s1_querys.put(key, access_value);
+        			int access_value = added_root.s1_querys.get(key).account;////////
+        			access_value += added_node.s1_querys.get(key).account;//////
+        			added_root.s1_querys.get(key).account = access_value;////////
         		}else{
-        			added_root.s1_querys.put(key, 1);
+        			added_root.s1_querys.put(key, new S1_QuerysNode());
+        			//added_root.s1_querys.get(key);
+        			//= added_node.s1_querys;///////
         		}
         	}
     	}else{

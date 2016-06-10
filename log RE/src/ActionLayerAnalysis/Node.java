@@ -9,14 +9,14 @@ public class Node {
 	public String name;
     //private Node parent;
     public List<Node> children;
-    public HashMap<String, Integer> s1_querys;
+    public HashMap<String, S1_QuerysNode> s1_querys; //////query:related next_ActionQuery
     public int access_account;
     public float access_percentage;
     
     public Node(){
     	name = null;
     	children = new ArrayList<Node>();
-    	s1_querys = new HashMap<String, Integer>();
+    	s1_querys = new HashMap<String, S1_QuerysNode>();//////////
     	access_account = 1;
     }
     
@@ -28,13 +28,7 @@ public class Node {
     	access_percentage = given_percentage;
     }
     
-    public void set_s1_querys(String given_query){
-    	if(s1_querys.containsKey(given_query)){
-    		int temp = s1_querys.get(given_query);
-    		temp++;
-    		s1_querys.put(given_query, temp);
-    	}else{
-    		s1_querys.put(given_query, 1);
-    	}
+    public void set_s1_querys(String given_query){//////////
+    	s1_querys.put(given_query, new S1_QuerysNode());//////////
     }
 }

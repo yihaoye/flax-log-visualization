@@ -18,8 +18,17 @@ import ActionRelation.ActionRelationProcessor;
 public class LogRegExp {
     public static void main(String argv[]) {
     	try{
-    		   FileInputStream fstream = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log");
-    		   BufferedReader in = new BufferedReader(new InputStreamReader(fstream));
+    		   FileInputStream fstream[] = new FileInputStream[7];
+    		   BufferedReader in = null;
+    		   fstream[6] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log");
+    		   fstream[5] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.1");
+    		   fstream[4] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.2");
+    		   fstream[3] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.3");
+    		   fstream[2] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.4");
+    		   fstream[1] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.5");
+    		   fstream[0] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.6");
+    		   
+    		   
     		   String strLine;
     		   String JSONLine = "";
     		   final String dir = System.getProperty("user.dir"); //get current working directory path
@@ -36,29 +45,34 @@ public class LogRegExp {
     		   FilteredActions filter = new FilteredActions();
     		   
     		   
-    		   /* read log line by line */
-    		   while ((strLine = in.readLine()) != null){
-    			   //
-    			   if(filter.filter_action(strLine)){
-    				   continue; //skip this loop
-    			   }
+    		   //for(int i=0; i<=6; i++){
+    			   in = new BufferedReader(new InputStreamReader(fstream[6]));
+    		   //}
     			   
-    			   //
-    			   //log_div.process(strLine);
-    			   
-    			   //
-    			   //action_layer_tree.process(strLine);
-    			   
-    			   //
-    			   arp.process(strLine);
-    			   
-    			   //
-    			   //user_tree.process(strLine);
-    			   
-    		   }
+	    		   /* read log line by line */
+	    		   while ((strLine = in.readLine()) != null){
+	    			   //
+	    			   if(filter.filter_action(strLine)){
+	    				   continue; //skip this loop
+	    			   }
+	    			   
+	    			   //
+	    			   //log_div.process(strLine);
+	    			   
+	    			   //
+	    			   action_layer_tree.process(strLine);
+	    			   
+	    			   //
+	    			   //arp.process(strLine);
+	    			   
+	    			   //
+	    			   //user_tree.process(strLine);
+	    			   
+	    		   }
     		   
-    		   //action_layer_tree.write_json();
-    		   arp.write_json();
+    		   
+    		   action_layer_tree.write_json();
+    		   //arp.write_json();
     		   //user_tree.write_json();
     		   
     		   
