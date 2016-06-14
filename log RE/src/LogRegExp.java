@@ -29,6 +29,7 @@ public class LogRegExp {
     		   fstream[0] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.6");
     		   
     		   
+    		   
     		   String strLine;
     		   String JSONLine = "";
     		   final String dir = System.getProperty("user.dir"); //get current working directory path
@@ -44,10 +45,9 @@ public class LogRegExp {
     		   //filter object for filtering auto created actions
     		   FilteredActions filter = new FilteredActions();
     		   
-    		   
-    		   //for(int i=0; i<=6; i++){
-    			   in = new BufferedReader(new InputStreamReader(fstream[6]));
-    		   //}
+    		   //for(int i=0; i<=3; i++){
+    			   in = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log")));
+    			//}
     			   
 	    		   /* read log line by line */
 	    		   while ((strLine = in.readLine()) != null){

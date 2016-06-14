@@ -30,8 +30,6 @@ public class Tree {
         			added_root.s1_querys.get(key).account = access_value;////////
         		}else{
         			added_root.s1_querys.put(key, new S1_QuerysNode());
-        			//added_root.s1_querys.get(key);
-        			//= added_node.s1_querys;///////
         		}
         	}
     	}else{

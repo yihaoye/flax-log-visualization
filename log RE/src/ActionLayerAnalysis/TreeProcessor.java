@@ -102,7 +102,7 @@ public class TreeProcessor {
 			level_index++;////////
 		}
 		
-		///////有空再检查！！！！！
+		///////有空再检查！！！！！貌似没问题
 		if(!temp_node.name.equals("lvl"+(level_index-1)+" "+current_s_action)){
 			current_s_action = "lvl"+level_index+" "+current_s_action;
 		}else{
@@ -115,13 +115,9 @@ public class TreeProcessor {
 		new_node.set_s1_querys(s1_query);//////////
 		action_layer_tree.add_action_node(temp_node, new_node);
 		
-		//////////过后要改!!!!!!!!严重BUG/////////////
+		//////////逻辑上貌似没问题/////////////
 		if(last_query.containsKey(userID)){
-			//System.out.println(last_query.get(userID));
-			//System.out.println(temp_node.s1_querys);
-			//if(temp_node.s1_querys.containsKey(last_query.get(userID))){
-				temp_node.s1_querys.get(last_query.get(userID)).set_s1_query_node(current_s_action, s1_query);
-			//}
+			temp_node.s1_querys.get(last_query.get(userID)).set_s1_query_node(current_s_action, s1_query);
 		}
 		
 		//built user action path
