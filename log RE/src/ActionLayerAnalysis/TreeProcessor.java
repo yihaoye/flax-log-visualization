@@ -115,7 +115,7 @@ public class TreeProcessor {
 		new_node.set_s1_querys(s1_query);//////////
 		action_layer_tree.add_action_node(temp_node, new_node);
 		
-		//////////逻辑上貌似没问题/////////////
+		//////////逻辑上貌似没问题/////////////把本次action、query记录为上次的query的next query
 		if(last_query.containsKey(userID)){
 			temp_node.s1_querys.get(last_query.get(userID)).set_s1_query_node(current_s_action, s1_query);
 		}
