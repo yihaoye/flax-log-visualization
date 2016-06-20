@@ -10,7 +10,7 @@ public class Tree {
 
     public Tree() {
         root = new Node();
-        root.name = "&c=collocations"; //root.name = "root"; 之前的赋值
+        root.name = "Learning Collocations"; //root.name = "root"; 之前的赋值
         root.children = new ArrayList<Node>();
         root.access_percentage = 1;
     }

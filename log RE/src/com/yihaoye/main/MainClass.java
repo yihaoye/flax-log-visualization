@@ -1,26 +1,19 @@
 package com.yihaoye.main;
 import com.yihaoye.actionrelation.*;
 import com.yihaoye.actiontracetree.*;
-import com.yihaoye.filter.*;
+import com.yihaoye.filterandrename.*;
 import com.yihaoye.logdiv.LogDiv;
 import com.yihaoye.usertree.*;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.*;
 import java.util.*;
-import com.google.gson.*;
 
 
 
-public class LogRegExp {
+public class MainClass {
     public static void main(String argv[]) {
     	try{
     		   FileInputStream fstream[] = new FileInputStream[7];
@@ -33,52 +26,57 @@ public class LogRegExp {
     		   fstream[1] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.5");
     		   fstream[0] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.6");
     		   
+    		   	   
+    		   String str_line = null;
+    		   //use str_line_abstract_info array since Java can not pass parameters by reference in single variable, but array can
+    		   String[] str_line_abstract_info = new String[6]; //String date, time, uid, current_c_action, current_s_action, s1_query;
+    		   String[] s1_paras = null;
     		   
-    		   
-    		   String strLine;
-    		   String JSONLine = "";
-    		   final String dir = System.getProperty("user.dir"); //get current working directory path
-    		   PrintWriter writer = null;	//for print info into txt file (important info for each ip, actions account)
-    		   Gson gson = new Gson(); // for convert object/hashmap to json format
-    		   
-    		   //create three object for three different process
+    		   //regular expression object (and replace the original action name with new simple action name)
+    		   RegExp reg_exp = new RegExp();
+    		   //filter object for filtering auto created actions ,and rename c_action and s_action
+    		   FilterAndRename filter = new FilterAndRename();
+    		   //create objects for different process
     		   LogDiv log_div = new LogDiv(); //for div log by user id
     		   UserTree user_tree = new UserTree(); //for build up complete user tree (include their actions and relevant info)
     		   ActionTraceTreeProcessor action_layer_tree = new ActionTraceTreeProcessor();
-    		   ActionRelationProcessor arp = new ActionRelationProcessor();
-    		   
-    		   //filter object for filtering auto created actions
-    		   FilteredActions filter = new FilteredActions();
+    		   ActionRelationProcessor action_relation_ds = new ActionRelationProcessor();    		   
+    		   		   
     		   
     		   //for(int i=0; i<=3; i++){
     			   in = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log")));
     			//}
     			   
+    			   
 	    		   /* read log line by line */
-	    		   while ((strLine = in.readLine()) != null){
-	    			   //
-	    			   if(filter.filterAction(strLine)){
+	    		   while ((str_line = in.readLine()) != null){
+	    			   
+	    			   //regular expression
+	    			   reg_exp.process(str_line, str_line_abstract_info, s1_paras);
+	    			   
+	    			   //if action is not in white list, dismiss the line
+	    			   if(filter.process(str_line_abstract_info)){ //目前只保留&c=collocations内的s_action
 	    				   continue; //skip this loop
 	    			   }
+	    			   	    			   
+	    			   //
+	    			   //log_div.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   //log_div.process(strLine);
+	    			   action_layer_tree.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   action_layer_tree.process(strLine);
+	    			   //action_relation_ds.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   //arp.process(strLine);
-	    			   
-	    			   //
-	    			   //user_tree.process(strLine);
+	    			   //user_tree.process(str_line_abstract_info);
 	    			   
 	    		   }
     		   
     		   
     		   action_layer_tree.writeJSON();
-    		   //arp.write_json();
-    		   //user_tree.write_json();
+    		   //action_relation_ds.writeJSON();
+    		   //user_tree.writeJSON();
     		   
     		   
     		   

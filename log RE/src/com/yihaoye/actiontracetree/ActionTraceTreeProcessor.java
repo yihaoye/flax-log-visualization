@@ -4,12 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-//import java.util.HashMap;
-//import java.util.LinkedList;
-//import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.google.gson.Gson;
 
 public class ActionTraceTreeProcessor {
@@ -23,43 +17,19 @@ public class ActionTraceTreeProcessor {
 	 
 	 Tree action_layer_tree = new Tree();
 	 UsersActionsPath users_actions_path = new UsersActionsPath();
-	 String[] info = new String[6];
-	 String node_userID; 
-	 String node_time;
-	 String node_current_c_action;
-	 String node_current_s_action;
-	 String node_s1_query;
-	 //String[] node_s1_paras;
-	
 	 
-	 /* Regular Expression */
-	 Pattern pattern[] = {Pattern.compile("\\d{4}-\\d{2}-\\d{2}"), 
-			 Pattern.compile("\\d{2}:\\d{2}:\\d{2}"), 
-			 Pattern.compile("uid=\\d+"),
-			 Pattern.compile("\\&c=\\w+"), 
-			 Pattern.compile("\\&s=\\w+"), 
-			 Pattern.compile("s1.query=\\w+")};
 	 
 	 //
-	 public void process(String strLine){
-		 file.mkdir(); // create a new directory to store json
-		 
-		 //
-		 abstractInfo(strLine);
-		 node_userID = info[0]+" "+info[2]; 
-		 node_time = info[1];
-		 node_current_c_action = info[3];
-		 node_current_s_action = info[4];
-		 node_s1_query = info[5];
-		 
+	 public void process(String[] str_line_abstract_info){		 
 		 //set tree
-		 System.out.println ("Tree:"+node_userID + " " + node_time);
-		 setTree(node_userID, node_time, node_current_c_action, node_current_s_action, node_s1_query);
-		 
+		 //str_line_abstract_info (String date, time, uid, current_c_action, current_s_action, s1_query;)
+		 System.out.println ("Tree:"+ str_line_abstract_info[0] + " " + str_line_abstract_info[1]);
+		 setTree(str_line_abstract_info[0] + " " + str_line_abstract_info[2], str_line_abstract_info[1], str_line_abstract_info[3], str_line_abstract_info[4], str_line_abstract_info[5]);		 
 	 }
 	 
 	 //
 	 public void writeJSON() throws FileNotFoundException, UnsupportedEncodingException{
+		 file.mkdir(); // create a new directory to store json
 		 //check if writer is closed
 		 if(writer!=null) 
 			   writer.close();
@@ -83,19 +53,6 @@ public class ActionTraceTreeProcessor {
 		 users_actions_path_json = "";
 	 }
 	 
-	 //
-	public void abstractInfo(String strLine){
-		Matcher matcher[] = new Matcher[pattern.length];
-		for(int i=0; i<pattern.length; i++){
-			matcher[i] = pattern[i].matcher(strLine);
-			if(matcher[i].find()){
-				if(i<=(pattern.length-1)){
-					info[i] = matcher[i].group();
-					strLine = strLine.replace(matcher[i].group(), ""); // remove match part
-				}
-			}
-		}
-	}
 	
 	//
 	public void setTree(String userID, String time, String current_c_action, String current_s_action, String s1_query){
