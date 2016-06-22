@@ -54,6 +54,8 @@ the code is modified from work of Rob Schmuecker's drag tree js file
     var selectValue;
     var paths = [];
 
+    var pathData;
+
 
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
@@ -92,8 +94,13 @@ the code is modified from work of Rob Schmuecker's drag tree js file
 // Get JSON data
 treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
 
-    //console.log(treeData);
+    //read path json data
+    d3.json("JSONFiles/users_actions_path.json", function(error, JSONdata){
+        pathData = JSONdata;
+        console.log(pathData);
+    });
 
+    //console.log(treeData);
 
     // Call visit function to establish maxLabelLength
     visit(treeData, function(d) {
@@ -142,26 +149,45 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
 
         $(".select").val("");
     };
+
     var outCircle = function(d) {
           
     };
 
     function onchange() {
       selectValue = d3.select('select').property('value');
-      selectValue = selectValue.substring(0, selectValue.indexOf(' '));//"lvl2 &s=XXX : 1", remove " : 1"
+      var userID = selectValue.substring(0, selectValue.indexOf('s1.query')-1);//"XXXX-XX-XX uid=XXX s1.query=XXX : 1", remove "s1.query=XXX : 1"
+      var s1query = selectValue.substring(selectValue.indexOf('s1.query'), selectValue.indexOf(':')-1);//get "s1.query=XXX"
 
       clean_paths(paths);
 
-      for(var next_action in selectNode.s1_querys[selectValue].next_ActionsQuerys){
+      ////////////////////////////////////////////////////////////////////////////
+      var the_user_actions = []; 
+      var temp_array = []; 
+      for(var key in pathData[userID]){
+        temp_array.push(key);
+      }    
+      for(var i=0; i<temp_array.length; i++){
+        if(i >= temp_array.indexOf(selectNode.name)){
+            the_user_actions.push(temp_array[i]);
+        }
+      }
+      
+      console.log(the_user_actions);
+      ////////////////////////////////////////////////////////////////////////////
+
+      //for(var next_action in the_user_actions){
+        var next_action = the_user_actions[the_user_actions.length-1];
           paths = [];
-          paths = searchTree(selectNode, next_action,[]); //middle:  selectNode.s1_querys[selectValue]
+          paths = searchTree(selectNode, next_action,[]); //
             if(typeof(paths) !== "undefined"){
                 openPaths(paths);
             }
             else{
                 alert(" not found!");
             }
-      }
+        //}
+        ///////////////////////////////////////////////////////////////////////////
     };
     
     function openPaths(paths){
