@@ -92,7 +92,7 @@ the code is modified from work of Rob Schmuecker's drag tree js file
 
 
 // Get JSON data
-treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData) {
+treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData) {
 
     //read path json data
     d3.json("JSONFiles/users_actions_path.json", function(error, JSONdata){

@@ -12,13 +12,13 @@ import com.google.gson.Gson;
 public class ActionTraceTreeProcessor {
 
 	 final String dir = System.getProperty("user.dir"); //get current working directory path
-	 String action_layer_tree_json = "";
+	 String action_trace_tree_json = "";
 	 String users_actions_path_json = "";
 	 PrintWriter writer = null;	//for print info into txt file 
 	 Gson gson = new Gson(); // for convert object/tree to json format
 	 File file = new File(dir+"/JSONFiles");
 	 
-	 Tree action_layer_tree = new Tree();
+	 Tree action_trace_tree = new Tree();
 	 UsersActionsPath users_actions_path = new UsersActionsPath();
 	 
 	 
@@ -37,11 +37,11 @@ public class ActionTraceTreeProcessor {
 		 if(writer!=null) 
 			   writer.close();
 		 
-		 //action_layer_tree_json write into json file
-		 writer = new PrintWriter(file + "/" + "action_layer_tree.json", "UTF-8");
-		 action_layer_tree_json = gson.toJson(action_layer_tree.root);
-		 System.out.println ("UserTree:" + action_layer_tree_json);
-		 writer.println(action_layer_tree_json);	// write info into json
+		 //action_trace_tree_json write into json file
+		 writer = new PrintWriter(file + "/" + "action_trace_tree.json", "UTF-8");
+		 action_trace_tree_json = gson.toJson(action_trace_tree.root);
+		 System.out.println ("UserTree:" + action_trace_tree_json);
+		 writer.println(action_trace_tree_json);	// write info into json
 		 writer.close();
 		 
 		 //users_actions_path_json write into json file
@@ -52,7 +52,7 @@ public class ActionTraceTreeProcessor {
 		 writer.close();
 		 
 		 //clear the String
-		 action_layer_tree_json = "";
+		 action_trace_tree_json = "";
 		 users_actions_path_json = "";
 	 }
 	 
@@ -60,17 +60,17 @@ public class ActionTraceTreeProcessor {
 	//
 	public void setTree(String userID, String time, String current_c_action, String current_s_action, String s1_query){
 
-		//find current user's last corresponding node within action_layer_tree, if not record the user before then return tree root node. (use users_actions_path to find action node layer by layer -- bfsTraverse)
+		//find current user's last corresponding node within action_trace_tree, if not record the user before then return tree root node. (use users_actions_path to find action node layer by layer -- bfsTraverse)
 		Node temp_node = null;
 		int level_index = 0;
 		if(users_actions_path.containsKey(userID)){
 			for(String node_name : users_actions_path.get(userID).keySet()){//
 				System.out.println (node_name);
-				temp_node = action_layer_tree.bfsTraverse(temp_node, node_name);
+				temp_node = action_trace_tree.bfsTraverse(temp_node, node_name);
 			}
 			level_index = users_actions_path.get(userID).keySet().size();//get recorded last lvl_action's level
 		}else{
-			temp_node = action_layer_tree.bfsTraverse(temp_node, null);
+			temp_node = action_trace_tree.bfsTraverse(temp_node, null);
 			//last recorded user's lvl_action's level_index=0, level_index no need to be changed here
 		}
 		
@@ -86,14 +86,14 @@ public class ActionTraceTreeProcessor {
 		//built users_actions_path (for JSON)
 		users_actions_path.setPath(userID, current_s_action, s1_query);
 		
-		//set it as unique_s1_query with userID (used for identified within action_layer_tree from other query which query same s1.query but by different user)
+		//set it as unique_s1_query with userID (used for identified within action_trace_tree from other query which query same s1.query but by different user)
 		s1_query = userID + " " + s1_query; 
 		
-		//create new temp node to store current action data, and then combine into the action_layer_tree's corresponding node
+		//create new temp node to store current action data, and then combine into the action_trace_tree's corresponding node
 		Node new_node = new Node();
 		new_node.setNodeName(current_s_action);
 		new_node.setS1QuerysInfo(s1_query, userID, current_s_action);
-		action_layer_tree.addActionNode(temp_node, new_node);
+		action_trace_tree.addActionNode(temp_node, new_node);
 	}
 	
 	
@@ -104,7 +104,7 @@ public class ActionTraceTreeProcessor {
 		
 		//set first current level nodes array
 		current_lvl_groups_nodes.add(new ArrayList<Node>()); 
-		current_lvl_groups_nodes.get(current_lvl_groups_nodes.size()-1).addAll(action_layer_tree.root.children);
+		current_lvl_groups_nodes.get(current_lvl_groups_nodes.size()-1).addAll(action_trace_tree.root.children);
 		
 		ArrayList<Integer> lvl_groups_nodes_accessed_sum = new ArrayList<Integer>();
 		float temp_percentage = 0;
