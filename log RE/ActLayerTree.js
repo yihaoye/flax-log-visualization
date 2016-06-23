@@ -328,7 +328,9 @@ treeJSON = d3.json("JSONFiles/action_layer_tree.json", function(error, treeData)
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select("circle.nodeCircle")
-            .attr("r", 4.5)
+            .attr("r", function(d){
+                return 7*d.access_percentage; //size the node circle according to their access_percentage attribute!!!important function
+            })
             .style("fill", function(d) {
                 if(d.class === "found"){
                   return "#ff4136"; //red

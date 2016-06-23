@@ -55,10 +55,11 @@ public class Tree {
     	}else{
     		queue.add(root);
     	}
-    	System.out.println ("here");
+    	
     	while(!queue.isEmpty()){
-    		//System.out.println ("here");
+    		//get the current first element of queue
     		Node temp = queue.remove();
+    		
     		if(temp.name.equals(action_name)){
     			return temp;
     		}

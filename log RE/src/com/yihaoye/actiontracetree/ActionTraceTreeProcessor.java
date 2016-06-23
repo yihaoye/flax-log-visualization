@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 import com.google.gson.Gson;
 
 public class ActionTraceTreeProcessor {
@@ -91,6 +94,47 @@ public class ActionTraceTreeProcessor {
 		new_node.setNodeName(current_s_action);
 		new_node.setS1QuerysInfo(s1_query, userID, current_s_action);
 		action_layer_tree.addActionNode(temp_node, new_node);
+	}
+	
+	
+	//
+	public void setEachNodeAccessPercentage(){
+		ArrayList<ArrayList<Node>> current_lvl_groups_nodes = new ArrayList<ArrayList<Node>>();
+		ArrayList<ArrayList<Node>> next_lvl_groups_nodes = new ArrayList<ArrayList<Node>>();
+		
+		//set first current level nodes array
+		current_lvl_groups_nodes.add(new ArrayList<Node>()); 
+		current_lvl_groups_nodes.get(current_lvl_groups_nodes.size()-1).addAll(action_layer_tree.root.children);
+		
+		ArrayList<Integer> lvl_groups_nodes_accessed_sum = new ArrayList<Integer>();
+		float temp_percentage = 0;
+		int temp_sum = 0; //group nodes access sum
+		DecimalFormat decimal_format = new DecimalFormat("#.#"); //round number to one decimal places
+		
+		while(!current_lvl_groups_nodes.isEmpty()){
+			for(int i=0; i<current_lvl_groups_nodes.size(); i++){ //get one group of current level groups (a group of nodes have same parent)
+				for(Node temp_node : current_lvl_groups_nodes.get(i)){ //get nodes of one group
+					next_lvl_groups_nodes.add(new ArrayList<Node>());
+					next_lvl_groups_nodes.get(next_lvl_groups_nodes.size()-1).addAll(temp_node.children);
+					temp_sum += temp_node.access_account;
+				}
+				lvl_groups_nodes_accessed_sum.add(temp_sum); //add a group access sum to "lvl_groups_nodes_accessed_sum"
+				temp_sum = 0;
+				
+				for(Node temp_node : current_lvl_groups_nodes.get(i)){ //process each node of one group
+					temp_percentage = (float) temp_node.access_account / lvl_groups_nodes_accessed_sum.get(i);
+					temp_percentage = Float.valueOf(decimal_format.format(temp_percentage)); //round percentage to one decimal places
+					temp_percentage = (temp_percentage>0) ? temp_percentage : (float)0.1; //if temp_percentage < 0.1, equals to 0.1
+					temp_node.setAccessPercentage(temp_percentage);
+				}
+			}
+			
+			lvl_groups_nodes_accessed_sum.clear();
+			temp_percentage = 0; //this statement can be deleted, but remain since more standard
+			current_lvl_groups_nodes.clear();
+			current_lvl_groups_nodes.addAll(next_lvl_groups_nodes);
+			next_lvl_groups_nodes.clear();
+		}
 	}
 		
 }

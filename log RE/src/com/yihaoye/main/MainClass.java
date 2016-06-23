@@ -39,7 +39,7 @@ public class MainClass {
     		   //create objects for different process
     		   LogDiv log_div = new LogDiv(); //for div log by user id
     		   UserTree user_tree = new UserTree(); //for build up complete user tree (include their actions and relevant info)
-    		   ActionTraceTreeProcessor action_layer_tree = new ActionTraceTreeProcessor();
+    		   ActionTraceTreeProcessor action_trace_tree = new ActionTraceTreeProcessor();
     		   ActionRelationProcessor action_relation_ds = new ActionRelationProcessor();    		   
     		   		   
     		   
@@ -63,7 +63,7 @@ public class MainClass {
 	    			   //log_div.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   action_layer_tree.process(str_line_abstract_info);
+	    			   action_trace_tree.process(str_line_abstract_info);
 	    			   
 	    			   //
 	    			   //action_relation_ds.process(str_line_abstract_info);
@@ -73,8 +73,9 @@ public class MainClass {
 	    			   
 	    		   }
     		   
+	    	   action_trace_tree.setEachNodeAccessPercentage();
     		   
-    		   action_layer_tree.writeJSON();
+    		   action_trace_tree.writeJSON();
     		   //action_relation_ds.writeJSON();
     		   //user_tree.writeJSON();
     		   
