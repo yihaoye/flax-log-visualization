@@ -129,43 +129,30 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     //
     var createTooltips = function(the_node, the_path){
         var relevant_querys = [];
-
-        // Define the div for the tooltip
-        /*
-        var div = d3.select("body").append("div")   
-            .attr("class", "tooltip")               
-            .style("visibility", "hidden"); 
-
-        div.transition()    
-                .style("visibility", "visible");
-
-        
-        div.text(relevant_querys)
-                .style("left", (the_node.y0) + "px")     
-                .style("top", (the_node.x0) + "px"); 
-        */
         
         var tooltip_group = svgGroup.append("g")
 
-        console.log(the_path);
-
         for(var key in the_path){
-
-            for(var query_key in the_path[key]){
-                //relevant_querys += (the_path[key][query_key] + "\n");
-                //console.log(the_path[key][query_key]);
+            /*
+            for(var _query in the_path[key]){
+                //relevant_querys += (_query + "\n");
+                console.log(the_path[key][_query]);
             }
+            console.log();
+            */
+            
+            //console.log(the_path[key]);//print s1.querys of each action
+            relevant_querys = the_path[key];
 
             for(var key_node in the_node.children){
-
-                if(the_node.children[key_node].name == the_path[key]){
+                if(the_node.children[key_node].name == key){
                     the_node = the_node.children[key_node];
                     //console.log(the_node.children[key_node]);
                     break;
-                }
-                
+                }               
             }
 
+            //tooltip block for each action
             tooltip_group.append('rect')
                     .attr('width', 100)
                     .attr('height', 100)
@@ -178,11 +165,20 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
                     .style("fill", "lightsteelblue")
                     .style("fill-opacity", "0.8");
 
-            tooltip_group.append('text')
-                    .text(relevant_querys)
+            //tooltip text for one action, write nothing just used for wrap tspan
+            var tooltip_text = tooltip_group.append('text')
                     .attr("class", "tooltip")
-                    .attr('x', the_node.y0 + 10)
-                    .attr('y', the_node.x0 + 20);
+                    .attr('x', the_node.y0 + 7) //can be remove, since tspan has assigned attr "x"
+                    .attr('y', the_node.x0 + 5);
+
+            //tspan: new line break for each query within one action
+            for(var _query in the_path[key]){
+                tooltip_text.append("tspan")
+                    .text(the_path[key][_query])
+                    .style("font-size","10px")
+                    .attr("dy", i ? "1.2em" : 0)
+                    .attr("x", the_node.y0 + 7);
+            }
         }
 
     }
@@ -226,20 +222,33 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
 
         ////////////////////////////////////////////////////////////////////////////
         var the_user_actions = []; 
+        /*
         var temp_array = []; 
         for(var key in pathData[userID]){
             temp_array.push(key);
+            //console.log(pathData[userID][key]);//log s1.querys
         }    
+        */
+        the_user_actions = pathData[userID];
+        /*
         for(var i=0; i<temp_array.length; i++){
             if(i >= temp_array.indexOf(selectNode.name)){
                 the_user_actions.push(temp_array[i]);
             }
         }
+        */
+        for(var key in the_user_actions){ //begin the path from selectNode
+            if(key == selectNode.name){
+                break;
+            }
+            delete the_user_actions[key]; 
+        }
 
-        //console.log(the_user_actions);
+        console.log(the_user_actions);
         ////////////////////////////////////////////////////////////////////////////
       
-        var next_action = the_user_actions[the_user_actions.length-1];
+        var next_action;
+        for(next_action in the_user_actions){};
         paths = [];
         paths = searchTree(selectNode, next_action,[]); //
         if(typeof(paths) !== "undefined"){
