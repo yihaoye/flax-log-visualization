@@ -66,10 +66,6 @@ the code is modified from work of Rob Schmuecker's drag tree js file
             return [d.y, d.x];
         });
 
-    var div = d3.select("body")
-        .append("div") // declare the tooltip div
-        .attr("class", "tooltip")
-        .style("opacity", 0);
 
     // A recursive helper function for performing some setup by walking through all nodes
     function visit(parent, visitFn, childrenFn) {
@@ -97,7 +93,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     //read path json data
     d3.json("JSONFiles/users_actions_path.json", function(error, JSONdata){
         pathData = JSONdata;
-        console.log(pathData);
+        //console.log(pathData);
     });
 
     //console.log(treeData);
@@ -117,7 +113,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     }
 
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
-    var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+    var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 10]).on("zoom", zoom);
 
     // define the baseSvg, attaching a class for styling and the zoomListener
     var baseSvg = d3.select("#tree-container").append("svg")
@@ -129,6 +125,72 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     // Append a group which holds all nodes and which the zoom Listener can act upon.
     var svgGroup = baseSvg.append("g");
 
+
+    //
+    var createTooltips = function(the_node, the_path){
+        var relevant_querys = [];
+
+        // Define the div for the tooltip
+        /*
+        var div = d3.select("body").append("div")   
+            .attr("class", "tooltip")               
+            .style("visibility", "hidden"); 
+
+        div.transition()    
+                .style("visibility", "visible");
+
+        
+        div.text(relevant_querys)
+                .style("left", (the_node.y0) + "px")     
+                .style("top", (the_node.x0) + "px"); 
+        */
+        
+        var tooltip_group = svgGroup.append("g")
+
+        console.log(the_path);
+
+        for(var key in the_path){
+
+            for(var query_key in the_path[key]){
+                //relevant_querys += (the_path[key][query_key] + "\n");
+                //console.log(the_path[key][query_key]);
+            }
+
+            for(var key_node in the_node.children){
+
+                if(the_node.children[key_node].name == the_path[key]){
+                    the_node = the_node.children[key_node];
+                    //console.log(the_node.children[key_node]);
+                    break;
+                }
+                
+            }
+
+            tooltip_group.append('rect')
+                    .attr('width', 100)
+                    .attr('height', 100)
+                    .attr("class", "tooltip")
+                    .transition().duration(500)
+                    .attr('x', the_node.y0)
+                    .attr('y', the_node.x0)
+                    .attr('rx', 10)
+                    .attr('ry', 10)
+                    .style("fill", "lightsteelblue")
+                    .style("fill-opacity", "0.8");
+
+            tooltip_group.append('text')
+                    .text(relevant_querys)
+                    .attr("class", "tooltip")
+                    .attr('x', the_node.y0 + 10)
+                    .attr('y', the_node.x0 + 20);
+        }
+
+    }
+
+    //
+    var cleanTooltips = function(){
+        $('.tooltip').remove();
+    }
 
     var overCircle = function(d) {
         selectNode = d;
@@ -147,7 +209,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
           .append('option')
             .text(function (d) { return d; });
 
-        $(".select").val("");
+        $(".select").val(""); //dropdown list default text
     };
 
     var outCircle = function(d) {
@@ -155,39 +217,41 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     };
 
     function onchange() {
-      selectValue = d3.select('select').property('value');
-      var userID = selectValue.substring(0, selectValue.indexOf('s1.query')-1);//"XXXX-XX-XX uid=XXX s1.query=XXX : 1", remove "s1.query=XXX : 1"
-      var s1query = selectValue.substring(selectValue.indexOf('s1.query'), selectValue.indexOf(':')-1);//get "s1.query=XXX"
+        selectValue = d3.select('select').property('value');
+        var userID = selectValue.substring(0, selectValue.indexOf('s1.query')-1);//"XXXX-XX-XX uid=XXX s1.query=XXX : 1", remove "s1.query=XXX : 1"
+        var s1query = selectValue.substring(selectValue.indexOf('s1.query'), selectValue.indexOf(':')-1);//get "s1.query=XXX"
 
-      clean_paths(paths);
+        clean_paths(paths);
+        cleanTooltips();
 
-      ////////////////////////////////////////////////////////////////////////////
-      var the_user_actions = []; 
-      var temp_array = []; 
-      for(var key in pathData[userID]){
-        temp_array.push(key);
-      }    
-      for(var i=0; i<temp_array.length; i++){
-        if(i >= temp_array.indexOf(selectNode.name)){
-            the_user_actions.push(temp_array[i]);
+        ////////////////////////////////////////////////////////////////////////////
+        var the_user_actions = []; 
+        var temp_array = []; 
+        for(var key in pathData[userID]){
+            temp_array.push(key);
+        }    
+        for(var i=0; i<temp_array.length; i++){
+            if(i >= temp_array.indexOf(selectNode.name)){
+                the_user_actions.push(temp_array[i]);
+            }
         }
-      }
-      
-      console.log(the_user_actions);
-      ////////////////////////////////////////////////////////////////////////////
 
-      //for(var next_action in the_user_actions){
+        //console.log(the_user_actions);
+        ////////////////////////////////////////////////////////////////////////////
+      
         var next_action = the_user_actions[the_user_actions.length-1];
-          paths = [];
-          paths = searchTree(selectNode, next_action,[]); //
-            if(typeof(paths) !== "undefined"){
-                openPaths(paths);
-            }
-            else{
-                alert(" not found!");
-            }
-        //}
-        ///////////////////////////////////////////////////////////////////////////
+        paths = [];
+        paths = searchTree(selectNode, next_action,[]); //
+        if(typeof(paths) !== "undefined"){
+            openPaths(paths);
+        }
+        else{
+            alert(" not found!");
+        }
+
+        createTooltips(selectNode, the_user_actions);
+        ////////////////////////////////////////////////////////////////////////////
+        
     };
     
     function openPaths(paths){
@@ -281,7 +345,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
 
         // Set widths between levels based on maxLabelLength.
         nodes.forEach(function(d) {
-            d.y = (d.depth * (maxLabelLength * 7)); //maxLabelLength * 10px, "d.depth" automatically added to tree.nodes(root) by tree method
+            d.y = (d.depth * (maxLabelLength * 5)); //maxLabelLength * 10px, "d.depth" automatically added to tree.nodes(root) by tree method
         });
 
         // Update the nodes…
@@ -329,7 +393,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
         // Change the circle fill depending on whether it has children and is collapsed
         node.select("circle.nodeCircle")
             .attr("r", function(d){
-                return 7*d.access_percentage; //size the node circle according to their access_percentage attribute!!!important function
+                return 8*d.access_percentage; //size the node circle according to their access_percentage attribute!!!important function
             })
             .style("fill", function(d) {
                 if(d.class === "found"){
@@ -446,6 +510,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     update(root);
     centerNode(root);
 
+    // dropdown list
     var select = d3.select('body')
       .append('select')
         .attr('class','select')
