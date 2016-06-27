@@ -128,22 +128,13 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
 
     //
     var createTooltips = function(the_node, the_path){
-        var relevant_querys = [];
         
         var tooltip_group = svgGroup.append("g")
 
+        //load each action of the path (path for the userID and selectNode)
         for(var key in the_path){
-            /*
-            for(var _query in the_path[key]){
-                //relevant_querys += (_query + "\n");
-                console.log(the_path[key][_query]);
-            }
-            console.log();
-            */
-            
-            //console.log(the_path[key]);//print s1.querys of each action
-            relevant_querys = the_path[key];
 
+            //
             for(var key_node in the_node.children){
                 if(the_node.children[key_node].name == key){
                     the_node = the_node.children[key_node];
@@ -222,21 +213,9 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
 
         ////////////////////////////////////////////////////////////////////////////
         var the_user_actions = []; 
-        /*
-        var temp_array = []; 
-        for(var key in pathData[userID]){
-            temp_array.push(key);
-            //console.log(pathData[userID][key]);//log s1.querys
-        }    
-        */
+        
         the_user_actions = pathData[userID];
-        /*
-        for(var i=0; i<temp_array.length; i++){
-            if(i >= temp_array.indexOf(selectNode.name)){
-                the_user_actions.push(temp_array[i]);
-            }
-        }
-        */
+        
         for(var key in the_user_actions){ //begin the path from selectNode
             if(key == selectNode.name){
                 break;
@@ -256,6 +235,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
         }
         else{
             alert(" not found!");
+            paths = [];
         }
 
         createTooltips(selectNode, the_user_actions);

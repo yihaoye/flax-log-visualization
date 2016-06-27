@@ -62,33 +62,49 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li class="active"><a href="#" onclick="">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#" onclick="">Reports</a></li>
+            <li><a href="#" onclick="">Analytics</a></li>
+            <li><a href="#" onclick="">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="" onclick>Nav item 1</a></li>
-            <li><a href="">Nav item 2</a></li>
-            <li><a href="">Nav item 3</a></li>
+            <button onclick="ToggleFunction('dv2')">Nav item 1</button>
+            <li><a data-toggle="collapse" href="#dv2">Nav item 2</a></li>
+            <li><a href="" onclick="ToggleFunction('#dv3')">Nav item 3</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item 4</a></li>
-            <li><a href="">Nav item 5</a></li>
-            <li><a href="">Nav item 6</a></li>
+            <li><a href="" onclick="">Nav item 4</a></li>
+            <li><a href="" onclick="">Nav item 5</a></li>
+            <li><a href="" onclick="">Nav item 6</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
 
 
-          <iframe src="dv3.html" height="500px" width="1100px"></iframe>
-
+        <!--       iframes       -->
+        <div class="iframes">
+          <iframe id="dv0" class="dv" src="dv0.html" height="500px" width="1100px" style="display:none"></iframe>
+          <iframe id="dv1" class="dv" src="dv1.html" height="500px" width="1100px" style="display:none"></iframe>
+          <iframe id="dv2" class="dv" data-src="dv2.html" src="about:blank" height="500px" width="1100px" style="display:show"></iframe>
+          <iframe id="dv3" class="dv" src="dv3.html" height="500px" width="1100px" style="display:show"></iframe>
+        </div>
 
           
         </div>
       </div>
     </div>
+
+    <script>
+    function ToggleFunction(dv_) {
+        //$(".dv").collapse('hide'); 
+        //$(dv_).collapse('show');
+        //document.getElementById(dv_).style.visibility = "visible";
+        var iframe = document.getElementById(dv_);
+        //iframe.style.display = 'show';
+        iframe.src = "dv2.html"; 
+    }
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
