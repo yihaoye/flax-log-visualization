@@ -15,14 +15,14 @@
     <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -62,48 +62,71 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#" onclick="">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#" onclick="">Reports</a></li>
-            <li><a href="#" onclick="">Analytics</a></li>
-            <li><a href="#" onclick="">Export</a></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_dashboard(); open_main()">Overview</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="">Reports</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="">Analytics</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
+          </ul>
+          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="open_dashboard(); close_main()">Dashboards</button>
+          <ul id="toggle-button" class="nav nav-sidebar collapse">
+            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv1.html')">Plot Relation</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv2.html')">Force Layout</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv3.html')">Action Trace Tree</button></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <button onclick="ToggleFunction('dv2')">Nav item 1</button>
-            <li><a data-toggle="collapse" href="#dv2">Nav item 2</a></li>
-            <li><a href="" onclick="ToggleFunction('#dv3')">Nav item 3</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="" onclick="">Nav item 4</a></li>
-            <li><a href="" onclick="">Nav item 5</a></li>
-            <li><a href="" onclick="">Nav item 6</a></li>
+            <li><button class="btn btn-primary btn-block">Contact</button></li>
+            <li class="active"><a href="" onclick="">Link<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:block">
+          <h1 class="page-header">Main</h1>
+        </div>
+
+        <div id="dashboard" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:none">
           <h1 class="page-header">Dashboard</h1>
-
-
-        <!--       iframes       -->
-        <div class="iframes">
-          <iframe id="dv0" class="dv" src="dv0.html" height="500px" width="1100px" style="display:none"></iframe>
-          <iframe id="dv1" class="dv" src="dv1.html" height="500px" width="1100px" style="display:none"></iframe>
-          <iframe id="dv2" class="dv" data-src="dv2.html" src="about:blank" height="500px" width="1100px" style="display:show"></iframe>
-          <iframe id="dv3" class="dv" src="dv3.html" height="500px" width="1100px" style="display:show"></iframe>
+          <!--       iframes       -->
+          <div class="iframes">
+            <iframe id="dv0" class="dv" src="dv0.html" height="500px" width="1100px"></iframe>
+          </div>
         </div>
 
-          
-        </div>
       </div>
     </div>
 
     <script>
-    function ToggleFunction(dv_) {
-        //$(".dv").collapse('hide'); 
-        //$(dv_).collapse('show');
-        //document.getElementById(dv_).style.visibility = "visible";
-        var iframe = document.getElementById(dv_);
-        //iframe.style.display = 'show';
-        iframe.src = "dv2.html"; 
+    function ToggleIframe(iframe_id, url) {
+        var iframe_pointer = document.getElementById(iframe_id);
+        iframe_pointer.src = url; 
     }
+
+    function toggle_visibility(div_id) {
+       var e = document.getElementById(div_id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+    function open_main() {
+       var e = document.getElementById("main");
+       e.style.display = 'block';
+    } 
+
+    function close_main() {
+       var e = document.getElementById("main");
+       e.style.display = 'none';
+    } 
+
+    function open_dashboard() {
+       var e = document.getElementById("dashboard");
+       e.style.display = 'block';
+    } 
+
+    function close_dashboard() {
+       var e = document.getElementById("dashboard");
+       e.style.display = 'none';
+    } 
     </script>
 
     <!-- Bootstrap core JavaScript
@@ -111,10 +134,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="http://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
