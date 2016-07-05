@@ -40,14 +40,14 @@ public class ActionTraceTreeProcessor {
 		 //action_trace_tree_json write into json file
 		 writer = new PrintWriter(file + "/" + "action_trace_tree.json", "UTF-8");
 		 action_trace_tree_json = gson.toJson(action_trace_tree.root);
-		 System.out.println ("UserTree:" + action_trace_tree_json);
+		 System.out.println ("ActionTraceTree:" + action_trace_tree_json);
 		 writer.println(action_trace_tree_json);	// write info into json
 		 writer.close();
 		 
 		 //users_actions_path_json write into json file
 		 writer = new PrintWriter(file + "/" + "users_actions_path.json", "UTF-8");
 		 users_actions_path_json = gson.toJson(users_actions_path.the_path);
-		 System.out.println ("UserTree:" + users_actions_path_json);
+		 System.out.println ("ActionTraceTree:" + users_actions_path_json);
 		 writer.println(users_actions_path_json);	// write info into json
 		 writer.close();
 		 

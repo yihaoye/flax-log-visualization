@@ -1,6 +1,7 @@
 package com.yihaoye.main;
 import com.yihaoye.actionrelation.*;
 import com.yihaoye.actiontracetree.*;
+import com.yihaoye.calendarfragment.CalendarFragment;
 import com.yihaoye.filterandrename.*;
 import com.yihaoye.logdiv.LogDiv;
 import com.yihaoye.usertree.*;
@@ -41,7 +42,7 @@ public class MainClass {
     		   UserTree user_tree = new UserTree(); //for build up complete user tree (include their actions and relevant info)
     		   ActionTraceTreeProcessor action_trace_tree = new ActionTraceTreeProcessor();
     		   ActionRelationProcessor action_relation_ds = new ActionRelationProcessor();    		   
-    		   		   
+    		   CalendarFragment calendar_fragment = new CalendarFragment();		   
     		   
     		   //for(int i=0; i<=3; i++){
     			   in = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log")));
@@ -63,6 +64,9 @@ public class MainClass {
 	    			   //log_div.process(str_line_abstract_info);
 	    			   
 	    			   //
+	    			   calendar_fragment.process(str_line_abstract_info);
+	    			   
+	    			   //
 	    			   action_trace_tree.process(str_line_abstract_info);
 	    			   
 	    			   //
@@ -76,6 +80,7 @@ public class MainClass {
 	    	   action_trace_tree.setEachNodeAccessPercentage();
     		   
     		   action_trace_tree.writeJSON();
+    		   calendar_fragment.writeJSON();
     		   //action_relation_ds.writeJSON();
     		   //user_tree.writeJSON();
     		   
