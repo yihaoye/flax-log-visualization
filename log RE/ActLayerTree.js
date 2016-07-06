@@ -302,6 +302,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     function click(d) {
         //if (d3.event.defaultPrevented) return; // click suppressed, check if is drag
         d = toggleChildren(d);
+        cleanTooltips();
         update(d);
         centerNode(d);
     }
@@ -351,18 +352,28 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
             })
             .on('click', click);
 
+
+        ///////////////////////////Outside circle///////////////////////////
         nodeEnter.append("circle")
-            .attr('class', 'nodeCircle')
+            .attr('class', 'outsideCircle')
             .attr("r", 0)
-            .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
-            })
+            .style("fill", "steelblue")
             .on("mouseover", function(d) {
                 overCircle(d);
+                //cleanTooltips();
+                update(d);
+                //centerNode(d);
             })
             .on("mouseout", function(d) {
                 //outCircle(d);
             });
+
+        ///////////////////////////Inside circle///////////////////////////
+        nodeEnter.append("circle")
+            .attr('class', 'nodeCircle')
+            .attr("r", 0)
+            .style("fill", "#fff");
+            
 
         nodeEnter.append("text")
             .attr("x", function(d) {
@@ -379,27 +390,42 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
             .style("fill-opacity", 0);
 
 
-        // Change the circle fill depending on whether it has children and is collapsed
-        node.select("circle.nodeCircle")
+
+        
+        ///////////////////////////Outside circle///////////////////////////
+        node.select("circle.outsideCircle")
             .attr("r", function(d){
-                return 8*d.access_percentage; //size the node circle according to their access_percentage attribute!!!important function
+                return 8; //size the node circle according to their access_percentage attribute!!!important function
             })
             .style("fill", function(d) {
                 if(d.class === "found"){
                   return "#ff4136"; //red
                 }
-                else if(d._children){
-                  return "lightsteelblue";
+                else{
+                  return "steelblue";
+                }
+            })
+            .style("stroke", "none");
+        
+
+
+        ///////////////////////////Inside circle///////////////////////////
+        // Change the circle fill depending on whether it has children and is collapsed
+        node.select("circle.nodeCircle")
+            .attr("r", function(d){
+                //这个 7 是临时改的，原本是 8，再研究一下对不对
+                return 7*d.access_percentage; //size the node circle according to their access_percentage attribute!!!important function
+            })
+            .style("fill", function(d) {
+                if(d.class === "found"){
+                  return "#ff4136"; //red
                 }
                 else{
                   return "#fff";
                 }
-              })
-              .style("stroke", function(d) {
-                if(d.class === "found"){
-                  return "#ff4136"; //red
-                }
-            });
+            })
+            .style("stroke", "none");
+
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
@@ -454,7 +480,10 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
                 if(d.source.class==="found" && d.target.class==="found"){
                   return "#ff4136";
                 }
-              });
+            })
+            .style("stroke-width",function(d){
+                return (5*d.target.access_percentage); // 用连线粗细暗示后续节点的访问百分比
+            });
 
         // Transition exiting nodes to the parent's new position.
         link.exit().transition()

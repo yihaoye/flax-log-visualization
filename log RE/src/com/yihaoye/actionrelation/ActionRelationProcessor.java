@@ -111,13 +111,8 @@ public class ActionRelationProcessor {
 					links_map.get(pre_action).put(cur_action, 1);
 				}
 			}else{
-				HashMap<String, Integer> temp_map = new HashMap<String, Integer>();
-				temp_map.put(cur_action, 1);
-				links_map.put(pre_action, temp_map);
-				/*
 				links_map.put(pre_action, new HashMap<String, Integer>());
 				links_map.get(pre_action).put(cur_action, 1);
-				*/
 			}
 		}
 		
