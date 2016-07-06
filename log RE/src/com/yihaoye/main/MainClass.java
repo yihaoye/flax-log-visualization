@@ -70,7 +70,7 @@ public class MainClass {
 	    			   action_trace_tree.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   //action_relation_ds.process(str_line_abstract_info);
+	    			   action_relation_ds.process(str_line);
 	    			   
 	    			   //
 	    			   //user_tree.process(str_line_abstract_info);
@@ -81,7 +81,7 @@ public class MainClass {
     		   
     		   action_trace_tree.writeJSON();
     		   calendar_fragment.writeJSON();
-    		   //action_relation_ds.writeJSON();
+    		   action_relation_ds.writeJSON();
     		   //user_tree.writeJSON();
     		   
     		   
