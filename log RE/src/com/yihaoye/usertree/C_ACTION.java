@@ -31,20 +31,26 @@ public class C_ACTION {
 		
 		S_ACTION temp_s_action = s_actions_map.get(current_s_action);
 		temp_s_action.set_startTime(start_Time);
-		temp_s_action.add_pre_c_s_actions(last_c_action + " " + last_s_action);
-		for(String s1_para : s1_paras){
+		if(last_c_action!=null && last_s_action!=null){
+			temp_s_action.add_pre_c_s_actions(last_c_action + " " + last_s_action);
+		}
+		/*
+		for(String s1_para : s1_paras){//Problem!!!!!!!
 			temp_s_action.put_s1_paras_map(s1_para);
 		}
+		*/
 	}
 	
 	//put in pre_s_actions_map hashmap
 	public void add_pre_c_actions(String pre_c_action){
-		if(pre_c_actions_map.containsKey(pre_c_action)){
-			Integer temp = pre_c_actions_map.get(pre_c_action);
-			temp++;
-			pre_c_actions_map.put(pre_c_action, temp);
-		}else{
-			pre_c_actions_map.put(pre_c_action, 1);
+		if(pre_c_action!=null){
+			if(pre_c_actions_map.containsKey(pre_c_action)){
+				Integer temp = pre_c_actions_map.get(pre_c_action);
+				temp++;
+				pre_c_actions_map.put(pre_c_action, temp);
+			}else{
+				pre_c_actions_map.put(pre_c_action, 1);
+			}
 		}
 	}
 	

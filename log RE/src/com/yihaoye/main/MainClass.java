@@ -1,4 +1,6 @@
 package com.yihaoye.main;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import com.yihaoye.actionrelation.*;
 import com.yihaoye.actiontracetree.*;
 import com.yihaoye.calendarfragment.CalendarFragment;
@@ -44,6 +46,12 @@ public class MainClass {
     		   ActionRelationProcessor action_relation_ds = new ActionRelationProcessor();    		   
     		   CalendarFragment calendar_fragment = new CalendarFragment();		   
     		   
+    		   //MongoDB commands based on MongoDB version 3.2.7
+    		   MongoClient mongoClient = new MongoClient( "localhost" , 27017 ); //may need to change port (27017) if different in another computer
+    		   MongoDatabase mongo_database = mongoClient.getDatabase("flax_log_visualization_db");
+    		   mongo_database.drop(); //每次重新运行程序，清空数据库过往数据，不这样无法避免多次在已有数据上计算导致数据重复（错误会很严重）
+    			 
+    		   
     		   //for(int i=0; i<=3; i++){
     			   in = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log")));
     			//}
@@ -64,25 +72,25 @@ public class MainClass {
 	    			   //log_div.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   calendar_fragment.process(str_line_abstract_info);
+	    			   //calendar_fragment.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   action_trace_tree.process(str_line_abstract_info);
+	    			   //action_trace_tree.process(str_line_abstract_info);
 	    			   
 	    			   //
-	    			   action_relation_ds.process(str_line);
+	    			   //action_relation_ds.process(str_line);
 	    			   
 	    			   //
-	    			   //user_tree.process(str_line_abstract_info);
+	    			   user_tree.process(str_line_abstract_info, s1_paras);
 	    			   
 	    		   }
     		   
-	    	   action_trace_tree.setEachNodeAccessPercentage();
+	    	   //action_trace_tree.setEachNodeAccessPercentage();
     		   
-    		   action_trace_tree.writeJSON();
-    		   calendar_fragment.writeJSON();
-    		   action_relation_ds.writeJSON();
-    		   //user_tree.writeJSON();
+    		   //action_trace_tree.writeJSON();
+    		   //calendar_fragment.writeJSON();
+    		   //action_relation_ds.writeJSON();
+    		   user_tree.writeJSON();
     		   
     		   
     		   

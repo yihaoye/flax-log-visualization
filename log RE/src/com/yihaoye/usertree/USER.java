@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class USER {
 	
+	public String userID = null;
 	HashMap<String, C_ACTION> c_actions_map = new HashMap<String, C_ACTION>();
 	private long startTime;
 	private long endTime;
@@ -69,6 +70,10 @@ public class USER {
 		last_pre_s_action = current_s_action;
 	}
 	
+	//set userID
+	public void setUserID(String input_user_id){
+		userID = input_user_id;
+	}
 	
 	
 	
