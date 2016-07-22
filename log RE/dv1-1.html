@@ -36,7 +36,7 @@ label {
 
 </style>
 <label><input type="checkbox"> Sort values</label>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="libs/d3-v3-min.js"></script>
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -66,7 +66,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.tsv("AccountFiles/c_s_actions_account.tsv", function(error, data) {
 
   data.forEach(function(d) {
     d.frequency = +d.frequency;
