@@ -1,0 +1,8 @@
+letter	frequency
+CollocationQuery	.06167
+CollocationMapRetrieve	.03092
+RetrieveWordNet	.04080
+RetrieveWordFamily	.05253
+CollocationRetrieve	.10702
+RelatedWords	.03088
+CherryPicking	.12022

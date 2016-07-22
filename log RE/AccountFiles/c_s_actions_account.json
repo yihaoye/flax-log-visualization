@@ -1,0 +1,66 @@
+
+{
+	"0":{
+		"letter": "&s=CollocationQuery",
+		"frequency": 0.05593
+	},
+	"1":{
+		"letter": "&s=CollocationMapRetrieve",
+		"frequency": 0.01863
+	},
+	"2":{
+		"letter": "&s=RetrieveWordNet",
+		"frequency": 0.11026
+	}
+}
+/*
+{
+	"&c=collocations" : {
+		"accessed account" : 345828,
+		"s_actions account" : {
+			"&s=RetrieveWordNet" : 110258, 
+			"&s=CollocationQuery" : 55933, 
+			"&s=WikipediaArticleSearch" : 55262, 
+			"&s=RetrieveWordFamily" : 55215, 
+			"&s=CollocationRetrieveByAID" : 23747, 
+			"&s=CollocationMapRetrieve" : 18639, 
+			"&s=CollocationSampleRetrieve" : 6927, 
+			"&s=CollocationSampleSentenceRetrieve" : 6123, 
+			"&s=CollocationRetrieve" : 5786, 
+			"&s=WikipediaArticleDefinitionRetrieve" : 3309, 
+			"&s=CollocationMatching" : 1971, 
+			"&s=CherryPicking" : 1398, 
+			"&s=CollocationDominoes" : 484, 
+			"&s=CollocationGuessing" : 423, 
+			"&s=RelatedWords" : 316, 
+			"&s=ClassifierBrowse" : 14, 
+			"&s=collocationquery" : 10, 
+			"&s=AdvancedFieldQuery" : 10, 
+			"&s=WordSuggestionsQuery" : 1, 
+			"&s=DesignRelatedWords" : 1 
+		}
+	},
+	"&c=BAWESS" : {
+		"accessed account" : 29354,
+		"s_actions account" : {
+			"&s=FlaxCollocationDocumentRetrieve" : 5649, 
+			"&s=FlaxWordListDocumentRetrieve" : 5639, 
+			"&s=WikifyArticle" : 5627, 
+			"&s=ClassifierBrowse" : 5350, 
+			"&s=FlaxWordQuery" : 1762, 
+			"&s=AdvancedFieldQuery" : 1077, 
+			"&s=RetrieveWordFamily" : 1020, 
+			"&s=FlaxCollocationBrowse" : 831, 
+			"&s=FlaxLexicalBundle" : 758, 
+			"&s=FlaxWordList" : 753, 
+			"&s=CherryPicking" : 675, 
+			"&s=FlaxCollocationRetrieve" : 86, 
+			"&s=FlaxSampleRetrieve" : 70, 
+			"&s=FlaxTextRetrieve" : 23, 
+			"&s=WikipediaRelatedArticle" : 15, 
+			"&s=WikipediaArticleDefinitionRetrieve" : 15, 
+			"&s=FlaxCollocationContextRetrieve" : 3 
+		}
+	},
+}
+*/
