@@ -2,3 +2,6 @@
 
 This is an Open Source Project 
 based on FLAX System from University of Waikato.
+
+Visualization system interface:  http://yihaoye.github.io/FLAX-log-visualization/log%20RE/
+Log file example: http://yihaoye.github.io/FLAX-log-visualization/usage-logs/example_usage.log
