@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>FLAX Log Visualization</title>
 
     <!-- Bootstrap core CSS -->
     <link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="">Reports</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_report();">Reports</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Analytics</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
           </ul>
@@ -80,14 +80,14 @@
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv3.html');">Action Trace Tree</button></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><button class="btn btn-primary btn-block">Contact</button></li>
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_about();">About</button></li>
-            <li class="active" style="width: 240px; position: absolute; bottom: 40px; text-align: center;"><a href="http://flax.nzdl.org/greenstone3/flax" onclick="">Link<span class="sr-only">(current)</span></a></li>
+            <li class="active" style="width: 240px; position: absolute; bottom: 90px; text-align: center;"><a href="https://github.com/yihaoye">Contact</a></li>
+            <li class="active" style="width: 240px; position: absolute; bottom: 40px; text-align: center;"><a href="http://flax.nzdl.org/greenstone3/flax" onclick="">FLAX Link<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
         <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:block">
-          <h1 class="page-header">Main</h1>
+          <h1 class="page-header">Overview Calendar</h1>
           <div id="calendar"></div>
         </div>
 
@@ -98,8 +98,7 @@
             <iframe id="dv0" class="dv" src="dv1.html" height="500px" width="1100px"></iframe>
           </div>
         </div>
-
-        
+       
         <div id="about" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:none">
           <h1 class="page-header">About</h1>
           <div class="embed-responsive embed-responsive-16by9">
@@ -108,6 +107,53 @@
           </div>
         </div>
         
+        <div id="report" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:none">
+          <h1 class="page-header">Report</h1>
+          <div class="container well">
+            <form class="form-horizontal" role="form">
+              <div class="form-group" >
+                <div class="col-sm-10">
+                  <label> Product: </label>
+                  <select name="version" required="required">
+                    <option value="">--- Choose issue product --- </option>
+                    <option value="Overview Calendar">Overview Calendar</option>
+                    <option value="Plot Relation">Plot Relation</option>
+                    <option value="Access Account">Access Account</option>
+                    <option value="Time Account">Time Account</option>
+                    <option value="Force Layout">Force Layout</option>
+                    <option value="Action Trace Tree">Action Trace Tree</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="email">Email:</label>
+                <div class="col-sm-6">
+                  <input type="email" class="form-control" id="email" placeholder="enter your email can help us can following the issue">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="text">Problem:</label>
+                <div class="col-sm-10">          
+                  <textarea cols="80" rows="5" name="message" id="message" required="required" placeholder="Enter Description"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="text">Suggestion:</label>
+                <div class="col-sm-10">          
+                  <textarea cols="80" rows="5" name="message" id="message" required="required" placeholder="Further Improvement Suggestion"></textarea>
+                </div>
+              </div>
+              <div class="form-group">        
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+              </div>
+                <p>If you do not receive a quick response, please send us email at <a href="yy264@students.waikato.ac.nz">yy264@students.waikato.ac.nz</a>. </p>
+                <p>This could be because of internet problems.</p>
+            </form>
+          </div>
+        </div>
+
 
       </div>
     </div>
@@ -156,12 +202,23 @@
        e.style.display = 'none';
     } 
 
+    function open_report() {
+       var e = document.getElementById("report");
+       e.style.display = 'block';
+    } 
+
+    function close_report() {
+       var e = document.getElementById("report");
+       e.style.display = 'none';
+    } 
+
 
     /********************   close all panels   *************************/
     function close_all(){
       close_main();
       close_dashboard();
       close_about();
+      close_report();
     }
 
     </script>
