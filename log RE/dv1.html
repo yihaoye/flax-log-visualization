@@ -61,6 +61,25 @@
                 main.append('g')
                         .attr('class', 'axis')
                         .call(yAxis);
+
+
+                ////////////////////////////////////增加坐标描述////////////////////////////////////////
+                main.append("text")
+                      .attr("class", "label")
+                      .attr("x", width-100)
+                      .attr("y", height-105)
+                      .style("text-anchor", "end")
+                      .text("Stay Time (sec)");
+
+                main.append("text")
+                      .attr("class", "label")
+                      .attr("transform", "rotate(-90)")
+                      .attr("y", 6)
+                      .attr("dy", ".71em")
+                      .style("text-anchor", "end")
+                      .text("Click Account");
+
+
                 // 添加散点
                 /*
                 main.selectAll('.point')
@@ -95,5 +114,7 @@
                 })
             };
         </script>
+
+        <p>Each point on the graph represent an user.</p>
     </body>
 </html>
