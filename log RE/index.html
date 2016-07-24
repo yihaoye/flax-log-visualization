@@ -66,21 +66,23 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><button class="btn btn-primary btn-block" onclick="close_dashboard(); open_main()">Overview</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Reports</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Analytics</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
           </ul>
-          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="open_dashboard(); close_main()">Dashboards <span class="caret"></span></button>
+          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="close_all(); open_dashboard(); ">Dashboards <span class="caret"></span></button>
           <ul id="toggle-button" class="nav nav-sidebar collapse">
-            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv1.html')">Plot Relation</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv2.html')">Force Layout</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv3.html')">Action Trace Tree</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="ToggleIframe('dv0', 'dv1-1.html')">Access Account</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1.html');">Plot Relation</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1-1.html');">Access Account</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1-2.html');">Time Account</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv2.html');">Force Layout</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv3.html');">Action Trace Tree</button></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><button class="btn btn-primary btn-block">Contact</button></li>
-            <li class="active"><a href="" onclick="">Link<span class="sr-only">(current)</span></a></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_about();">About</button></li>
+            <li class="active" style="width: 240px; position: absolute; bottom: 40px; text-align: center;"><a href="http://flax.nzdl.org/greenstone3/flax" onclick="">Link<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
@@ -96,6 +98,16 @@
             <iframe id="dv0" class="dv" src="dv1.html" height="500px" width="1100px"></iframe>
           </div>
         </div>
+
+        
+        <div id="about" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:none">
+          <h1 class="page-header">About</h1>
+          <div class="embed-responsive embed-responsive-16by9">
+            <!--<div class="iframes"><iframe></iframe></div>-->
+            <iframe class="embed-responsive-item" src="http://youtube.com/embed/VLg7dgQ2aqA"></iframe>
+          </div>
+        </div>
+        
 
       </div>
     </div>
@@ -133,6 +145,25 @@
        var e = document.getElementById("dashboard");
        e.style.display = 'none';
     } 
+
+    function open_about() {
+       var e = document.getElementById("about");
+       e.style.display = 'block';
+    } 
+
+    function close_about() {
+       var e = document.getElementById("about");
+       e.style.display = 'none';
+    } 
+
+
+    /********************   close all panels   *************************/
+    function close_all(){
+      close_main();
+      close_dashboard();
+      close_about();
+    }
+
     </script>
 
     <!-- Bootstrap core JavaScript
