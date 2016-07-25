@@ -48,7 +48,7 @@ the code is modified from work of Rob Schmuecker's drag tree js file
 
     // size of the diagram
     var viewerWidth = 1000;
-    var viewerHeight = 450;
+    var viewerHeight = 420;
 
     var selectNode;
     var selectValue;
@@ -528,9 +528,14 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     update(root);
     centerNode(root);
 
+    //add notice text
+    var notice_text = d3.select('body')
+        .append('html')
+        .html("Please move the mouse over a node of tree and select item within the dropdown list below." + "<br>");
+
     // dropdown list
     var select = d3.select('body')
-      .append('select')
+        .append('select')
         .attr('class','select')
         .on('change',onchange);
 

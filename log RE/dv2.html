@@ -65,128 +65,141 @@ ul.tab li a:focus, .active {
 </style>
 </style>
     <body>  
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>  
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> 
 
 		<p>Click on the tabs inside the menu:</p>
 
 		<ul class="tab">
-		  <li><a href="#" class="tablinks" onclick="">Overview</a></li>
-		  <li><a href="#" class="tablinks" onclick="">CollocationQuery</a></li>
-		  <li><a href="#" class="tablinks" onclick="">CollocationMapRetrive</a></li>
+		  <li><a href="#" class="tablinks" onclick="clickTab(event, '-1')">Overview</a></li>
+		  <li><a href="#" class="tablinks" onclick="clickTab(event, '1')">CollocationQuery</a></li>
+		  <li><a href="#" class="tablinks" onclick="clickTab(event, '0')">CollocationMapRetrive</a></li>
 		</ul>
 
-        <script>		   
-		
-		var width = 1000;
-		var height = 450;
-		//var cir_r = 25;
-		var OldMax = 0; //MaxRelationValue of import JSON
-		var OldMin = 1000; //MinRelationValue of import JSON, not perfect here
-		var NewMax = 30; //control the size of circle
-		var NewMin = 5;
+    <script>	
 
-		
-		var svg = d3.select("body").append("svg")
-								.attr("width",width)
-								.attr("height",height);
-		
-		function getMaxMinRelationValue(links_array){
-			for(var i in links_array){
-				if(links_array[i].relation > OldMax){
-					OldMax = links_array[i].relation;
-				}
-				if(links_array[i].relation < OldMin){
-					OldMin = links_array[i].relation;
-				}
-			}
-			//console.log(OldMax+";"+OldMin);
-		}
+    /*******  本html权宜之计，tab选择处不够自动化，且clickTab参数可能每次后端运行后会变，可能要改很多地方。 ******/
+      
+      var source_index = -1;
 
-		function rangeConvert(OldValue){
-			var NewValue = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin;
-			return NewValue;
-		}
-		
-		d3.json("JSONFiles/action_relations.json",function(error,root){
-			
-			if( error ){
-				return console.log(error);
-			}
-			//console.log(root);
+      //var cir_r = 25;
+      var OldMax = 0; //MaxRelationValue of import JSON
+      var OldMin = 1000; //MinRelationValue of import JSON, not perfect here
+      var NewMax = 30; //control the size of circle
+      var NewMin = 5;
 
-			getMaxMinRelationValue(root.links);
-			
-			
-			var force = d3.layout.force()
-							.nodes(root.nodes)
-							.links(root.links)
-							.size([width,height])
-							.linkDistance(250)
-							.charge(-150)
-							.start();
-							
-			var links_line = svg.selectAll("line")
-								.data(root.links)
-								.enter()
-								.append("line")
-								.style("stroke","#ccc")
-								.style("stroke-width",function(d){
-									return rangeConvert(d.relation);
-								}); //need to modify
-								
-			var node = svg.selectAll(".node")
-							.data(root.nodes)
-							.enter()
-							.append("g")
-							.attr("class", "node")
-							.call(force.drag);
+      var width = 1000;
+      var height = 450;
+
+			function clickTab(evt, click_source_index) {
+			    var i, tablinks;
+			    tablinks = document.getElementsByClassName("tablinks");
+			    for (i = 0; i < tablinks.length; i++) {
+			        tablinks[i].className = tablinks[i].className.replace(" active", "");
+			    }
+			    evt.currentTarget.className += " active";
+          source_index = click_source_index;
+          update(source_index);
+			}	
 
 
+      
+      
+      function getMaxMinRelationValue(links_array){
+        for(var i in links_array){
+          if(links_array[i].relation > OldMax){
+            OldMax = links_array[i].relation;
+          }
+          if(links_array[i].relation < OldMin){
+            OldMin = links_array[i].relation;
+          }
+        }
+        //console.log(OldMax+";"+OldMin);
+      }
 
-			node.append("circle")
-				.attr('class', 'point')
-				.attr("r",function(d) { return rangeConvert(d.account); });
-			
-			node.append("text")
-				.attr("dx", 12)
-				.attr("dy", ".35em")
-				.text(function(d) { return d.name });
-			
+      function rangeConvert(OldValue){
+        var NewValue = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin;
+        return NewValue;
+      }
+      
 
-								
-			force.on("tick", function(){
-			
-				//更新连接线的位置
-				 links_line.attr("x1",function(d){ return d.source.x; });
-				 links_line.attr("y1",function(d){ return d.source.y; });
-				 links_line.attr("x2",function(d){ return d.target.x; });
-				 links_line.attr("y2",function(d){ return d.target.y; });
-				 
-				 
-				 //更新结点圆点和文字
-				 node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-			});
-		});
-		  
+      function update(index_data){
+        d3.json("JSONFiles/action_relations.json",function(error,root){
+          
+          if( error ){
+            return console.log(error);
+          }
+          //console.log(root);
+
+          d3.selectAll("svg").remove();
+
+          for(var i=0; i<root.links.length; i++){
+            if(index_data != -1 && root.links[i].source != index_data){
+              root.links.splice(i, 1);
+              i--;
+            }
+          }
+
+          getMaxMinRelationValue(root.links);
+
+          var svg = d3.select("body").append("svg")
+                  .attr("width",width)
+                  .attr("height",height);
+
+          
+          var force = d3.layout.force()
+                  .nodes(root.nodes)
+                  .links(root.links)
+                  .size([width,height])
+                  .linkDistance(250)
+                  .charge(-150)
+                  .start();
+                  
+          var links_line = svg.selectAll("line")
+                    .data(root.links)
+                    .enter()
+                    .append("line")
+                    .style("stroke", "#ccc")
+                    .style("stroke-width",function(d){
+                      return rangeConvert(d.relation);
+                    }); //need to modify
+                    
+          var node = svg.selectAll(".node")
+                  .data(root.nodes)
+                  .enter()
+                  .append("g")
+                  .attr("class", "node")
+                  .call(force.drag);
 
 
 
-/* JSON
-{
-"pre_actions":[
-{ "target": "CollocationQuery" , "relation": 2 },
-{ "target": "CollocationSampleRetrieve" , "relation": 2 },
-{ "target": "CollocationMapRetrieve" , "relation": 2 }
-],
-"forward_actions":[
-{ "source": "CollocationQuery" , "relation": 3 },
-{ "source": "CollocationSampleRetrieve" , "relation": 2 },
-{ "source": "CollocationMapRetrieve" , "relation": 1 }
-]
-}
-*/
+          node.append("circle")
+            .attr('class', 'point')
+            .attr("r",function(d) { return rangeConvert(d.account); });
+          
+          node.append("text")
+            .attr("dx", 12)
+            .attr("dy", ".35em")
+            .text(function(d) { return d.name });
+          
 
-        </script>  
+                    
+          force.on("tick", function(){
+          
+            //更新连接线的位置
+             links_line.attr("x1",function(d){ return d.source.x; });
+             links_line.attr("y1",function(d){ return d.source.y; });
+             links_line.attr("x2",function(d){ return d.target.x; });
+             links_line.attr("y2",function(d){ return d.target.y; });
+             
+             
+             //更新结点圆点和文字
+             node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+          });
+        });//d3.json
+      };//update()
+
+      update(source_index);
+    </script>
 		
     </body>  
 </html>  
