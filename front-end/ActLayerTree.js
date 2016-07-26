@@ -531,7 +531,7 @@ treeJSON = d3.json("JSONFiles/action_trace_tree.json", function(error, treeData)
     //add notice text
     var notice_text = d3.select('body')
         .append('html')
-        .html("Please move the mouse over a node of tree and select item within the dropdown list below." + "<br>");
+        .html("Please move the mouse over a node of tree and select item within the dropdown list below. Then the tree will show the user's actions path." + "<br>");
 
     // dropdown list
     var select = d3.select('body')

@@ -68,7 +68,7 @@
           <ul class="nav nav-sidebar">
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview</button></li>
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_report();">Reports</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="">Analytics</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_analytics();">Analytics</button></li>
             <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
           </ul>
           <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="close_all(); open_dashboard(); ">Dashboards <span class="caret"></span></button>
@@ -91,11 +91,19 @@
           <div id="calendar"></div>
         </div>
 
+        <div id="analytics" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:none">
+          <h1 class="page-header">Analytics</h1>
+          <!--       iframes       -->
+          <div class="iframes">
+            <iframe id="analytics_iframe" class="dv" src="analytics.html" height="500px" width="1100px" style="border:none;"></iframe>
+          </div>
+        </div>
+
         <div id="dashboard" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:none">
           <h1 class="page-header">Dashboard</h1>
           <!--       iframes       -->
           <div class="iframes">
-            <iframe id="dv0" class="dv" src="dv1.html" height="500px" width="1100px"></iframe>
+            <iframe id="dv0" class="dv" src="dv1.html" height="500px" width="1100px" style="border:none;"></iframe>
           </div>
         </div>
        
@@ -182,6 +190,16 @@
        e.style.display = 'none';
     } 
 
+    function open_analytics() {
+       var e = document.getElementById("analytics");
+       e.style.display = 'block';
+    } 
+
+    function close_analytics() {
+       var e = document.getElementById("analytics");
+       e.style.display = 'none';
+    } 
+
     function open_dashboard() {
        var e = document.getElementById("dashboard");
        e.style.display = 'block';
@@ -216,6 +234,7 @@
     /********************   close all panels   *************************/
     function close_all(){
       close_main();
+      close_analytics();
       close_dashboard();
       close_about();
       close_report();
