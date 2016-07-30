@@ -317,6 +317,28 @@
               $(element).css('color', 'white');
               $(element).css('border-radius', '0px');
             }
+          },
+          mouseOnDay: function(e) {
+            if(true) {
+                var content = '';
+                
+                content += '<div class="event-tooltip-content">'
+                                + '<div class="event-name" style="color:' + "green" + '">' + "access account=xxx" + '</div>'
+                                + '<div class="event-location">' + "user account=xxx" + '</div>'
+                            + '</div>';
+            
+                $(e.element).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    html:true,
+                    content: content
+                });
+                
+                $(e.element).popover('show');
+            }
+          },
+          mouseOutDay: function(e) {
+                $(e.element).popover('hide');
           }
         });
 
