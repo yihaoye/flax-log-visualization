@@ -313,18 +313,37 @@
               }
             }
             if(date.getTime() == today){
-              $(element).css('background-color', 'grey');
+              $(element).css('background-color', 'lightgrey');
               $(element).css('color', 'white');
               $(element).css('border-radius', '0px');
             }
           },
           mouseOnDay: function(e) {
             if(true) {
-                var content = '';
+                var content = '';               
+
+                var selected_year = e.date.getFullYear();
+                var selected_month = ("0" + (e.date.getMonth()+1).toString()).slice(-2);
+                var selected_date = ("0" + e.date.getDate().toString()).slice(-2);
+                //console.log(e.date.getDate());
+                try{
+                  var date_access_account = calendar_json[selected_year][selected_month][selected_date].access_account;
+                }
+                catch(err){
+                  var date_access_account = 0;
+                }
+
+                try{
+                date_user_account = calendar_json[selected_year][selected_month][selected_date].user_account;
+                }
+                catch(err){
+                  var date_user_account = 0;
+                }
+                
                 
                 content += '<div class="event-tooltip-content">'
-                                + '<div class="event-name" style="color:' + "green" + '">' + "access account=xxx" + '</div>'
-                                + '<div class="event-location">' + "user account=xxx" + '</div>'
+                                + '<div class="event-name" style="color:' + "green" + '">' + "access account=" + date_access_account + '</div>'
+                                + '<div class="event-location">' + "user account=" + date_user_account + '</div>'
                             + '</div>';
             
                 $(e.element).popover({
@@ -335,11 +354,12 @@
                 });
                 
                 $(e.element).popover('show');
+                //console.log(e.date);
             }
           },
           mouseOutDay: function(e) {
                 $(e.element).popover('hide');
-          }
+          },
         });
 
       });
