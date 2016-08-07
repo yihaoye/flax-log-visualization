@@ -66,10 +66,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_report();">Reports</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_analytics();">Analytics</button></li>
-            <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview Calendar</button></li>
           </ul>
           <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="close_all(); open_dashboard(); ">Patterns <span class="caret"></span></button>
           <ul id="toggle-button" class="nav nav-sidebar collapse">
@@ -80,6 +77,9 @@
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv3.html');">Action Trace Tree</button></li>
           </ul>
           <ul class="nav nav-sidebar">
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_report();">Reports</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_analytics();">Analytics</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
             <li><button class="btn btn-primary btn-block" onclick="close_all(); open_about();">About</button></li>
             <li class="active" style="width: 240px; position: absolute; bottom: 90px; text-align: center;"><a href="https://github.com/yihaoye">Contact</a></li>
             <li class="active" style="width: 240px; position: absolute; bottom: 40px; text-align: center;"><a href="http://flax.nzdl.org/greenstone3/flax" onclick="">FLAX Link<span class="sr-only">(current)</span></a></li>
