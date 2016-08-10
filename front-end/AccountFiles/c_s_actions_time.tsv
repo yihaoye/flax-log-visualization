@@ -1,8 +1,8 @@
 letter	frequency
-CollocationQuery	.06167
-CollocationMapRetrieve	.03092
-RetrieveWordNet	.04080
-RetrieveWordFamily	.05253
-CollocationRetrieve	.10702
-RelatedWords	.03088
-CherryPicking	.12022
+Query	.06167
+Related Collocation	.03092
+Sample Sentence	.04080
+More Collocations	.05253
+Classifer Browse	.10702
+Related Words activity	.03088
+Collecting Collocations	.12022
