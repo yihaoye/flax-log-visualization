@@ -95,7 +95,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-      return "<strong>Accessed Account:</strong> <span style='color:yellow'>" + Math.round(d.frequency*500) + "</span>";
+      return "<strong>Activity Actions Account:</strong> <span style='color:yellow'>" + Math.round(d.frequency*500) + "</span>";
     })
 
 var svg = d3.select("body").append("svg")
@@ -169,7 +169,7 @@ d3.tsv("AccountFiles/c_s_actions_account.tsv", function(error, data) {
 
     transition.select(".x.axis")
         .call(xAxis)
-      .selectAll("g")
+        .selectAll("g")
         .delay(delay);
   }
 });
