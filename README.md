@@ -5,7 +5,8 @@ which is a part of FLAX System (University of Waikato open source project).
 
 
 ##Briefly Introduction  
-The FLAX log visualization system presents several data analyses with corresponding graph.
+The FLAX log visualization system presents several data analyses with corresponding graph.  
+The following examples are some of these graphs.  
   
 Overview Calendar of all users' behaviors: 
 
