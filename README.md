@@ -14,16 +14,16 @@ The front-end applies web tech (Bootstrap, jQuery, D3.js) to draw graphs dependi
   
 Overview Calendar of all users' behaviors: 
 
-<img src="./images/1.png" height="250" width="500">
+<img src="./img/1.png" height="250" width="500">
 
 Relations among different users' behaviors: 
 
-<img src="./images/2.png" height="250" width="500">
+<img src="./img/2.png" height="250" width="500">
 
 User's behavior trace tree: 
 
-<img src="./images/3.png" height="250" width="500">
-<img src="./images/4.png" height="250" width="500">
+<img src="./img/3.png" height="250" width="500">
+<img src="./img/4.png" height="250" width="500">
 
 ##Link
 FLAX log visualization system interface: http://yihaoye.github.io/FLAX-log-visualization/front-end/  

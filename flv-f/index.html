@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>FLAX Log Visualization</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Bootstrap Calendar -->
+    <link href="libs/bootstrap-year-calendar/css/bootstrap-year-calendar.min.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">FLAX Log Visualization</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_main();">Overview Calendar</button></li>
+          </ul>
+          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#toggle-button" aria-expanded="false" aria-controls="toggle-button" onclick="close_all(); open_dashboard(); ">Graphs <span class="caret"></span></button>
+          <ul id="toggle-button" class="nav nav-sidebar collapse">
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1.html');">Activity-actions vs session time</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1-1.html');">Query Type Distribution by action</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv1-2.html');">Query Type Distribution by time</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv2.html');">Query frequency + transition graph</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_dashboard(); ToggleIframe('dv0', 'dv3.html');">Query Trace</button></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_report();">Reports</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_analytics();">Analytics</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="">Export</button></li>
+            <li><button class="btn btn-primary btn-block" onclick="close_all(); open_about();">About</button></li>
+            <li class="active" style="width: 240px; position: absolute; bottom: 90px; text-align: center;"><a href="https://github.com/yihaoye">Contact</a></li>
+            <li class="active" style="width: 240px; position: absolute; bottom: 40px; text-align: center;"><a href="http://flax.nzdl.org/greenstone3/flax" onclick="">FLAX Link<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
+
+        <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:block">
+          <h1 class="page-header">Overview Calendar</h1>
+          <div id="calendar"></div>
+        </div>
+
+        <div id="analytics" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:none">
+          <h1 class="page-header">Analytics</h1>
+          <!--       iframes       -->
+          <div class="iframes">
+            <iframe id="analytics_iframe" class="dv" src="analytics.html" height="500px" width="1100px" style="border:none;"></iframe>
+          </div>
+        </div>
+
+        <div id="dashboard" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:none">
+          <h1 class="page-header">Dashboard</h1>
+          <!--       iframes       -->
+          <div class="iframes">
+            <iframe id="dv0" class="dv" src="dv1.html" height="500px" width="1100px" style="border:none;"></iframe>
+          </div>
+        </div>
+       
+        <div id="about" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:none">
+          <h1 class="page-header">About</h1>
+          <div class="embed-responsive embed-responsive-16by9">
+            <!--<div class="iframes"><iframe></iframe></div>-->
+            <iframe class="embed-responsive-item" src="http://youtube.com/embed/VLg7dgQ2aqA"></iframe>
+          </div>
+        </div>
+        
+        <div id="report" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="display:none">
+          <h1 class="page-header">Report</h1>
+          <div class="container well">
+            <form class="form-horizontal" role="form">
+              <div class="form-group" >
+                <div class="col-sm-10">
+                  <label> Product: </label>
+                  <select name="version" required="required">
+                    <option value="">--- Choose issue product --- </option>
+                    <option value="Overview Calendar">Overview Calendar</option>
+                    <option value="Plot Relation">Plot Relation</option>
+                    <option value="Access Account">Access Account</option>
+                    <option value="Time Account">Time Account</option>
+                    <option value="Force Layout">Force Layout</option>
+                    <option value="Action Trace Tree">Action Trace Tree</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="email">Email:</label>
+                <div class="col-sm-6">
+                  <input type="email" class="form-control" id="email" placeholder="enter your email can help us can following the issue">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="text">Problem:</label>
+                <div class="col-sm-10">          
+                  <textarea cols="80" rows="5" name="message" id="message" required="required" placeholder="Enter Description"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-10" for="text">Suggestion:</label>
+                <div class="col-sm-10">          
+                  <textarea cols="80" rows="5" name="message" id="message" required="required" placeholder="Further Improvement Suggestion"></textarea>
+                </div>
+              </div>
+              <div class="form-group">        
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+              </div>
+                <p>If you do not receive a quick response, please send us email at <a href="yy264@students.waikato.ac.nz">yy264@students.waikato.ac.nz</a>. </p>
+                <p>This could be because of internet problems.</p>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script>
+    function ToggleIframe(iframe_id, url) {
+        var iframe_pointer = document.getElementById(iframe_id);
+        iframe_pointer.src = url; 
+    }
+
+    function toggle_visibility(div_id) {
+       var e = document.getElementById(div_id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+    function open_main() {
+       var e = document.getElementById("main");
+       e.style.display = 'block';
+    } 
+
+    function close_main() {
+       var e = document.getElementById("main");
+       e.style.display = 'none';
+    } 
+
+    function open_analytics() {
+       var e = document.getElementById("analytics");
+       e.style.display = 'block';
+    } 
+
+    function close_analytics() {
+       var e = document.getElementById("analytics");
+       e.style.display = 'none';
+    } 
+
+    function open_dashboard() {
+       var e = document.getElementById("dashboard");
+       e.style.display = 'block';
+    } 
+
+    function close_dashboard() {
+       var e = document.getElementById("dashboard");
+       e.style.display = 'none';
+    } 
+
+    function open_about() {
+       var e = document.getElementById("about");
+       e.style.display = 'block';
+    } 
+
+    function close_about() {
+       var e = document.getElementById("about");
+       e.style.display = 'none';
+    } 
+
+    function open_report() {
+       var e = document.getElementById("report");
+       e.style.display = 'block';
+    } 
+
+    function close_report() {
+       var e = document.getElementById("report");
+       e.style.display = 'none';
+    } 
+
+
+    /********************   close all panels   *************************/
+    function close_all(){
+      close_main();
+      close_analytics();
+      close_dashboard();
+      close_about();
+      close_report();
+    }
+
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="http://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap Calendar -->
+    <script src="libs/bootstrap-year-calendar/js/bootstrap-year-calendar.min.js"></script>
+
+    <!-- Calendar rendar -->
+    <script type="text/javascript" class="publish">
+      //ajax get json
+      var calendar_json = (function () {
+          var calendar_json = null;
+          $.ajax({
+              'async': false,
+              'global': false,
+              'url': "json/calendar_fragment_data.json",
+              'dataType': "json",
+              'success': function (data) {
+                  calendar_json = data;
+              }
+          });
+          return calendar_json;
+      })(); 
+
+      //draw calendar
+      $(function() {
+        var currentYear = new Date().getFullYear();
+        var currentMonth = new Date().getMonth();
+        var currentDay = new Date().getDate();
+
+        var today = new Date(currentYear, currentMonth, currentDay).getTime();
+        var renderDate = [];
+        var dateData = [];
+
+        //console.log(calendar_json);
+        for(var year in calendar_json){
+          for(var month in calendar_json[year])
+            for(var date in calendar_json[year][month]){
+              //console.log(year + "-" + month + "-" + date);
+              renderDate.push(new Date(parseInt(year), parseInt(month)-1, parseInt(date)).getTime());
+              dateData.push(calendar_json[year][month][date]);
+            }
+        }
+        //var circleDateTime = new Date(currentYear, 1, 20).getTime();
+
+        $('#calendar').calendar({ 
+          customDayRenderer: function(element, date) {
+            for(var i in renderDate){
+              if(date.getTime() == renderDate[i]) {
+                //console.log(dateData[i]);
+                if(dateData[i].access_account > 150){
+                  $(element).css('background-color', '#336600');
+                }else if(dateData[i].access_account > 70){
+                  $(element).css('background-color', '#66CC00');
+                }else if(dateData[i].access_account > 10){
+                  $(element).css('background-color', '#99FF33');
+                }else{
+                  $(element).css('background-color', '#CCFF99');
+                }
+
+                $(element).css('color', 'white');
+                $(element).css('border-radius', '0px');
+              }
+            }
+            if(date.getTime() == today){
+              $(element).css('background-color', 'lightgrey');
+              $(element).css('color', 'white');
+              $(element).css('border-radius', '0px');
+            }
+          },
+          mouseOnDay: function(e) {
+            if(true) {
+                var content = '';               
+
+                var selected_year = e.date.getFullYear();
+                var selected_month = ("0" + (e.date.getMonth()+1).toString()).slice(-2);
+                var selected_date = ("0" + e.date.getDate().toString()).slice(-2);
+                //console.log(e.date.getDate());
+                try{
+                  var date_access_account = calendar_json[selected_year][selected_month][selected_date].access_account;
+                }
+                catch(err){
+                  var date_access_account = 0;
+                }
+
+                try{
+                date_user_account = calendar_json[selected_year][selected_month][selected_date].user_account;
+                }
+                catch(err){
+                  var date_user_account = 0;
+                }
+                
+                
+                content += '<div class="event-tooltip-content">'
+                                + '<div class="event-name" style="color:' + "green" + '">' + "access account=" + date_access_account + '</div>'
+                                + '<div class="event-location">' + "user account=" + date_user_account + '</div>'
+                            + '</div>';
+            
+                $(e.element).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    html:true,
+                    content: content
+                });
+                
+                $(e.element).popover('show');
+                //console.log(e.date);
+            }
+          },
+          mouseOutDay: function(e) {
+                $(e.element).popover('hide');
+          },
+        });
+
+      });
+    </script>
+    
+  </body>
+</html>
