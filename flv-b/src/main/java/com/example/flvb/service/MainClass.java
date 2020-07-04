@@ -1,20 +1,15 @@
-package com.yihaoye.main;
+package com.example.flvb.service;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.yihaoye.actionrelation.*;
-import com.yihaoye.actiontracetree.*;
-import com.yihaoye.calendarfragment.CalendarFragment;
-import com.yihaoye.filterandrename.*;
-import com.yihaoye.logdiv.LogDiv;
-import com.yihaoye.usertree.*;
+import example.flvb.entity.*;
+import com.example.flvb.util.*;
+import com.example.flvb.dao.usertree.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.*;
-
-
 
 public class MainClass {
     public static void main(String argv[]) {

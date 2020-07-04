@@ -1,4 +1,5 @@
-package com.yihaoye.filterandrename;
+package com.example.flvb.util;
+
 import java.util.HashMap;
 
 public class FilterAndRename {

@@ -1,4 +1,4 @@
-package com.yihaoye.actiontracetree;
+package com.example.flvb.entity.action.tracetree;
 
 
 public class S1_Query_Info {

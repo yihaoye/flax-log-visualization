@@ -1,4 +1,4 @@
-package com.yihaoye.actionaccessaccount;
+package com.example.flvb.entity.action.accessaccount;
 
 public class S_Action_Access_Properties {
 	

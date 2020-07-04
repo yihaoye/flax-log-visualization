@@ -1,4 +1,4 @@
-package com.yihaoye.actionaccessaccount;
+package com.example.flvb.entity.action.accessaccount;
 
 import java.util.HashMap;
 

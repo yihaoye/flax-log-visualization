@@ -1,4 +1,4 @@
-package com.yihaoye.logdiv;
+package com.example.flvb.util;
 import java.util.regex.*;
 import java.io.File;
 import java.io.FileNotFoundException;

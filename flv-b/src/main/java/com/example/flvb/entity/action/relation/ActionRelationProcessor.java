@@ -1,4 +1,4 @@
-package com.yihaoye.actionrelation;
+package com.example.flvb.entity.action.relation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
