@@ -9,11 +9,11 @@ import com.example.flvb.model.usertree.*;
 
 public class ActionTree {
 
-	 final String dir = System.getProperty("user.dir"); //get current working directory path
+	 final String dir = System.getProperty("user.dir"); // get current working directory path
 	 String action_tree_json = "";
-	 PrintWriter writer = null;	//for print info into txt file (important info for each ip, actions account)
+	 PrintWriter writer = null;	// for print info into txt file (important info for each ip, actions account)
 	 Gson gson = new Gson(); // for convert object/hashmap to json format
-	 File file = new File(dir+"/json");
+	 File file = new File(this.dir + "/json");
 	 
 	 HashMap<String, C_ACTION> action_tree_map = new HashMap<String, C_ACTION>();
 	 String[] info = new String[2];
@@ -29,5 +29,4 @@ public class ActionTree {
 			 Pattern.compile("\\&c=\\w+"), 
 			 Pattern.compile("\\&s=\\w+"), 
 			 Pattern.compile("s1.\\w+=\\w+")};
-	 
 }

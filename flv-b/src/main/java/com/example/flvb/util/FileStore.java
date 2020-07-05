@@ -42,16 +42,16 @@ public class FileStore {
         try {
             s3.putObject(path, fileName, inputStream, metadata);
         } catch (AmazonServiceException e) {
-            throw new IllegalStateException("Failed to store file to s3", e);
+            throw new IllegalStateException("Failed to save file to s3", e);
         }
     }
 
-    public byte[] download(String path, String key) {
+    public byte[] read(String path, String key) {
         try {
             S3Object object = s3.getObject(path, key);
             return IOUtils.toByteArray(object.getObjectContent());
         } catch (AmazonServiceException | IOException e) {
-            throw new IllegalStateException("Failed to download file to s3", e);
+            throw new IllegalStateException("Failed to read file from s3", e);
         }
     }
 }
