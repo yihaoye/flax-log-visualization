@@ -16,13 +16,13 @@ public class MainClass {
     	try{
     		   FileInputStream fstream[] = new FileInputStream[7];
     		   BufferedReader in = null;
-    		   fstream[6] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log");
-    		   fstream[5] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.1");
-    		   fstream[4] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.2");
-    		   fstream[3] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.3");
-    		   fstream[2] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.4");
-    		   fstream[1] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.5");
-    		   fstream[0] = new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage.log.6");
+    		   fstream[6] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log");
+    		   fstream[5] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.1");
+    		   fstream[4] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.2");
+    		   fstream[3] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.3");
+    		   fstream[2] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.4");
+    		   fstream[1] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.5");
+    		   fstream[0] = new FileInputStream("../../../../mock-s3/usage-logs/usage.log.6");
     		   
     		   	   
     		   String str_line = null;
@@ -42,14 +42,14 @@ public class MainClass {
     		   CalendarFragment calendar_fragment = new CalendarFragment();		   
     		   
     		   //MongoDB commands based on MongoDB version 3.2.7
-    		   //每次运行程序前记得在terminal启动MongoDB，否则无法连接数据库，或者设置为开机自动启动MongoDB
+    		   //每次运行程序前记得在terminal启动MongoDB，否则无法连接数据库，或者设置为开机自动启动 MongoDB
     		   MongoClient mongoClient = new MongoClient( "localhost" , 27017 ); //may need to change port (27017) if different in another computer
     		   MongoDatabase mongo_database = mongoClient.getDatabase("flax_log_visualization_db");
     		   mongo_database.drop(); //每次重新运行程序，清空数据库过往数据，不这样无法避免多次在已有数据上计算导致数据重复（错误会很严重）
     			 
     		   
     		   //for(int i=0; i<=3; i++){
-    			   in = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/yihao/PersonalFile/Study Work/Waikato/COMP592/yy264/usage-logs/usage_test.log")));
+    			   in = new BufferedReader(new InputStreamReader(new FileInputStream("../../../../mock-s3/usage-logs/usage_test.log")));
     			//}
     			   
     			   

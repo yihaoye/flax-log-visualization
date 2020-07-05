@@ -1,4 +1,5 @@
-package com.example.flvb.dao.usertree.usertree;
+package com.example.flvb.entity.usertree;
+
 import java.util.HashMap;
 import java.util.Map;
 

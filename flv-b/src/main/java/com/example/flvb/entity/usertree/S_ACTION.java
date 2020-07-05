@@ -1,4 +1,4 @@
-package com.example.flvb.dao.usertree.usertree;
+package com.example.flvb.entity.usertree;
 //import java.text.DateFormat;
 //import java.text.SimpleDateFormat;
 //import java.util.Date;

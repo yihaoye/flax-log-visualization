@@ -1,4 +1,4 @@
-package com.example.flvb.dao.usertree.usertree;
+package com.example.flvb.entity.usertree;
 
 import java.io.File;
 import java.io.FileNotFoundException;
