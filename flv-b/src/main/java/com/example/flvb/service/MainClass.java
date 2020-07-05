@@ -1,7 +1,7 @@
 package com.example.flvb.service;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import example.flvb.entity.*;
+import example.flvb.model.*;
 import com.example.flvb.util.*;
 import com.example.flvb.dao.usertree.*;
 

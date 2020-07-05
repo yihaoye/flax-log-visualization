@@ -1,4 +1,4 @@
-package com.example.flvb.entity.usertree;
+package com.example.flvb.model.usertree;
 import java.util.HashMap;
 import java.util.Map;
 

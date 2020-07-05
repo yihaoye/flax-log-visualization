@@ -1,4 +1,4 @@
-package com.example.flvb.entity.action.accessaccount;
+package com.example.flvb.model.action.accessaccount;
 
 import java.io.File;
 import java.io.FileNotFoundException;

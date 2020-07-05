@@ -1,4 +1,4 @@
-package com.example.flvb.entity.action.relation;
+package com.example.flvb.model.action.relation;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.example.flvb.entity.action.tracetree;
+package com.example.flvb.model.action.tracetree;
 
 
 public class S1_Query_Info {

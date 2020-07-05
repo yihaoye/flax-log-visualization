@@ -1,4 +1,4 @@
-package com.example.flvb.entity.action.tracetree;
+package com.example.flvb.model.action.tracetree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
