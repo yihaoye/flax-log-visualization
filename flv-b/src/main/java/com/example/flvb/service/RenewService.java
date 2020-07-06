@@ -2,9 +2,9 @@ package com.example.flvb.service;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import example.flvb.model.*;
+import com.example.flvb.model.*;
 import com.example.flvb.util.*;
-import com.example.flvb.dao.usertree.*;
+import com.example.flvb.repository.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -12,8 +12,8 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.*;
 
-public class MainClass {
-    public static void main(String argv[]) {
+public class RenewService {
+    public static void run(String argv[]) {
     	try {
 			FileInputStream fstream[] = new FileInputStream[7];
 			BufferedReader in = null;
