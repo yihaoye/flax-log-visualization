@@ -1,0 +1,18 @@
+spring:
+  data:
+      mongodb:
+        user: username
+        password: password
+        uri: mongodb://{aws-hosted-mongodb-address}:27017/db
+aws:
+  endpointUrl: https://s3.us-east-2.amazonaws.com
+  accessKey: XXXXXXXXXXXXXXXXX
+  secretKey: XXXXXXXXXXXXXXXXXXXXXXXXXX
+  s3bucket1:
+    bucketName: account
+  s3bucket2:
+    bucketName: json
+  s3bucket3:
+    bucketName: log-div
+  s3bucket4:
+    bucketName: usage-logs

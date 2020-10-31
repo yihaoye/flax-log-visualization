@@ -1,0 +1,18 @@
+spring:
+  data:
+      mongodb:
+        user: username
+        password: password
+        uri: mongodb://host:27017/db
+aws:
+  endpointUrl: http://localhost:4567/
+  accessKey: XXXXXXXXXXXXXXXXX
+  secretKey: XXXXXXXXXXXXXXXXXXXXXXXXXX
+  s3bucket1:
+    bucketName: account
+  s3bucket2:
+    bucketName: json
+  s3bucket3:
+    bucketName: log-div
+  s3bucket4:
+    bucketName: usage-logs
