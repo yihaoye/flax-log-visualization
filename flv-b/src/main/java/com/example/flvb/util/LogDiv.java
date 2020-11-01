@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-//import java.util.*;
+// import java.util.*;
 
 
 public class LogDiv {
@@ -38,12 +38,11 @@ public class LogDiv {
 			Pattern.compile("s1.\\w+=\\w+")};
 	
 	/* output txt file object initialize */
+	FileStore fs = new FileStore();
 	File file = new File(this.dir + "/log-div");
    
-   
-   
    	// carry out to div log into txt by user id
-   	public void process(String strLine) throws FileNotFoundException, UnsupportedEncodingException { // what the throws means ?
+   	public void process(String strLine) throws FileNotFoundException, UnsupportedEncodingException {
 	   
 		this.file.mkdir(); // create a new directory to store txts
 		
@@ -56,6 +55,8 @@ public class LogDiv {
 			if (!matcher_ip[0].group().equals(this.unique_date) || !matcher_ip[1].group().equals(this.unique_id)) {
 				this.unique_date = matcher_ip[0].group();
 				this.unique_id = matcher_ip[1].group();
+				fs.save(String path, String fileName, Optional<Map<String, String>> optionalMetadata, InputStream inputStream);
+
 				/* create a new txt file for writing */
 				if (this.writer != null) 
 					this.writer.close();
