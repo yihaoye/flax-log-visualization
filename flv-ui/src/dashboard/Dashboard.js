@@ -23,19 +23,6 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -99,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    backgroundColor: theme.palette.grey[900],
+    backgroundColor: theme.palette.grey[100],
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
@@ -200,9 +187,6 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <Box>
-            <Copyright />
-          </Box>
         </Container>
       </main>
     </div>
