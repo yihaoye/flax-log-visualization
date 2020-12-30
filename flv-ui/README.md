@@ -1,6 +1,16 @@
 # Flax-Log-Visualization UI
 https://www.freecodecamp.org/news/how-to-get-started-with-d3-and-react-c7da74a5bd9f/  
 
+# Dashboard template
+
+## Usage
+
+Simply copy the files into your project, or one of the [example applications](https://github.com/mui-org/material-ui/tree/next/examples), and import and use the `Dashboard` component.
+
+## Demo
+
+View the demo at https://material-ui.com/getting-started/templates/dashboard/.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
